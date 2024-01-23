@@ -9,12 +9,12 @@ export default function Navbar() {
                     <Image src="/logo.png" alt="Logo"   width={190}  height={260}/>
                 </div>
 
-                <div className="hidden md:flex items-center space-x-4">
+                <div className="md:flex items-center space-x-4">
                     <a href="#" className="text-gray-600 hover:text-gray-800">Pricing</a>
                     <a href="#" className="text-gray-600 hover:text-gray-800">Contact</a>
                 </div>
 
-                <div className="hidden md:flex items-center">
+                <div className="md:flex items-center">
                     <a href="#" className="text-gray-600 hover:text-gray-800 mr-4">Log in</a>
                     <button className="bg-primary text-white px-4 py-2">
                         Get Started for Free
