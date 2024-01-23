@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="px-24 min-h-screen">
         <Navbar/>
-        <Image src={'/startup-logo.png'} width={190}  height={160} className={'my-10'}/>
+        <Image src={'/startup-logo.png'} width={190}  height={160} className={'my-10'} alt={'startup'}/>
         <section className={'flex flex-row'}>
             <article className="flex-1 flex flex-col text-center">
                 <h3 className="text-2xl font-bold text-gray-800 w-4/6 self-center">Transform your Customer Success Managers into Superstars with </h3>
@@ -19,7 +19,7 @@ export default function Home() {
                     Get Started for Free
                 </button>
             </article>
-            <Image src={'/session.png'} width={800}  height={600} className="flex-1"/>
+            <Image src={'/session.png'} width={800}  height={600} className="flex-1" alt={'session'}/>
         </section>
     </main>
   )
