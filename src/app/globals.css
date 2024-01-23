@@ -6,6 +6,10 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --color-primary: #9E77ED;
+  --color-secondary: #D6BBFB;
+  --color-background: #F8F8F8;
+  --color-text: #333333;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,4 +32,7 @@
 
 .brand-name span:nth-child(4) {
   color: #c47742; /* AI color */
+}
+h1 {
+  font-size: 64px;
 }
