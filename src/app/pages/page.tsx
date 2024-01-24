@@ -1,10 +1,13 @@
+import Banner from '@/components/Banner'
 import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
 import React from 'react'
 
 export default function Progress() {
   return (
-    <div className="container mx-auto flex items-center justify-between">
+    <div>
+      <Banner />
+      <div className="container mx-auto flex items-center justify-between">
       <div>
         <h1>Onboarding with Ms. Wilson</h1>
       </div>
@@ -23,5 +26,7 @@ export default function Progress() {
         </NavItem>
       </Navigation>
     </div>
+    </div>
+    
   )
 }
