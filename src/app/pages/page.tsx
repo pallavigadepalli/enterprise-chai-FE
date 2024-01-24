@@ -1,11 +1,13 @@
 import Banner from '@/components/Banner'
 import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
+import SharingBanner from '@/components/SharingBanner'
 import React from 'react'
 
 export default function Progress() {
   return (
     <div>
+      <SharingBanner />
       <Banner />
       <div className="container mx-auto flex items-center justify-between">
       <div>
