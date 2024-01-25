@@ -5,14 +5,14 @@ export default function Home() {
   return (
     <main className="px-52 min-h-screen">
         <Navbar/>
-        <div className={'flex items-center justify-between'}>
-            <Image src={'/startup-logo.png'} width={190}  height={160} className={'my-10'} alt={'startup'}/>
-            <h1 className={'brand-name text-3xl flex'}>
+        <div className={'flex items-center mb-8'}>
+            <Image src={'/startup-logo.png'} width={140}  height={110} className={'my-10'} alt={'startup'}/>
+            <h1 className={'brand-name text-3xl flex ml-10'}>
                 <div> <b>Supercharge </b>
                     your <b>Customer Success Team</b> with&ensp;</div>
                 <span> Enterprise</span>
-                <span>CH</span>
-                <span>AI</span>
+                <span className={'font-semibold'}>CH</span>
+                <span className={'font-semibold'}>AI</span>
             </h1>
         </div>
         <section className={'flex md:flex-row sm:flex-col gap-10'}>
@@ -26,13 +26,13 @@ export default function Home() {
                 <div className={'flex text-center mt-20'}>
                     <p className="text-gray-600 brand-name flex text-center">
                         <div><b>Revolutionize</b> your approach with&ensp;</div>
-                        <span> Enterprise</span>
-                        <span>CH</span>
-                        <span>AI</span>
+                        <span>Enterprise</span>
+                        <span className={'font-semibold'}>CH</span>
+                        <span className={'font-semibold'}>AI</span>
                     </p>
                 </div>
                 <div className={'text-center'}>
-                    <button className="bg-primary text-white px-4 py-2 my-10 ml-18">
+                    <button className="bg-primary text-white px-4 py-2 my-10 ml-18 rounded-md">
                         Sign up for beta
                     </button>
                 </div>
