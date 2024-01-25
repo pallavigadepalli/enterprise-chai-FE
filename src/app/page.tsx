@@ -16,7 +16,7 @@ export default function Home() {
             </h1>
         </div>
         <section className={'flex md:flex-row sm:flex-col gap-10'}>
-            <Image src={'/chat_screen.png'} width={700}  height={500} className="" alt={'session'} priority={true} />
+            <Image src={'/chat.png'} width={700}  height={500} className="" alt={'chat'}  />
             <article className="flex flex-col  ">
                 <div className={'my-10 text-left'}>
                     <li className="text-gray-600 mb-10">Facilitate <b>High-Touch, Rapid Customer Onboarding</b></li>

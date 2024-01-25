@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2289ee62-7e89-4ddf-a2e4-1424aa8105f8" name="Changes" comment="feature: landing redesign">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Cup Logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/cup_logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,7 @@
       <workItem from="1705976192555" duration="6772000" />
       <workItem from="1706084502792" duration="5121000" />
       <workItem from="1706118161184" duration="77000" />
-      <workItem from="1706163707934" duration="1370000" />
+      <workItem from="1706163707934" duration="1644000" />
     </task>
     <task id="LOCAL-00001" summary="feature: landing">
       <created>1705983446496</created>
@@ -92,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706118227545</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feature: landing redesign">
+      <created>1706165296278</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706165296278</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
