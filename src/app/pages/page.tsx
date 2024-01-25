@@ -35,9 +35,8 @@ export default function Progress() {
       </div>
       <div className='container mx-auto flex items-center justify-between'>
         <Layout/>
-        <Card />
+          <Card />
       </div>
     </div>
-  
   )
 }
