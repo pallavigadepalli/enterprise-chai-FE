@@ -1,3 +1,5 @@
+
+
 import Banner from '@/components/Banner'
 import Layout from '@/components/Layout'
 import NavItem from '@/components/NavItem'
@@ -5,6 +7,7 @@ import Navigation from '@/components/Navigation'
 import SharingBanner from '@/components/SharingBanner'
 import Card from '@/components/Card'
 import Tags from '@/components/Tags'
+
 import React from 'react'
 
 export default function Progress() {
@@ -14,9 +17,9 @@ export default function Progress() {
       <div>
         <Banner />
       </div>
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex justify-between ">
         <div>
-          <h1>Onboarding with Ms. Wilson</h1>
+          <h2>Onboarding with Ms. Wilson</h2>
         </div>
         <Navigation>
           <NavItem href="/new" isActive>
@@ -33,10 +36,20 @@ export default function Progress() {
           </NavItem>
         </Navigation>
       </div>
-      <div className='container mx-auto flex items-center justify-between'>
-        <Layout/>
+      <div className='container mx-auto flex justify-between'>
+        
+          <Layout/>
+
+        <div className=' flex flex-col w-1/3'>
+          <div>
           <Card />
+          </div>
+          <div>
+          <Card />
+          </div>
+        </div>  
       </div>
+      
     </div>
   )
 }
