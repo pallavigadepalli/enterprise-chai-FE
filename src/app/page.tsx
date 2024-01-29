@@ -3,11 +3,10 @@ import Navbar from "@/components/navbar";
 
 export default function Home() {
   return (
-    <main className="px-52 min-h-screen">
-        <Navbar/>
+    <main>
         <div className={'flex items-center mb-8'}>
             <Image src={'/startup-logo.png'} width={140}  height={110} className={'my-10'} alt={'startup'}/>
-            <h1 className={'brand-name text-3xl flex ml-10'}>
+            <h1 className={'brand-name text-3xl flex ml-auto'}>
                 <div> <b>Supercharge </b>
                     your <b>Customer Success Team</b> with&ensp;</div>
                 <span> Enterprise</span>
@@ -16,7 +15,7 @@ export default function Home() {
             </h1>
         </div>
         <section className={'flex md:flex-row sm:flex-col gap-10'}>
-            <Image src={'/chat.png'} width={700}  height={500} className="" alt={'chat'}  />
+            <Image src={'/session1.png'} width={700}  height={500} className="" alt={'chat'}  />
             <article className="flex flex-col  ">
                 <div className={'my-10 text-left'}>
                     <li className="text-gray-600 mb-10">Facilitate <b>High-Touch, Rapid Customer Onboarding</b></li>
