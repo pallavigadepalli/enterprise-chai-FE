@@ -21,7 +21,7 @@ export async function POST(
 
     await sendMail(
         "EnterpriseCHAIR Contact Form Submission from - " + name,
-        "kingjavanlee@hotmail.com",
+        "pallavig@gmail.com",
         `${name} has sent you a message from the EnterpriseCHAI contact form. \n\nName: ${name} \nEmail: ${email} \nTitle: ${title} \nMessage: ${message}`
     );
     return NextResponse.json({status: 200})
