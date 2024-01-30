@@ -14,8 +14,14 @@ export default function Card() {
         <div className="flex justify-end">
           <Speaker />
         </div>
-        </div>
+      </div>
       <div className="p-4">
+        <div className="mb-4">
+          <ChatBox />
+        </div>
+        <div className="mb-4">
+          <ChatBox />
+        </div>
         <div className="mb-4">
           <ChatBox />
         </div>
