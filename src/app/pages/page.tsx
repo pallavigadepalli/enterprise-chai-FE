@@ -39,18 +39,14 @@ export default function Progress() {
       <div className='w-full px-10'>
         <Tags />
       </div>
-      <div className=' w-full h-4 px-10 flex  gap-10'>
+      <div className=' w-full h-4 px-10 flex gap-10'>
         <Layout/>
         <div className=' flex flex-col w-[320]'>
           <div>
-          <Card />
-          </div>
-          <div>
-          <Card />
+            <Card />
           </div>
         </div>  
       </div>
-      
     </div>
   )
 }

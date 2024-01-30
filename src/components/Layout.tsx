@@ -1,3 +1,4 @@
+import AnswerGenerator from "./AnswerGenerator";
 import ChatBox from "./ChatBox";
 
 export default function Layout() {
@@ -5,6 +6,9 @@ export default function Layout() {
     <div className="w-4/5 h-[700px] bg-purple-600 bg-opacity-10 rounded-lg overflow-hidden shadow-lg">
       <div className="bg-purple-300 p-4">
         <p className="text-lg font-semibold text-gray-800">Nombre del Chat</p>
+      </div>
+      <div className="w-full flex self-end pt-4">
+        <AnswerGenerator />
       </div>
   
       <div className="p-4">
