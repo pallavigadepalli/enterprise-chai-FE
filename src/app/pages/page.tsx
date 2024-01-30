@@ -14,10 +14,10 @@ export default function Progress() {
   return (
     <div>
       <SharingBanner />
-      <div>
+      <div className="w-full  px-10">
         <Banner />
       </div>
-      <div className="container mx-auto flex justify-between ">
+      <div className="w-full h-12 px-10 mt-4 mx-auto flex justify-between align-center items-center">
         <div>
           <h2>Onboarding with Ms. Wilson</h2>
         </div>
@@ -36,11 +36,12 @@ export default function Progress() {
           </NavItem>
         </Navigation>
       </div>
-      <div className='container mx-auto flex justify-between'>
-        
-          <Layout/>
-
-        <div className=' flex flex-col w-1/3'>
+      <div className='w-full px-10'>
+        <Tags />
+      </div>
+      <div className=' w-full h-4 px-10 flex  gap-10'>
+        <Layout/>
+        <div className=' flex flex-col w-[320]'>
           <div>
           <Card />
           </div>

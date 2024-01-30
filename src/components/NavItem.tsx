@@ -8,7 +8,7 @@ export default function NavItem({ href, isActive, children }: NavItemProps) {
     <li>
       <a
         href={href}
-        className={`block px-8 py-4 text-lg font-normal rounded ${isActive ? 'bg-primary text-white' : 'bg-slate-50'}`}
+        className={`block py-4 text-base rounded ${isActive ? 'bg-primary text-white' : 'bg-slate-50'} nav-item`}
       >
         {children}
       </a>
