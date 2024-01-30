@@ -1,12 +1,18 @@
+import Image from 'next/image'
 import React from 'react'
+import iconMic from "../../public/microphone-01.svg"
 
 export default function Speaker() {
   return (
-    <div className="w-1/5  h-12 p-4 bg-white rounded-full mr-4">
-      <div>
-        <div className="flex-shrink-0 speaking text-center">
+    <div className="flex speaker bg-white rounded-full mr-4">
+      <Image
+      src={iconMic}
+      alt='microphone'
+      width={20}
+      height={20}
+      />
+      <div className="flex-shrink-0 speaking text-center">
         speaking
-        </div>
       </div>
     </div>
   )

@@ -1,11 +1,27 @@
+import Image from "next/image";
+import iconTime from "../../public/Icon.svg"
+import iconGift from "../../public/Icon2.svg"
+
 
 export default function Tags() {
   return (
-    <div className="h-16 bg-white px-4 flex justify-start align-center items-center  mb-4 container mx-auto   space-x-16">
-      <span className="text-gray-500">
+    <div className="h-10 bg-white flex justify-start align-center items-center  mb-4  mx-auto gap-4 px-2">
+      <Image
+      src={iconGift}
+      alt="gift icon"
+      width={20}
+      height={20}
+      />
+      <span className="text-gray-500 font-light">
       Free trial 
       </span>
-      <span className="text-gray-500">
+      <Image
+      src={iconTime}
+      alt="time icon"
+      width={20}
+      height={20}
+      />
+      <span className="text-gray-500 font-light">
         27 min
       </span>
     </div>

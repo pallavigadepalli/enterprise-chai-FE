@@ -3,8 +3,8 @@ interface NavigationProps {
 }
 export default function Navigation({ children }: NavigationProps) {
   return (
-    <nav className="flex">
-      <ul className="flex space-x-6">
+    <nav>
+      <ul className="flex justify-between py-4 gap-3">
         {children}
       </ul>
     </nav>
