@@ -14,7 +14,7 @@ export default function Banner() {
         width={20}
         height={20}
       />
-      <p className="text-orange-500 trial-session">This is a FREE trial session 2 of 5</p>
+      <p className="trial-session">This is a FREE trial session 2 of 5</p>
     </div>
   );
 }

@@ -1,5 +1,3 @@
-
-
 import Banner from '@/components/Banner'
 import Layout from '@/components/Layout'
 import NavItem from '@/components/NavItem'
@@ -7,8 +5,7 @@ import Navigation from '@/components/Navigation'
 import SharingBanner from '@/components/SharingBanner'
 import Card from '@/components/Card'
 import Tags from '@/components/Tags'
-
-import React from 'react'
+import Title from '@/components/Title'
 
 export default function Progress() {
   return (
@@ -18,9 +15,7 @@ export default function Progress() {
         <Banner />
       </div>
       <div className="w-full h-12 px-10 mt-4 mx-auto flex justify-between align-center items-center">
-        <div>
-          <h2>Onboarding with Ms. Wilson</h2>
-        </div>
+        <Title />
         <Navigation>
           <NavItem href="/new" isActive>
             Settings
