@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2289ee62-7e89-4ddf-a2e4-1424aa8105f8" name="Changes" comment="feature: landing">
-      <change afterPath="$PROJECT_DIR$/public/softwares.png" afterDir="false" />
+    <list default="true" id="2289ee62-7e89-4ddf-a2e4-1424aa8105f8" name="Changes" comment="feature: landing redesign">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +34,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.eslint": "",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "/Users/king.leegaona/WebstormProjects/enterprise-chai/node_modules/typescript/lib",
@@ -61,7 +59,10 @@
       <option name="presentableId" value="Default" />
       <updated>1705974939036</updated>
       <workItem from="1705974940279" duration="1241000" />
-      <workItem from="1705976192555" duration="6574000" />
+      <workItem from="1705976192555" duration="6772000" />
+      <workItem from="1706084502792" duration="5121000" />
+      <workItem from="1706118161184" duration="77000" />
+      <workItem from="1706163707934" duration="3065000" />
     </task>
     <task id="LOCAL-00001" summary="feature: landing">
       <created>1705983446496</created>
@@ -77,7 +78,49 @@
       <option name="project" value="LOCAL" />
       <updated>1705983644008</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feature: landing colors">
+      <created>1705986858004</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705986858004</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feature: landing redesign">
+      <created>1706118227545</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706118227545</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feature: landing redesign">
+      <created>1706165296278</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706165296278</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feature: landing redesign">
+      <created>1706165526174</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706165526174</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feature: landing redesign">
+      <created>1706165538462</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706165538462</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feature: landing redesign">
+      <created>1706166933199</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706166933199</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,6 +140,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feature: landing" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: landing" />
+    <MESSAGE value="feature: landing colors" />
+    <MESSAGE value="feature: landing redesign" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: landing redesign" />
   </component>
 </project>

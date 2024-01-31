@@ -8,7 +8,7 @@ export default function NavItem({ href, isActive, children }: NavItemProps) {
     <li>
       <a
         href={href}
-        className={`block py-4 text-base rounded ${isActive ? 'bg-primary text-white' : 'bg-slate-50'} nav-item`}
+        className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow ${isActive ? 'bg-primary text-white' : 'bg-slate-50'} nav-item`}
       >
         {children}
       </a>
