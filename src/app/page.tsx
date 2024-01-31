@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 export default function Home() {
   return (
     <main>
+        <Navbar />
         <div className={'flex items-center mb-8'}>
             <Image src={'/startup-logo.png'} width={140}  height={110} className={'my-10'} alt={'startup'}/>
             <h1 className={'brand-name text-3xl flex ml-auto'}>

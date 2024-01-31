@@ -2,7 +2,6 @@ import Banner from '@/components/Banner'
 import Layout from '@/components/Layout'
 import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
-import SharingBanner from '@/components/SharingBanner'
 import Card from '@/components/Card'
 import Tags from '@/components/Tags'
 import Title from '@/components/Title'
@@ -10,7 +9,6 @@ import Title from '@/components/Title'
 export default function Progress() {
   return (
     <div>
-      <SharingBanner />
       <div className="w-full ">
         <Banner />
       </div>

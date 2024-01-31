@@ -5,10 +5,10 @@ import ChatMessage from "./ChatMessage";
 
 export default function Card() {
   return (
-    <div className=" bg-slate-500 bg-opacity-10 rounded-lg overflow-hidden mb-8">
-      <div className="bg-slate-400  flex">
+    <div className=" bg-grayBg bg-opacity-10 rounded-lg overflow-hidden mb-8">
+      <div className="bg-grayPlate flex">
         <Avatar src={photo} size={64} alt="people photo" />
-        <p className="text-lg font-medium text-gray-800 p-4 self-center">Ms. Wilson</p>
+        <p className="text-lg font-medium text-black p-4 self-center">Ms. Wilson</p>
       </div>
       <div className="pt-4">
         <div className="flex justify-end">
