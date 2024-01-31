@@ -1,7 +1,7 @@
 import Avatar from "./Avatar";
 import photo from "../../public/Frame 10.png"
-import ChatBox from "./ChatBox";
 import Speaker from "./Speaker";
+import ChatMessage from "./ChatMessage";
 
 export default function Card() {
   return (
@@ -14,13 +14,19 @@ export default function Card() {
         <div className="flex justify-end">
           <Speaker />
         </div>
-        </div>
+      </div>
       <div className="p-4">
         <div className="mb-4">
-          <ChatBox />
+          <ChatMessage />
         </div>
         <div className="mb-4">
-          <ChatBox />
+          <ChatMessage />
+        </div>
+        <div className="mb-4">
+          <ChatMessage />
+        </div>
+        <div className="mb-4">
+          <ChatMessage />
         </div>
       </div>
     </div>
