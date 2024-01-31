@@ -25,7 +25,9 @@ body {
 
 
 
-.brand-name span:nth-child(2) {
+.brand-name span:nth-child(1) {
+  color: #8171c1; /* CH color */
+}.brand-name span:nth-child(2) {
   color: #8171c1; /* CH color */
 }
 
@@ -44,7 +46,7 @@ h2 {
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 50px; 
+  line-height: 50px;
 }
 span{
   font-size: 16px;
