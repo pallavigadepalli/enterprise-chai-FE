@@ -32,12 +32,12 @@ export default function Home() {
                 </div>
                 <div className={'text-center'}>
                     <button className="bg-primary text-white px-4 py-2 my-10 ml-18 rounded-md">
-                        Sign up for beta
+                        Book a demo
                     </button>
                 </div>
             </article>
         </section>
-        <section className={'flex flex-col items-center'}>
+        <section className={'flex flex-col items-center mt-10'}>
             <p >We support major meeting softwares</p>
             <Image src={'/softwares.png'} width={800}  height={600}  alt={'meeting'}/>
         </section>
