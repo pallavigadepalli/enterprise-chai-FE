@@ -21,12 +21,14 @@ export default function Home() {
         <Navbar/>
         <div className={'flex items-center mb-8'}>
             <Image src={'/startup-logo.png'} width={126}  height={50} className={'my-10'} alt={'startup'}/>
-            <h1 className={'brand-name text-3xl flex lg:ml-auto md:xs-auto'}>
-                <div> <b>Supercharge </b>
-                    your <b>Customer Success Team</b> with&ensp;</div>
-                <span> Enterprise</span>
-                <span className={'font-semibold'}>CH</span>
-                <span className={'font-semibold'}>AI</span>
+            <h1 className={'brand-sname text-3xl flex ml-auto lg:justify-center w-full'}>
+                    <span className={'font-semibold'}>Supercharge&ensp;</span>
+                    <span>your&ensp;</span>
+                    <span className={'font-semibold'}>Customer Success Team&ensp;</span>
+                    <span>with&ensp;</span>
+                    <span className={'text-primaryCustom font-bold'}>Enterprise</span>
+                    <span className={'text-primary font-semibold'}>CH</span>
+                    <span className={'text-warning font-semibold'}>AI</span>
             </h1>
         </div>
         <section className={'flex md:flex-row sm:flex-col gap-16'}>
@@ -60,8 +62,8 @@ export default function Home() {
             <div className={'flex justify-center gap-10 '}>
                 {
                     meetingSoftwareLogos.map((logo, index) => (
-                        <div className={'flex items-center gap-3'}>
-                            <Image src={logo.src} width={48}  height={48} className="" alt={logo.name} key={index}/>
+                        <div className={'flex items-center gap-3'} key={index}>
+                            <Image src={logo.src} width={48}  height={48} className="" alt={logo.name}/>
                             <span >{logo.name}</span>
                         </div>
                     ))
