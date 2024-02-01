@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <nav className="bg-white py-5 border-b border-primary">
             <div className="mx-auto flex items-center justify-between">
-                <a className="flex brand-name text-xl place-items-center" href={'/'}>
+                <a className="flex brand-name text-xl text-white place-items-center" href={'/'}>
                     <span>Enterprise</span>
                     <Image src="/cup_logo.svg" alt="Logo" width={43} height={45} className={'mx-1 mb-3'}/>
                     <span className={'font-semibold'}>CH</span>

@@ -5,8 +5,8 @@ export default function ChatBox() {
       <div className="flex-shrink-0">
       </div>
       <div className="ml-3">
-        <div className="text-sm text-gray-900 font-extralight">13:56</div>
-        <p className="text-gray-700">I am feeling great. Thank you!</p>
+        <div className="text-sm text-grayCustom font-extralight">13:56</div>
+        <p>I am feeling great. Thank you!</p>
       </div>
     </div>
   </div>

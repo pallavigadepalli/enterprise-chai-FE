@@ -11,7 +11,7 @@ export default function Speaker() {
       width={20}
       height={20}
       />
-      <div className="flex-shrink-0 speaking text-center">
+      <div className="flex-shrink-0 speaking text-center text-grayPlate">
         speaking
       </div>
     </div>
