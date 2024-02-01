@@ -10,7 +10,6 @@ import Title from '@/components/Title'
 export default function Progress() {
   return (
     <div>
-      <SharingBanner />
       <div className="w-full ">
         <Banner />
       </div>
