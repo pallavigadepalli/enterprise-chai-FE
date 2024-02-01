@@ -32,7 +32,9 @@ export default function Home() {
             </h1>
         </div>
         <section className={'flex md:flex-row sm:flex-col gap-16'}>
-            <Image src={'/chat.svg'} width={685}  height={511} className="" alt={'chat'}  />
+            <a href={'/pages'}>
+                <Image src={'/chat.svg'} width={685}  height={511} className="" alt={'chat'}  />
+            </a>
             <article className="flex flex-col self-center  ">
                 <div className={'my-10 text-left'}>
                     <li className="text-gray-600 mb-5 font-medium">
