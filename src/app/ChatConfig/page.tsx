@@ -1,5 +1,6 @@
 import ComputerAudio from "@/components/ComputerAudio"
 import Step from "@/components/Step"
+import TabAudio from "@/components/TabAudio"
 
 export default function Config() {
   return (
@@ -19,6 +20,7 @@ export default function Config() {
       </div>
       <div>
         <ComputerAudio />
+        <TabAudio />
       </div>
       <div>
         <Step />
