@@ -1,3 +1,4 @@
+import ComputerAudio from "@/components/ComputerAudio"
 import Step from "@/components/Step"
 
 export default function Config() {
@@ -15,6 +16,9 @@ export default function Config() {
       </div>
       <div>
         <p className="text-base leading-5 pt-10 pb-8">To make this experience tailored just for you, let&lsquo;s set up your audio preferences.</p>
+      </div>
+      <div>
+        <ComputerAudio />
       </div>
       <div>
         <Step />
