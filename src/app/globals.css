@@ -50,6 +50,10 @@ h2 {
   font-weight: 700;
   line-height: 50px;
 }
+h5 {
+  font-size: 1rem;
+  font-weight: bold;
+}
 span{
   /*font-size: 16px;*/
   font-family: 'Montserrat', sans-serif;
