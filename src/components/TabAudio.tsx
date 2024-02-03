@@ -26,7 +26,9 @@ export default function TabAudio() {
         <button className='btn-primary'>Yes</button>
       </div>
       <div className='mt-16 flex justify-end'>
-        <button className="btn-secondary place-self-end">Continue</button>
+          <a href={'/pages'}>
+              <button className="btn-secondary place-self-end">Continue</button>
+          </a>
       </div>
     </div>
   )
