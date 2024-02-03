@@ -4,7 +4,7 @@ import TabAudio from "@/components/TabAudio"
 
 export default function Config() {
   return (
-    <main className="w-[1700px] h-[1040px] flex flex-col items-center justify-center bg-primaryBg">
+    <main className="w-full h-[1040px] flex flex-col items-center justify-center">
       <div>
         <div className={'brand-name text-3xl flex ml-auto'}>
           <p>
@@ -18,17 +18,16 @@ export default function Config() {
       <div>
         <p className="text-base leading-5 pt-10 pb-8">To make this experience tailored just for you, let&lsquo;s set up your audio preferences.</p>
       </div>
-      <div>
-        <ComputerAudio />
-        <TabAudio />
-      </div>
-      <div>
-        <Step />
-        <Step />
-        <Step />
-      </div>
-      <div>
-
+      <div className="flex gap-12">
+        <div>
+          <Step />
+          <Step />
+          <Step />
+        </div>
+        <div className="grid gap-20 grid-cols-1">
+          <ComputerAudio />
+          <TabAudio />
+        </div>
       </div>
     </main>
   )

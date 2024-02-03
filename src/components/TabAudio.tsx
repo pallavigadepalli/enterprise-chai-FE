@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-
 export default function TabAudio() {
   return (
     <div className="w-[560px] h-[180px] bg-primaryBG rounded-lg">
@@ -22,6 +21,12 @@ export default function TabAudio() {
           height={24}
           />
         </div>
+      </div>
+      <div className='flex pt-12 justify-center items-center'>
+        <button className='btn-primary'>Yes</button>
+      </div>
+      <div className='mt-16 flex justify-end'>
+        <button className="btn-secondary place-self-end">Continue</button>
       </div>
     </div>
   )
