@@ -21,7 +21,7 @@ export default function Home() {
         <Navbar/>
         <div className={'flex items-center mb-8'}>
             <Image src={'/startup-logo.png'} width={126}  height={50} className={'my-10'} alt={'startup'}/>
-            <h1 className={'brand-sname text-3xl flex ml-auto lg:justify-center w-full'}>
+            <h1 className={'md:justify-end xl:justify-normal text-2xl xl:text-3xl flex  xl:ml-10 w-full'}>
                     <span className={'font-semibold'}>Supercharge&ensp;</span>
                     <span>your&ensp;</span>
                     <span className={'font-semibold'}>Customer Success Team&ensp;</span>
@@ -37,11 +37,11 @@ export default function Home() {
             </a>
             <article className="flex flex-col self-center  ">
                 <div className={'my-10 text-left'}>
-                    <li className="text-gray-600 mb-5 font-medium">
+                    <li className="text-gray-600 mb-5 font-semibold text-lg">
                         Facilitate High-Touch, Rapid Customer Onboarding
                     </li>
-                    <li className="text-gray-600 mb-5 font-medium">Shrink Time To Value from 12 to 3 Months</li>
-                    <li className="text-gray-600 mb-5 font-medium">Rapid Upskilling for Customer Success Managers</li>
+                    <li className="text-gray-600 mb-5 font-semibold text-lg">Shrink Time To Value from 12 to 3 Months</li>
+                    <li className="text-gray-600 mb-5 font-semibold text-lg">Rapid Upskilling for Customer Success Managers</li>
                 </div>
                 <div className={'pl-14'}>
                     <p className="text-gray-600 brand-name flex text-center">
