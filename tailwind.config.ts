@@ -21,14 +21,17 @@ const config: Config = {
         primary: '#7f56d9',
         primaryCustom: 'rgba(127, 86, 217, 0.90)',
         primaryBg: 'rgba(127, 86, 217, 0.10)',
+        primaryBG: 'rgba(127, 86, 217, 0.15)',
         grayCustom: '#929FB1',
         grayPlate: '#98A2B3',
+        grayPlateBg: 'rgba(152, 162, 179, 0.15)',
+        grayCard: '#EEF0F1',
         grayBg: 'rgba(208, 213, 221, 0.25)',
         secondary: '#f2eefa',
         tertiary: 'rgba(127, 86, 217, 0.50)',
         warning: '#DC6803',
         warningCustom: 'rgba(220, 104, 3, 0.09)',
-        
+        blackCustom:'1D2939',
       }
     },
   },
