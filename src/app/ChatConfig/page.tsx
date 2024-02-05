@@ -7,11 +7,16 @@ import Image from "next/image";
 import {useEffect, useState} from "react";
 
 export default function Config() {
-    const [audioDevices, setAudioDevices] = useState<>([]);
+    const [audioDevices, setAudioDevices] = useState<any>([]);
 
     useEffect(() => {
         async function fetchAudioDevices() {
             try {
+                const permission = await navigator.mediaDevices.getUserMedia({ audio: true })
+                if (!permission) {
+                    alert('You need to allow the microphone to use this feature');
+                    return;
+                }
                 const devices = await navigator.mediaDevices.enumerateDevices();
                 const audioInputs = devices.filter(device => device.kind === 'audioinput').map(device => ({
                     label: device.label,
