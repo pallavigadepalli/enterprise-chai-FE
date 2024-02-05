@@ -6,10 +6,10 @@ import Navigation from '@/components/Navigation'
 import Card from '@/components/Card'
 import Tags from '@/components/Tags'
 import Title from '@/components/Title'
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export default function Progress() {
-
+    const [messages, setMessages] = useState([]);
     useEffect(() => {
         const handleStartCapture = async () => {
             const selectedDeviceId = sessionStorage.getItem('selectedDeviceId');
@@ -53,6 +53,9 @@ export default function Progress() {
                     ws.onclose = () => {
                         console.log('WebSocket connection closed');
                     };
+                    ws.onmessage = (event) => {
+                        setMessages(messages => [...messages, event.data]);
+                    }
                 } catch (error) {
                     console.error('Error capturing audio:', error);
                 }
@@ -88,7 +91,7 @@ export default function Progress() {
       </div>
       <div className='
        w-full h-4 flex gap-10'>
-        <Layout/>
+        <Layout messages={messages}/>
         <div className=' flex flex-col w-[320]'>
           <div>
             <Card />

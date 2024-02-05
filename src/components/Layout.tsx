@@ -3,7 +3,7 @@ import AnswerGenerator from "./AnswerGenerator";
 import ChatBox from "./ChatBox";
 import Link from "next/link";
 
-export default function Layout() {
+export default function Layout({messages}) {
   return (
     <div className="w-4/5 h-[700px] bg-primaryBg bg-opacity-10 rounded-lg overflow-hidden shadow-lg">
       <div className="bg-primaryCustom px-4 pt-3 pb-3 flex items-center justify-between">
@@ -18,14 +18,14 @@ export default function Layout() {
       <div className="w-full flex self-end pt-4">
         <AnswerGenerator />
       </div>
-  
+
       <div className="p-4">
-        <div className="mb-4">
-          <ChatBox />
-        </div>
-        <div className="mb-4">
-          <ChatBox />
-        </div>
+          { messages.length > 0 &&
+              <div className="mb-4">
+              <ChatBox/>
+          </div>
+          }
+
       </div>
     </div>
   )
