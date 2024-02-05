@@ -20,10 +20,11 @@ export default function Layout({messages}) {
       </div>
 
       <div className="p-4">
-          { messages.length > 0 &&
+          { messages.map((message, index) => (
               <div className="mb-4">
-              <ChatBox/>
-          </div>
+                  <ChatBox message={message}/>
+              </div>))
+
           }
 
       </div>

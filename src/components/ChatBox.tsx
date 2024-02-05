@@ -1,4 +1,4 @@
-export default function ChatBox() {
+export default function ChatBox({message}) {
   return (
   <div className="w-full p-4 bg-white rounded-2xl shadow-md">
     <div className="flex items-center">
@@ -6,7 +6,7 @@ export default function ChatBox() {
       </div>
       <div className="ml-3">
         <div className="text-sm text-grayCustom font-extralight">13:56</div>
-        <p>I am feeling great. Thank you!</p>
+        <p>{message}</p>
       </div>
     </div>
   </div>
