@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 
 export default function TabAudio() {
@@ -23,7 +24,7 @@ export default function TabAudio() {
         </div>
       </div>
       <div className='flex pt-12 justify-center items-center'>
-        <button className='btn-primary'>Yes</button>
+        <button className='btn-primary'>Configure</button>
       </div>
       <div className='mt-16 flex justify-end'>
           <a href={'/pages'}>
