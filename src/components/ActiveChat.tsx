@@ -11,14 +11,13 @@ import {useEffect, useState, useRef} from "react";
 const sendingSocket = 'wss://free.blr2.piesocket.com/v3/1?api_key=wGHFPvnJsTqHCs2qBVyWK4zLxMGA3SZ8iMxLFbqP&notify_self=1';
 const receivingSocket = 'wss://free.blr2.piesocket.com/v3/1?api_key=wGHFPvnJsTqHCs2qBVyWK4zLxMGA3SZ8iMxLFbqP&notify_self=1';
 
-export default function Progress() {
+export default function ActiveChat({recorder, selectedDeviceId}) {
     const ws1 = new WebSocket(sendingSocket);
     const ws2 = new WebSocket(receivingSocket);
 
     const [messages, setMessages] = useState<string[]>([]);
     useEffect(() => {
         const handleStartCapture = async () => {
-            const selectedDeviceId = sessionStorage.getItem('selectedDeviceId');
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
                 return stream;

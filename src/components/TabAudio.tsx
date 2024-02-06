@@ -1,7 +1,12 @@
 'use client'
 import Image from 'next/image'
 
-export default function TabAudio() {
+
+export default function TabAudio({handleTabAudio, recorder, setActiveSession}) {
+    const handleContinue = () => {
+        setActiveSession(true);
+        recorder.start(100)
+    }
   return (
     <div className="w-[560px] h-[180px] bg-primaryBG rounded-lg">
       <div className="h-12 bg-grayPlate rounded-t-lg flex items-center justify-between gap-4 p-4">
@@ -24,12 +29,10 @@ export default function TabAudio() {
         </div>
       </div>
       <div className='flex pt-12 justify-center items-center'>
-        <button className='btn-primary'>Configure</button>
+        <button className='btn-primary' onClick={handleTabAudio}>Configure</button>
       </div>
       <div className='mt-16 flex justify-end'>
-          <a href={'/pages'}>
-              <button className="btn-secondary place-self-end">Continue</button>
-          </a>
+          {recorder && <button className="btn-secondary place-self-end" onClick={handleContinue}>Continue</button>}
       </div>
     </div>
   )

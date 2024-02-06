@@ -5,9 +5,26 @@ import TabAudio from "@/components/TabAudio"
 import Dropdown from "@/components/Dropdown";
 import Image from "next/image";
 import {useEffect, useState} from "react";
+import ActiveChat from "@/components/ActiveChat";
 
 export default function Config() {
     const [audioDevices, setAudioDevices] = useState<any>([]);
+    const [recorder, setRecorder] = useState<MediaRecorder>(null);
+    const [activeSession, setActiveSession] = useState<boolean>(false);
+    const [selectedDeviceId, setSelectedDeviceId] = useState<string>('');
+
+    const handleTabAudio = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true })
+            const recorder = new MediaRecorder(stream);
+            recorder.addEventListener('dataavailable', evt => {
+                console.log("evt.data", evt.data)
+            });
+            setRecorder(recorder);
+        } catch (error) {
+            console.error('Error capturing audio:', error);
+        }
+    };
 
     useEffect(() => {
         async function fetchAudioDevices() {
@@ -23,6 +40,7 @@ export default function Config() {
                     value: device.deviceId
                 }));
                 setAudioDevices(audioInputs);
+                setSelectedDeviceId(audioInputs[0].value)
             } catch (error) {
                 console.error('Error fetching audio devices:', error);
             }
@@ -31,9 +49,14 @@ export default function Config() {
         fetchAudioDevices();
     }, []);
     const handleDeviceChange = (event) => {
-        sessionStorage.setItem('selectedDeviceId', event.target.value);
+        setSelectedDeviceId(event.target.value);
     };
 
+    if (activeSession && selectedDeviceId) {
+        return (
+            <ActiveChat recorder={recorder} selectedDeviceId={selectedDeviceId}/>
+        )
+    }
 
     return (
     <main className="w-full h-[1040px] flex flex-col items-center justify-center">
@@ -82,7 +105,7 @@ export default function Config() {
                     <Dropdown {...{options: audioDevices, onChange: handleDeviceChange}}/>
                 </div>
             </div>
-          <TabAudio />
+          <TabAudio handleTabAudio={handleTabAudio} setActiveSession={setActiveSession} recorder={recorder}/>
         </div>
       </div>
     </main>
