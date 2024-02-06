@@ -6,10 +6,16 @@ import Navigation from '@/components/Navigation'
 import Card from '@/components/Card'
 import Tags from '@/components/Tags'
 import Title from '@/components/Title'
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
+
+const sendingSocket = 'wss://free.blr2.piesocket.com/v3/1?api_key=wGHFPvnJsTqHCs2qBVyWK4zLxMGA3SZ8iMxLFbqP&notify_self=1';
+const receivingSocket = 'wss://free.blr2.piesocket.com/v3/1?api_key=wGHFPvnJsTqHCs2qBVyWK4zLxMGA3SZ8iMxLFbqP&notify_self=1';
 
 export default function Progress() {
-    const [messages, setMessages] = useState([]);
+    const ws1 = new WebSocket(sendingSocket);
+    const ws2 = new WebSocket(receivingSocket);
+
+    const [messages, setMessages] = useState<string[]>([]);
     useEffect(() => {
         const handleStartCapture = async () => {
             const selectedDeviceId = sessionStorage.getItem('selectedDeviceId');
@@ -25,36 +31,21 @@ export default function Progress() {
                 const recorder = new MediaRecorder(stream);
 
                 try {
-                    const ws = new WebSocket('ws://localhost:5555/listen2');
 
                     recorder.addEventListener('dataavailable', evt => {
-                        if (evt.data.size > 0 && ws.readyState === WebSocket.OPEN) {
-                            ws.send(evt.data);
+                        if (evt.data.size > 0 && ws1.readyState === WebSocket.OPEN) {
+                            ws1.send(evt.data);
                         }
                     });
 
-                    ws.onopen = () => {
-                        console.log('WebSocket connection opened');
-
-                        recorder.onstop = () => {
-                            console.log('MediaRecorder stopped');
-                        };
-
+                    ws1.onopen = () => {
                         recorder.start(100)
-
                     };
-
-                    // When WebSocket connection encounters an error
-                    ws.onerror = (error) => {
+                    ws1.onerror = (error) => {
                         console.error('WebSocket error:', error);
                     };
-
-                    // When WebSocket connection is closed
-                    ws.onclose = () => {
-                        console.log('WebSocket connection closed');
-                    };
-                    ws.onmessage = (event) => {
-                        setMessages(messages => [...messages, event.data]);
+                    ws2.onmessage = (event) => {
+                        setMessages(_value => [..._value, event.data]);
                     }
                 } catch (error) {
                     console.error('Error capturing audio:', error);
@@ -91,7 +82,7 @@ export default function Progress() {
       </div>
       <div className='
        w-full h-4 flex gap-10'>
-        <Layout messages={messages}/>
+        <Layout messages={messages} />
         <div className=' flex flex-col w-[320]'>
           <div>
             <Card />

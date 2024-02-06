@@ -2,8 +2,15 @@ import Image from "next/image";
 import AnswerGenerator from "./AnswerGenerator";
 import ChatBox from "./ChatBox";
 import Link from "next/link";
+import {useEffect, useRef} from "react";
 
 export default function Layout({messages}) {
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+
+    }, [messages]);
   return (
     <div className="w-4/5 h-[700px] bg-primaryBg bg-opacity-10 rounded-lg overflow-hidden shadow-lg">
       <div className="bg-primaryCustom px-4 pt-3 pb-3 flex items-center justify-between">
@@ -19,9 +26,11 @@ export default function Layout({messages}) {
         <AnswerGenerator />
       </div>
 
-      <div className="p-4">
+      <div className="p-4 overflow-y-auto h-[600px]" ref={messagesEndRef}>
           { messages.map((message, index) => (
-              <div className="mb-4">
+              <div className="mb-4" key={index + "chat-"}>
+                  >
+              }
                   <ChatBox message={message}/>
               </div>))
 
