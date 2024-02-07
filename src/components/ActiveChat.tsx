@@ -3,56 +3,55 @@ import Banner from '@/components/Banner'
 import Layout from '@/components/Layout'
 import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
-import Card from '@/components/Card'
 import Tags from '@/components/Tags'
 import Title from '@/components/Title'
 import {useEffect, useState, useRef} from "react";
+import SpeakerBox from "@/components/SpeakerBox";
 
-const sendingSocket = 'wss://free.blr2.piesocket.com/v3/1?api_key=wGHFPvnJsTqHCs2qBVyWK4zLxMGA3SZ8iMxLFbqP&notify_self=1';
-const receivingSocket = 'wss://free.blr2.piesocket.com/v3/1?api_key=wGHFPvnJsTqHCs2qBVyWK4zLxMGA3SZ8iMxLFbqP&notify_self=1';
+const microphoneAudioSocket = 'wss://localhost:8080/';
+const tabAudioSocket = 'wss://localhost:8080/';
+const assistantSocket = 'wss://localhost:8080/';
 
 export default function ActiveChat({recorder, selectedDeviceId}) {
-    const ws1 = new WebSocket(sendingSocket);
-    const ws2 = new WebSocket(receivingSocket);
+    const microphoneWS = new WebSocket(microphoneAudioSocket);
+    const tabWS = new WebSocket(tabAudioSocket);
+    const assistantWS = new WebSocket(assistantSocket);
 
-    const [messages, setMessages] = useState<string[]>([]);
+    const [assistantMessages, setAssistantMessages] = useState<string[]>(['cdf', 'dsedwe', '322']);
+    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>(['dd', 'dsedwe', '322']);
+    const [tabMessages, setTabMessages] = useState<string[]>([]);
+
     useEffect(() => {
         const handleStartCapture = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
-                return stream;
+                const micRecorder = new MediaRecorder(stream);
+
+                micRecorder.addEventListener('dataavailable', evt => {
+                    if (evt.data.size > 0 && microphoneWS.readyState === WebSocket.OPEN) {
+                        microphoneWS.send(evt.data);
+                    }
+                });
+
+                microphoneWS.onopen = () => {
+                    micRecorder.start(100)
+                };
+                microphoneWS.onerror = (error) => {
+                    console.error('WebSocket error:', error);
+                };
+                microphoneWS.onmessage = (event) => {
+                    setMicrophoneMessages(_value => [..._value, event.data]);
+                }
             } catch (error) {
                 console.error('Error capturing audio:', error);
             }
         };
-        handleStartCapture()
-            .then(stream => {
-                const recorder = new MediaRecorder(stream);
-
-                try {
-
-                    recorder.addEventListener('dataavailable', evt => {
-                        if (evt.data.size > 0 && ws1.readyState === WebSocket.OPEN) {
-                            ws1.send(evt.data);
-                        }
-                    });
-
-                    ws1.onopen = () => {
-                        recorder.start(100)
-                    };
-                    ws1.onerror = (error) => {
-                        console.error('WebSocket error:', error);
-                    };
-                    ws2.onmessage = (event) => {
-                        setMessages(_value => [..._value, event.data]);
-                    }
-                } catch (error) {
-                    console.error('Error capturing audio:', error);
-                }
-            })
-            .catch(error => {
-                console.error('Error starting audio capture:', error);
-            });
+        handleStartCapture().then(() => {
+            assistantWS.onmessage = (event) => {
+                setAssistantMessages(_value => [..._value, event.data]);
+            }
+            console.log('Microphone capture started');
+        })
     }, []);
   return (
     <div>
@@ -81,10 +80,11 @@ export default function ActiveChat({recorder, selectedDeviceId}) {
       </div>
       <div className='
        w-full h-4 flex gap-10'>
-        <Layout messages={messages} />
+        <Layout messages={assistantMessages} />
         <div className=' flex flex-col w-[320]'>
           <div>
-            <Card />
+            <SpeakerBox name={'Ms. Wilson'} messages={microphoneMessages}/>
+            <SpeakerBox name={'Dave Matthews'}/>
           </div>
         </div>
       </div>

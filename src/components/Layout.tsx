@@ -29,8 +29,6 @@ export default function Layout({messages}) {
       <div className="p-4 overflow-y-auto h-[600px]" ref={messagesEndRef}>
           { messages.map((message, index) => (
               <div className="mb-4" key={index + "chat-"}>
-                  >
-              }
                   <ChatBox message={message}/>
               </div>))
 
