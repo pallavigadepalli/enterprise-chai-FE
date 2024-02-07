@@ -51,7 +51,7 @@ export default function Config() {
 
     if (activeSession && selectedDeviceId) {
         return (
-            <ActiveChat recorder={recorder} selectedDeviceId={selectedDeviceId}/>
+            <ActiveChat tabRecorder={recorder} selectedDeviceId={selectedDeviceId}/>
         )
     }
 

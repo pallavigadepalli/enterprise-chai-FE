@@ -8,9 +8,9 @@ import Title from '@/components/Title'
 import {useEffect, useState, useRef} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
 
-const microphoneAudioSocket = 'wss://localhost:8080/';
-const tabAudioSocket = 'wss://localhost:8080/';
-const assistantSocket = 'wss://localhost:8080/';
+const microphoneAudioSocket = 'wss://localhost:8080/listen';
+const tabAudioSocket = 'wss://localhost:8080/listen2';
+const assistantSocket = 'wss://localhost:8080/result';
 
 export default function ActiveChat({tabRecorder, selectedDeviceId}) {
     const microphoneWS = new WebSocket(microphoneAudioSocket);

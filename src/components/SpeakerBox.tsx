@@ -5,7 +5,7 @@ import ChatMessage from "./ChatMessage";
 
 export default function SpeakerBox({name, avatar, messages = []}) {
   return (
-    <div className=" bg-grayBg bg-opacity-10 rounded-lg overflow-hidden mb-8">
+    <div className=" bg-grayBg bg-opacity-10 rounded-lg overflow-y-auto h-[400px] mb-8">
       <div className="bg-grayPlate flex">
         <Avatar src={photo} size={64} alt="people photo" />
         <p className="text-lg font-medium text-black p-4 self-center">{name}</p>
