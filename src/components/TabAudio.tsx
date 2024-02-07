@@ -5,7 +5,6 @@ import Image from 'next/image'
 export default function TabAudio({handleTabAudio, recorder, setActiveSession}) {
     const handleContinue = () => {
         setActiveSession(true);
-        recorder.start(100)
     }
   return (
     <div className="w-[560px] h-[180px] bg-primaryBG rounded-lg">
