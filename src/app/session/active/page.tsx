@@ -17,9 +17,6 @@ export default function Config() {
         try {
             const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true })
             const recorder = new MediaRecorder(stream);
-            recorder.addEventListener('dataavailable', evt => {
-                console.log("evt.data", evt.data)
-            });
             setRecorder(recorder);
         } catch (error) {
             console.error('Error capturing audio:', error);

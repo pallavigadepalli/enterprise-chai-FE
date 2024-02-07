@@ -12,13 +12,13 @@ const microphoneAudioSocket = 'wss://localhost:8080/';
 const tabAudioSocket = 'wss://localhost:8080/';
 const assistantSocket = 'wss://localhost:8080/';
 
-export default function ActiveChat({recorder, selectedDeviceId}) {
+export default function ActiveChat({tabRecorder, selectedDeviceId}) {
     const microphoneWS = new WebSocket(microphoneAudioSocket);
     const tabWS = new WebSocket(tabAudioSocket);
     const assistantWS = new WebSocket(assistantSocket);
 
-    const [assistantMessages, setAssistantMessages] = useState<string[]>(['cdf', 'dsedwe', '322']);
-    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>(['dd', 'dsedwe', '322']);
+    const [assistantMessages, setAssistantMessages] = useState<string[]>([]);
+    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>([]);
     const [tabMessages, setTabMessages] = useState<string[]>([]);
 
     useEffect(() => {
@@ -33,8 +33,14 @@ export default function ActiveChat({recorder, selectedDeviceId}) {
                     }
                 });
 
+                tabRecorder.addEventListener('dataavailable', evt => {
+                    if (evt.data.size > 0 && tabWS.readyState === WebSocket.OPEN) {
+                        tabWS.send(evt.data);
+                    }
+                })
                 microphoneWS.onopen = () => {
                     micRecorder.start(100)
+                    tabRecorder.start(100)
                 };
                 microphoneWS.onerror = (error) => {
                     console.error('WebSocket error:', error);
@@ -49,6 +55,9 @@ export default function ActiveChat({recorder, selectedDeviceId}) {
         handleStartCapture().then(() => {
             assistantWS.onmessage = (event) => {
                 setAssistantMessages(_value => [..._value, event.data]);
+            }
+            tabWS.onmessage = (event) => {
+                setTabMessages(_value => [..._value, event.data]);
             }
             console.log('Microphone capture started');
         })
@@ -84,7 +93,7 @@ export default function ActiveChat({recorder, selectedDeviceId}) {
         <div className=' flex flex-col w-[320]'>
           <div>
             <SpeakerBox name={'Ms. Wilson'} messages={microphoneMessages}/>
-            <SpeakerBox name={'Dave Matthews'}/>
+            <SpeakerBox name={'Dave Matthews'} messages={tabMessages}/>
           </div>
         </div>
       </div>
