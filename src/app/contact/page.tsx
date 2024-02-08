@@ -1,4 +1,7 @@
 'use client';
+import Navbar from "../../components/navbar";
+
+
 export default function Contact() {
     const createAccount = async (formData: FormData) => {
 
@@ -24,55 +27,70 @@ export default function Contact() {
     };
 
     return (
-        <main className={'bg-secondary p-12 mt-5'}>
-            <form action={createAccount} className="mt-6">
-                <h1 className="text-2xl font-semibold mb-4">
-                    We are jazzed you want to try our product out.
-                </h1>
-                <p>Please sign up here so we can reach you when the beta is ready!</p>
+        <main className="">
+            <Navbar />
+            <div className="flex gap-x-12 py-12">
+                <div>
+                    <h2>Get in touch</h2>
+                    <p className="w-full md:w-[259px]">
+                        Have a question, suggestion, 
+                        or just want to share some positivity?
+                        We&apos;d love to hear from you!
+                    </p>
+                </div>
+            <div>
+            <form action={createAccount} className="w-[592px] h-[502px] mt-6">
+                <label className="w-4/6 h-20 mb-2">
+                    <span className="text-gray-700">email*</span>
+                    <input
+                        type="email"
+                        className="form-input mt-1 block w-full rounded-md border border-gray-400 p-4"
+                        required
+                        name={'email'}
+                        placeholder="email"
+                    />
+                </label>
                 <label className="block mb-2">
-                    <span className="text-gray-700">Your name:</span>
+                    <span className="text-gray-700">first name*</span>
                     <input
                         type="text"
                         className="form-input mt-1 block w-full"
                         required
                         name={'name'}
+                        placeholder="first name"
                     />
                 </label>
-                <br />
                 <label className="block mb-2">
-                    <span className="text-gray-700">Your email:</span>
-                    <input
-                        type="email"
-                        className="form-input mt-1 block w-full"
-                        required
-                        name={'email'}
-                    />
-                </label>
-                <br />
-                <label className="block mb-2">
-                    <span className="text-gray-700">Your title:</span>
+                    <span className="text-gray-700">last name*</span>
                     <input
                         type="text"
                         className="form-input mt-1 block w-full"
                         required
                         name={'title'}
+                        placeholder="last name"
                     />
                 </label>
                 <br />
                 <label className="block mb-2">
-                    <span className="text-gray-700">Why are you excited about this? (optional):</span>
+                    <span className="text-gray-700">message</span>
                     <textarea
                         className="form-textarea mt-1 block w-full"
                         rows={3}
                         name={'message'}
+                        placeholder="message"
                     />
                 </label>
                 <br />
-                <button type="submit" className="bg-primary text-white px-4 py-2 my-10 ml-18 rounded-md">
+                <br />
+                <p>
+                EnterpiseCHAI is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:
+                </p>
+                <button type="submit" className="btn-primary">
                     Sign Up
                 </button>
             </form>
+            </div>
+            </div>
         </main>
     )
 }
