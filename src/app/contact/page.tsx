@@ -27,10 +27,10 @@ export default function Contact() {
     };
 
     return (
-        <main className="">
+        <main>
             <Navbar />
-            <div className="flex gap-x-12 py-12">
-                <div>
+            <div className="flex py-12 items-stretch gap-x-64 ">
+                <div className="self-start">
                     <h2>Get in touch</h2>
                     <p className="w-full md:w-[259px]">
                         Have a question, suggestion, 
@@ -38,55 +38,64 @@ export default function Contact() {
                         We&apos;d love to hear from you!
                     </p>
                 </div>
-            <div>
-            <form action={createAccount} className="w-[592px] h-[502px] mt-6">
-                <label className="w-4/6 h-20 mb-2">
-                    <span className="text-gray-700">email*</span>
-                    <input
-                        type="email"
-                        className="form-input mt-1 block w-full rounded-md border border-gray-400 p-4"
-                        required
-                        name={'email'}
-                        placeholder="email"
-                    />
-                </label>
-                <label className="block mb-2">
-                    <span className="text-gray-700">first name*</span>
-                    <input
-                        type="text"
-                        className="form-input mt-1 block w-full"
-                        required
-                        name={'name'}
-                        placeholder="first name"
-                    />
-                </label>
-                <label className="block mb-2">
-                    <span className="text-gray-700">last name*</span>
-                    <input
-                        type="text"
-                        className="form-input mt-1 block w-full"
-                        required
-                        name={'title'}
-                        placeholder="last name"
-                    />
-                </label>
-                <br />
-                <label className="block mb-2">
-                    <span className="text-gray-700">message</span>
-                    <textarea
-                        className="form-textarea mt-1 block w-full"
-                        rows={3}
-                        name={'message'}
-                        placeholder="message"
-                    />
-                </label>
-                <br />
-                <br />
-                <p>
-                EnterpiseCHAI is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:
-                </p>
+                <div className=" ">
+                    <form action={createAccount} className="w-[592px] h-[502px]  flex-col">
+                        <label className="w-4/6 h-20">
+                            <span className="text-gray-700">email*</span>
+                                <input
+                                type="email"
+                                className="form-input mt-1 block w-full rounded-md border border-gray-400 p-4"
+                                required
+                                name={'email'}
+                                placeholder="email"
+                                />
+                        </label>
+                        <br />
+                        <label className="block">
+                            <span className="text-gray-700">first name*</span>
+                                <input
+                                type="text"
+                                className="form-input mt-1 block w-full"
+                                required
+                                name={'name'}
+                                placeholder="first name"
+                                />
+                        </label>
+                        <br />
+                        <label className="block">
+                            <span className="text-gray-700">last name*</span>
+                                <input
+                                type="text"
+                                className="form-input mt-1 block w-full"
+                                required
+                                name={'title'}
+                                placeholder="last name"
+                                />
+                        </label>
+                        <br />
+                        <label className="block">
+                            <span className="text-gray-700">message</span>
+                                <textarea
+                                className="form-textarea mt-1 block w-full"
+                                rows={3}
+                                name={'message'}
+                                placeholder="message"
+                                />
+                        </label>
+                        <br />
+                <div className="privacity-info flex flex-col gap-4">
+                    <p className="h-20">
+                        EnterpiseCHAI is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:
+                    </p>
+                    <div className="flex gap-2">
+                        <input type="checkbox"/> I agree to receive other communications from EnterpriseCHAI.
+                    </div>
+                    <p className="h-20">
+                        You can unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our Privacy Policy. By clicking submit below, you consent to allow EnterpriseCHAI to store and process the personal information submitted above to provide you the content requested.
+                    </p>
+                </div>
                 <button type="submit" className="btn-primary">
-                    Sign Up
+                    Submit
                 </button>
             </form>
             </div>

@@ -27,6 +27,7 @@ const config: Config = {
         grayPlateBg: 'rgba(152, 162, 179, 0.15)',
         grayCard: '#EEF0F1',
         grayBg: 'rgba(208, 213, 221, 0.25)',
+        greenDark: '21C45D',
         secondary: '#f2eefa',
         tertiary: 'rgba(127, 86, 217, 0.50)',
         warning: '#DC6803',

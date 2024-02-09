@@ -10,8 +10,8 @@ export default function Navbar() {
                     <span className={'font-medium'}>CH</span>
                     <span className={'font-medium'}>AI</span>
                 </a>
-                <div className="md:flex">
-                    <a href="/contact" className="text-gray-600 hover:text-gray-800 mr-4 self-center font-bold">Contact</a>
+                <div className="gap-x-10 md:flex">
+                    <a href="/contact" className="text-gray-600 hover:text-gray-800 mr-4 self-center font-bold">Contact us</a>
                     <button className="bg-primary text-white w-40 h-12 rounded-md">
                         Beta sign up
                     </button>
