@@ -28,15 +28,31 @@ body {
   .btn-primary {
     @apply w-[124px] h-12 py-2 px-4 bg-primary text-white font-bold rounded-lg shadow-md focus:outline-none;
   }
+  .btn-login {
+    @apply w-[45%] h-12 rounded-lg  bg-white border-solid border-2 border-grayLight text-black  flex items-center  px-2 gap-4
+  }
   .btn-secondary {
     @apply w-[124px] h-12 py-2 px-4 bg-grayPlate text-white font-bold rounded-lg shadow-md focus:outline-none;
   }
   .form-input {
-    @apply w-[570px] h-[59px] mt-1 block w-full rounded-md border border-gray-400 p-4
+    @apply w-[570px] h-[59px] mt-1 block  rounded-md border border-gray-400 p-4
   }
   .form-textarea{
     @apply w-[570px] h-[132px] mt-1 block w-full rounded-md border border-gray-400 p-4
   }
+  .welcome-back {
+    @apply text-2xl text-blackMedium mt-4 mb-2
+  }
+}
+
+.checkbox-login {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 .privacity-info {
   width: 857px;
@@ -66,6 +82,11 @@ h2 {
   font-style: normal;
   font-weight: 700;
   line-height: 50px;
+}
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #27272A;
 }
 h5 {
   font-size: 1rem;
