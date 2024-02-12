@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -19,10 +19,13 @@ const config: Config = {
       },
       colors: {
         primary: '#7f56d9',
+        primarySmall: '#7C3BED',
         primaryCustom: 'rgba(127, 86, 217, 0.90)',
         primaryBg: 'rgba(127, 86, 217, 0.10)',
         primaryBG: 'rgba(127, 86, 217, 0.15)',
+        primaryBGA: 'rgba(124, 59, 237, 0.15)',
         grayCustom: '#929FB1',
+        grayLight: 'A1A1AA',
         grayPlate: '#98A2B3',
         grayPlateBg: 'rgba(152, 162, 179, 0.15)',
         grayCard: '#EEF0F1',
@@ -33,6 +36,7 @@ const config: Config = {
         warning: '#DC6803',
         warningCustom: 'rgba(220, 104, 3, 0.09)',
         blackCustom:'1D2939',
+        blackMedium: '27272A'
       }
     },
   },
