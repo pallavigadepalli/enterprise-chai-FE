@@ -9,7 +9,7 @@ import ActiveChat from "@/components/ActiveChat";
 
 export default function Config() {
     const [audioDevices, setAudioDevices] = useState<any>([]);
-    const [recorder, setRecorder] = useState<MediaRecorder>(null);
+    const [recorder, setRecorder] = useState<MediaRecorder| null>(null);
     const [activeSession, setActiveSession] = useState<boolean>(false);
     const [selectedDeviceId, setSelectedDeviceId] = useState<string>('');
 
