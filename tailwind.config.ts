@@ -22,6 +22,7 @@ const config: Config = {
         primaryCustom: 'rgba(127, 86, 217, 0.90)',
         primaryBg: 'rgba(127, 86, 217, 0.10)',
         primaryBG: 'rgba(127, 86, 217, 0.15)',
+        primaryBGA: 'rgba(124, 59, 237, 0.15)',
         grayCustom: '#929FB1',
         grayPlate: '#98A2B3',
         grayPlateBg: 'rgba(152, 162, 179, 0.15)',
