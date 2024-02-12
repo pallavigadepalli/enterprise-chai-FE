@@ -18,8 +18,8 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
     const assistantWS = new WebSocket(assistantSocket);
 
     const [assistantMessages, setAssistantMessages] = useState<string[]>([]);
-    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>([]);
-    const [tabMessages, setTabMessages] = useState<string[]>([]);
+    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>(["Hello, it's me","Hello, thank you for yor time", "Plain as day", "Long story short, please"]);
+    const [tabMessages, setTabMessages] = useState<string[]>(["Hello there!","How you doin'?","Fine, thank you"]);
 
     useEffect(() => {
         const handleStartCapture = async () => {
@@ -87,8 +87,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
       <div className='w-full '>
         <Tags />
       </div>
-      <div className='
-       w-full h-4 flex gap-10'>
+      <div className='w-full h-4 flex gap-10'>
         <Layout messages={assistantMessages} />
         <div className=' flex flex-col w-[320]'>
           <div>
