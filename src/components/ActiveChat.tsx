@@ -5,12 +5,13 @@ import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
 import Tags from '@/components/Tags'
 import Title from '@/components/Title'
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
 
-const microphoneAudioSocket = 'wss://localhost:8080/listen';
-const tabAudioSocket = 'wss://localhost:8080/listen2';
-const assistantSocket = 'wss://localhost:8080/result';
+const microphoneAudioSocket = process.env.WS + '/listen';
+const tabAudioSocket = process.env.WS + '/listen2';
+const assistantSocket = process.env.WS + '/result';
+
 
 export default function ActiveChat({tabRecorder, selectedDeviceId}) {
     const microphoneWS = new WebSocket(microphoneAudioSocket);
@@ -26,6 +27,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
                 const micRecorder = new MediaRecorder(stream);
+                micRecorder.start(100)
 
                 micRecorder.addEventListener('dataavailable', evt => {
                     if (evt.data.size > 0 && microphoneWS.readyState === WebSocket.OPEN) {
@@ -38,9 +40,10 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
                         tabWS.send(evt.data);
                     }
                 })
+                tabRecorder.start(100)
+
                 microphoneWS.onopen = () => {
                     micRecorder.start(100)
-                    tabRecorder.start(100)
                 };
                 microphoneWS.onerror = (error) => {
                     console.error('WebSocket error:', error);
