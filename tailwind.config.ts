@@ -20,6 +20,7 @@ const config: Config = {
       colors: {
         primary: '#7f56d9',
         primarySmall: '#7C3BED',
+        greenLogo: '#21C45D',
         primaryCustom: 'rgba(127, 86, 217, 0.90)',
         primaryBg: 'rgba(127, 86, 217, 0.10)',
         primaryBG: 'rgba(127, 86, 217, 0.15)',
