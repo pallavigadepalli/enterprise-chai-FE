@@ -24,11 +24,11 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
     const [tabMessages, setTabMessages] = useState<string[]>([]);
 
     useEffect(() => {
-        const microphoneWS = new WebSocket(microphoneAudioSocket);
-        const tabWS = new WebSocket(tabAudioSocket);
-        const assistantWS = new WebSocket(assistantSocket);
+
 
         const handleStartCapture = async () => {
+            const microphoneWS = new WebSocket(microphoneAudioSocket);
+            const tabWS = new WebSocket(tabAudioSocket);
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
                 const micRecorder = new MediaRecorder(stream);
@@ -61,6 +61,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
             }
         };
         handleStartCapture().then(() => {
+            const assistantWS = new WebSocket(assistantSocket);
             assistantWS.onmessage = (event) => {
                 setAssistantMessages(_value => [..._value, event.data]);
             }
