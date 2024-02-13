@@ -56,19 +56,23 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 microphoneWS.onmessage = (event) => {
                     setMicrophoneMessages(_value => [..._value, event.data]);
                 }
+                return tabWS
             } catch (error) {
                 console.error('Error capturing audio:', error);
             }
         };
-        handleStartCapture().then(() => {
+        handleStartCapture().then((tabWS) => {
             const assistantWS = new WebSocket(assistantSocket);
             assistantWS.onmessage = (event) => {
                 setAssistantMessages(_value => [..._value, event.data]);
             }
-            tabWS.onmessage = (event) => {
-                setTabMessages(_value => [..._value, event.data]);
-            }
-            console.log('Microphone capture started');
+            if (tabWS) {
+                tabWS.onmessage = (event) => {
+                    setTabMessages(_value => [..._value, event.data]);
+                }
+                console.log('Microphone capture started');
+                }
+
         })
     }, [selectedDeviceId, tabRecorder]);
 
