@@ -8,9 +8,9 @@ import Title from '@/components/Title'
 import {useEffect, useState} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
 
-const microphoneAudioSocket = process.env.WS + '/listen';
-const tabAudioSocket = process.env.WS + '/listen2';
-const assistantSocket = process.env.WS + '/result';
+const microphoneAudioSocket = process.env.NEXT_PUBLIC_WS + '/listen';
+const tabAudioSocket = process.env.NEXT_PUBLIC_WS + '/listen2';
+const assistantSocket = process.env.NEXT_PUBLIC_WS + '/result';
 
 
 export default function ActiveChat({tabRecorder, selectedDeviceId}) {
@@ -19,8 +19,8 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
     const assistantWS = new WebSocket(assistantSocket);
 
     const [assistantMessages, setAssistantMessages] = useState<string[]>([]);
-    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>(["Hello, it's me","Hello, thank you for yor time", "Plain as day", "Long story short, please"]);
-    const [tabMessages, setTabMessages] = useState<string[]>(["Hello there!","How you doin'?","Fine, thank you"]);
+    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>([]);
+    const [tabMessages, setTabMessages] = useState<string[]>([]);
 
     useEffect(() => {
         const handleStartCapture = async () => {
@@ -65,6 +65,8 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
             console.log('Microphone capture started');
         })
     }, []);
+    const placeholderClient = 'Your client\'s voice magic is being\n scooped up straight from your browser\n  tab, and you\'ll see it right here.';
+    const placeholderUser = 'Your fantastic voice is captured straight \nfrom your microphone, and will be \ndisplayed here.'
   return (
     <div>
       <div className="w-full ">
@@ -94,8 +96,8 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
         <Layout messages={assistantMessages} />
         <div className=' flex flex-col w-[320]'>
           <div>
-            <SpeakerBox name={'Ms. Wilson'} messages={microphoneMessages}/>
-            <SpeakerBox name={'Dave Matthews'} messages={tabMessages}/>
+              <SpeakerBox name={'Customer'} messages={tabMessages} placeholder={placeholderClient}/>
+              <SpeakerBox name={'You'} messages={microphoneMessages} placeholder={placeholderUser}/>
           </div>
         </div>
       </div>
