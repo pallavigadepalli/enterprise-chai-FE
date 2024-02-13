@@ -1,6 +1,6 @@
 'use client'
 import Banner from '@/components/Banner'
-import Layout from '@/components/Layout'
+import AssistantLayout from '@/components/AssistantLayout'
 import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
 import Tags from '@/components/Tags'
@@ -8,21 +8,26 @@ import Title from '@/components/Title'
 import {useEffect, useState} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
 
-const microphoneAudioSocket = process.env.NEXT_PUBLIC_WS + '/listen';
-const tabAudioSocket = process.env.NEXT_PUBLIC_WS + '/listen2';
-const assistantSocket = process.env.NEXT_PUBLIC_WS + '/result';
+const socketURL = process.env.NEXT_PUBLIC_WS;
+const microphoneAudioSocket = socketURL + '/listen';
+const tabAudioSocket = socketURL + '/listen2';
+const assistantSocket = socketURL + '/result';
 
-
-export default function ActiveChat({tabRecorder, selectedDeviceId}) {
-    const microphoneWS = new WebSocket(microphoneAudioSocket);
-    const tabWS = new WebSocket(tabAudioSocket);
-    const assistantWS = new WebSocket(assistantSocket);
+interface ActiveChatProps {
+    tabRecorder: MediaRecorder;
+    selectedDeviceId: string;
+}
+export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatProps) {
 
     const [assistantMessages, setAssistantMessages] = useState<string[]>([]);
     const [microphoneMessages, setMicrophoneMessages] = useState<string[]>([]);
     const [tabMessages, setTabMessages] = useState<string[]>([]);
 
     useEffect(() => {
+        const microphoneWS = new WebSocket(microphoneAudioSocket);
+        const tabWS = new WebSocket(tabAudioSocket);
+        const assistantWS = new WebSocket(assistantSocket);
+
         const handleStartCapture = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
@@ -64,11 +69,12 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
             }
             console.log('Microphone capture started');
         })
-    }, []);
+    }, [selectedDeviceId, tabRecorder]);
+
     const placeholderClient = 'Your client\'s voice magic is being\n scooped up straight from your browser\n  tab, and you\'ll see it right here.';
     const placeholderUser = 'Your fantastic voice is captured straight \nfrom your microphone, and will be \ndisplayed here.'
   return (
-    <div>
+    <div className={'xl:px-32 lg:px-20'}>
       <div className="w-full ">
         <Banner />
       </div>
@@ -93,7 +99,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
         <Tags />
       </div>
       <div className='w-full h-4 flex gap-10'>
-        <Layout messages={assistantMessages} />
+        <AssistantLayout messages={assistantMessages} />
         <div className=' flex flex-col w-[320]'>
           <div>
               <SpeakerBox name={'Customer'} messages={tabMessages} placeholder={placeholderClient}/>

@@ -1,13 +1,18 @@
-export default function Dropdown({options, onChange, value}) {
+import React from "react";
+
+interface DropdownProps {
+    options: {label: string, value: string}[];
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    value: string;
+}
+export default function Dropdown({options, onChange, value}: DropdownProps) {
   return (
-  <div className="w-[560px] flex justify-center">
-    <select className="p-2 h-12 border rounded flex items-center" onChange={onChange} value={value}>
+    <select className="p-2 h-12 border rounded flex items-center w-full" onChange={onChange} value={value}>
       {options.map((option, index) => (
         <option key={index} value={option.value} className="h-12 p-4">
             {option.label}
         </option>
         ))}
     </select>
-  </div>
   )
 }

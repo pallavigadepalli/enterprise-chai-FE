@@ -2,7 +2,13 @@ import Avatar from "./Avatar";
 import Speaker from "./Speaker";
 import ChatMessage from "./ChatMessage";
 
-export default function SpeakerBox({name, avatar, messages = [], placeholder}) {
+interface SpeakerBoxProps {
+    name: string;
+    avatar?: string;
+    messages: string[];
+    placeholder: string;
+}
+export default function SpeakerBox({name, avatar, messages, placeholder}: SpeakerBoxProps) {
   return (
     <div className=" bg-grayBg bg-opacity-10  rounded-lg flex-col  h-[338px] min-w-96 mb-6 max-w-sm">
       <div className="bg-grayPlate flex rounded-t-lg ">
@@ -23,7 +29,7 @@ export default function SpeakerBox({name, avatar, messages = [], placeholder}) {
               </div>
             ))
           }
-              {messages.length === 0 && <div className="whitespace-pre-line text-placeholder text-center	">{placeholder}</div>}
+              {messages.length === 0 && <div className="whitespace-pre-line text-viewPlaceholder text-center	">{placeholder}</div>}
           </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function Contact() {
 
             if (!response.ok) {
                 console.log("falling over")
-                throw new Error(`response status: ${response.status}`);
+                alert('Error, please try resubmitting the form')
             }
             const responseData = await response.json();
             console.log(responseData['message'])
@@ -27,13 +27,13 @@ export default function Contact() {
     };
 
     return (
-        <main>
+        <main className={'xl:px-36 lg:px-24'}>
             <Navbar />
             <div className="flex py-12 items-stretch gap-x-64 ">
                 <div className="self-start">
                     <h2>Get in touch</h2>
                     <p className="w-full md:w-[259px]">
-                        Have a question, suggestion, 
+                        Have a question, suggestion,
                         or just want to share some positivity?
                         We&apos;d love to hear from you!
                     </p>

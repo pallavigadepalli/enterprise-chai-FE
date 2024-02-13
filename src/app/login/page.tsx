@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function Login() {
   return (
-    <div className='bg-white rounded-lg h-screen flex'>
-      
+    <div className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24'>
+
       <div className='w-7/12 flex-col p-10'>
         <div className='w-9/12'>
           <a className="flex brand-name text-2xl text-white place-items-center" href={'/'}>
@@ -46,9 +46,11 @@ export default function Login() {
         <div className="flex gap-2 pt-4 pb-4 mb-8">
           <input type="checkbox" className='checkbox-login'/> Remember me
         </div>
-        <button type="submit" className="btn-primary w-full">
-          Log in
-        </button>
+          <a href={'/session/active'}>
+            <button type="submit" className="btn-primary w-full">
+              Log in
+            </button>
+          </a>
         <div className='w-full flex justify-between  items-center mt-20'>
           <button className='btn-login'>
             <Image src={'/google.png'} alt='linkedin logo' width={30} height={30}/>

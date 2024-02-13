@@ -1,4 +1,7 @@
-export default function ChatBox({message}) {
+interface ChatBoxProps {
+    message: string;
+}
+export default function ChatBox({message}: ChatBoxProps) {
   return (
   <div className="w-full p-4 bg-white rounded-2xl shadow-md">
     <div className="flex items-center">

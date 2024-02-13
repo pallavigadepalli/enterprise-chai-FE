@@ -18,7 +18,7 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        primary: '#7f56d9',
+        primary: '#7C3BED',
         primarySmall: '#7C3BED',
         greenLogo: '#21C45D',
         primaryCustom: 'rgba(127, 86, 217, 0.90)',
@@ -26,7 +26,7 @@ const config: Config = {
         primaryBG: 'rgba(127, 86, 217, 0.15)',
         primaryBGA: 'rgba(124, 59, 237, 0.15)',
         grayCustom: '#929FB1',
-        grayLight: 'A1A1AA',
+        grayLight: '#98A2B326',
         grayPlate: '#98A2B3',
         grayPlateBg: 'rgba(152, 162, 179, 0.15)',
         grayCard: '#EEF0F1',
@@ -37,7 +37,8 @@ const config: Config = {
         warning: '#DC6803',
         warningCustom: 'rgba(220, 104, 3, 0.09)',
         blackCustom:'1D2939',
-        blackMedium: '27272A'
+        blackMedium: '27272A',
+        viewPlaceholder: '#667085',
       }
     },
   },
