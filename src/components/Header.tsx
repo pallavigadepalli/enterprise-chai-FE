@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Header() {
   return (
-    <nav className='w-full p-4 flex justify-between items-center'>
+    <nav className='w-full  pt-2 pb-2 flex justify-between items-center border-b border-grayDark'>
       <div className='w-2/4'>
         <h2>Good Morning Dave!</h2>
         <p>“You will succeed if you have delighted customers. Don’t settle for satisfied!”</p>

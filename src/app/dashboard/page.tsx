@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Header from "@/components/Header";
+import Infographics from "@/components/Infographics";
 
 export default function Dashboard() {
   return (
@@ -34,6 +35,9 @@ export default function Dashboard() {
       </aside>
       <main className="w-full px-9">
         <Header />
+        <div className="flex">
+          <Infographics />
+        </div>
       </main>
     </div>
   )
