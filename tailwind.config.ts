@@ -27,6 +27,7 @@ const config: Config = {
         primaryBGA: 'rgba(124, 59, 237, 0.15)',
         grayCustom: '#929FB1',
         grayLight: 'A1A1AA',
+        grayDark: 'D7D7D7',
         grayPlate: '#98A2B3',
         grayPlateBg: 'rgba(152, 162, 179, 0.15)',
         grayCard: '#EEF0F1',
@@ -37,8 +38,11 @@ const config: Config = {
         warning: '#DC6803',
         warningCustom: 'rgba(220, 104, 3, 0.09)',
         blackCustom:'1D2939',
-        blackMedium: '27272A'
-      }
+        blackMedium: '27272A',
+      },
+      fontSize: {
+        xsm:'0.625rem'
+      },
     },
   },
   plugins: [],
