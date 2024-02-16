@@ -5,12 +5,13 @@ import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
 import Tags from '@/components/Tags'
 import Title from '@/components/Title'
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
 
-const microphoneAudioSocket = 'wss://localhost:8080/listen';
-const tabAudioSocket = 'wss://localhost:8080/listen2';
-const assistantSocket = 'wss://localhost:8080/result';
+const microphoneAudioSocket = process.env.NEXT_PUBLIC_WS + '/listen';
+const tabAudioSocket = process.env.NEXT_PUBLIC_WS + '/listen2';
+const assistantSocket = process.env.NEXT_PUBLIC_WS + '/result';
+
 
 export default function ActiveChat({tabRecorder, selectedDeviceId}) {
     const microphoneWS = new WebSocket(microphoneAudioSocket);
@@ -18,14 +19,15 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
     const assistantWS = new WebSocket(assistantSocket);
 
     const [assistantMessages, setAssistantMessages] = useState<string[]>([]);
-    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>(["Hello, it's me","Hello, thank you for yor time", "Plain as day", "Long story short, please"]);
-    const [tabMessages, setTabMessages] = useState<string[]>(["Hello there!","How you doin'?","Fine, thank you"]);
+    const [microphoneMessages, setMicrophoneMessages] = useState<string[]>([]);
+    const [tabMessages, setTabMessages] = useState<string[]>([]);
 
     useEffect(() => {
         const handleStartCapture = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
                 const micRecorder = new MediaRecorder(stream);
+                micRecorder.start(100)
 
                 micRecorder.addEventListener('dataavailable', evt => {
                     if (evt.data.size > 0 && microphoneWS.readyState === WebSocket.OPEN) {
@@ -38,9 +40,10 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
                         tabWS.send(evt.data);
                     }
                 })
+                tabRecorder.start(100)
+
                 microphoneWS.onopen = () => {
                     micRecorder.start(100)
-                    tabRecorder.start(100)
                 };
                 microphoneWS.onerror = (error) => {
                     console.error('WebSocket error:', error);
@@ -62,6 +65,8 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
             console.log('Microphone capture started');
         })
     }, []);
+    const placeholderClient = 'Your client\'s voice magic is being\n scooped up straight from your browser\n  tab, and you\'ll see it right here.';
+    const placeholderUser = 'Your fantastic voice is captured straight \nfrom your microphone, and will be \ndisplayed here.'
   return (
     <div>
       <div className="w-full ">
@@ -91,8 +96,8 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}) {
         <Layout messages={assistantMessages} />
         <div className=' flex flex-col w-[320]'>
           <div>
-            <SpeakerBox name={'Ms. Wilson'} messages={microphoneMessages}/>
-            <SpeakerBox name={'Dave Matthews'} messages={tabMessages}/>
+              <SpeakerBox name={'Customer'} messages={tabMessages} placeholder={placeholderClient}/>
+              <SpeakerBox name={'You'} messages={microphoneMessages} placeholder={placeholderUser}/>
           </div>
         </div>
       </div>

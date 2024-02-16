@@ -34,17 +34,42 @@ body {
   .btn-secondary {
     @apply w-[124px] h-12 py-2 px-4 bg-grayPlate text-white font-bold rounded-lg shadow-md focus:outline-none;
   }
+  .btn-dashboard {
+    @apply w-full h-12 text-sm text-blackMedium font-semibold flex items-center  px-2 gap-x-4
+  }
+  .btn-meeting {
+    @apply w-[150px] h-10 border-solid border-2 rounded-lg border-borderGray text-blackMedium text-sm text-center align-middle py-2 px-3
+  }
   .form-input {
     @apply w-[570px] h-[59px] mt-1 block  rounded-md border border-gray-400 p-4
   }
   .form-textarea{
     @apply w-[570px] h-[132px] mt-1 block w-full rounded-md border border-gray-400 p-4
   }
+  .search-input {
+    @apply w-64 h-10 rounded-md border border-grayDark text-sm p-2.5;
+  }
   .welcome-back {
-    @apply text-2xl text-blackMedium mt-4 mb-2
+    @apply text-2xl text-blackMedium mt-4 mb-2;
+  }
+  .infographics-square {
+    @apply py-6 px-5 w-[180px] h-[184px] rounded-lg ;
+  }
+  .infographics-title {
+    @apply text-sm text-grayDarkest font-montserrat font-semibold;
+  }
+  .upcomming-date {
+    @apply bg-violetLight w-12 h-[60px] rounded-md flex flex-col items-center justify-center 
+  }
+  .customer-journey {
+    @apply bg-violetLight w-12 h-12 rounded-md flex flex-col items-center justify-center
   }
 }
+.bg-customGradient {
+  background: linear-gradient(270deg, rgba(246, 245, 255, 0.91) 0.01%, rgba(252, 252, 252, 0.79) 99.99%);
 
+
+}
 .checkbox-login {
   width: 1.5rem;
   height: 1.5rem;
@@ -57,20 +82,6 @@ body {
 .privacity-info {
   width: 857px;
   font-size: small;
-}
-
-.brand-name span:nth-child(1) {
-  color: #8171c1; /* CH color */
-}.brand-name span:nth-child(2) {
-  color: #8171c1; /* CH color */
-}
-
-.brand-name span:nth-child(3) {
-  color: #7f56d9; /* AI color */
-}
-
-.brand-name span:nth-child(4) {
-  color: #21C45D; /* AI color */
 }
 
 h1 {

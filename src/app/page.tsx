@@ -17,7 +17,7 @@ export default function Home() {
         }
     ]
   return (
-    <main>
+    <main className={'xl:px-36 lg:px-24'}>
         <Navbar/>
         <div className={'flex items-center mb-8'}>
             <Image src={'/startup-logo.png'} width={126}  height={50} className={'my-10'} alt={'startup'}/>
@@ -26,9 +26,9 @@ export default function Home() {
                     <span>your&ensp;</span>
                     <span className={'font-semibold'}>Customer Success Team&ensp;</span>
                     <span>with&ensp;</span>
-                    <span className={'text-primaryCustom font-bold'}>Enterprise</span>
-                    <span className={'text-primary font-semibold'}>CH</span>
-                    <span className={'text-warning font-semibold'}>AI</span>
+                    <span className={'text-primarySmall font-medium'}>Enterprise</span>
+                    <span className={'text-primarySmall font-bold'}>CH</span>
+                    <span className={'text-greenLogo font-bold'}>AI</span>
             </h1>
         </div>
         <section className={'flex md:flex-row sm:flex-col gap-16'}>

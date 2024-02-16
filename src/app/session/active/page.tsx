@@ -9,7 +9,7 @@ import ActiveChat from "@/components/ActiveChat";
 
 export default function Config() {
     const [audioDevices, setAudioDevices] = useState<any>([]);
-    const [recorder, setRecorder] = useState<MediaRecorder>(null);
+    const [recorder, setRecorder] = useState<MediaRecorder| null>(null);
     const [activeSession, setActiveSession] = useState<boolean>(false);
     const [selectedDeviceId, setSelectedDeviceId] = useState<string>('');
 
@@ -58,27 +58,37 @@ export default function Config() {
     return (
     <main className="w-full h-[1040px] flex flex-col items-center justify-center">
       <div>
-        <div className={'brand-name text-3xl flex ml-auto'}>
+        <div className={'text-primarySmall text-xl flex ml-auto'}>
           <p>
-            Welcome aboard to your
+            Welcome aboard to your&nbsp;
           </p>
-          <span> Enterprise</span>
-          <span className={'font-semibold'}>CH</span>
-          <span className={'font-semibold'}>AI</span>
+            <span className={'text-primarySmall font-medium'}>Enterprise</span>
+            <span className={'text-primarySmall font-bold'}>CH</span>
+            <span className={'text-greenLogo font-bold'}>AI</span>
+            <p> &nbsp;Assistant</p>
         </div>
       </div>
       <div>
-        <p className="text-base leading-5 pt-10 pb-8">To make this experience tailored just for you, let&lsquo;s set up your audio preferences.</p>
+        <p className="text-base leading-5 py-10">To make this experience tailored just for you, let's set up your audio preferences.</p>
       </div>
       <div className="flex gap-12">
         <div>
-          <Step />
-          <Step />
-          <Step />
+          <Step title={'Step 1 - Let’s chat!'} text={<div>
+              <span>For first-timers, </span>
+              <span className={'text-primarySmall'}>enable your microphone&nbsp;</span>
+              <span>by <br />clicking "Allow" when prompted. A quick refresh,<br/> and you're good to go!</span>
+          </div>}/>
+          <Step title={'Step 2: Mic Check!'} text={<div>
+              <span className={'text-primarySmall'}>Choose the microphone</span>
+              &nbsp;you're using, so your real-time assistant can hear your brilliant responses loud and clear.
+          </div>}/>
+          <Step title={'Step 3: Launch Tab!'} text={<div>
+              <span className={'text-primarySmall'}>Share the meeting</span> tab on your browser, so your real-time assistant can be your ultimate guide. Just select the browser tab, and you're all set.
+          </div>}/>
         </div>
         <div className="grid gap-20 grid-cols-1">
             <div className="w-[560px] h-[180px] bg-primaryBG rounded-lg">
-                <div className="h-12 bg-tertiary rounded-t-lg flex items-center justify-between gap-4 p-4">
+                <div className="h-12 bg-primarySmall rounded-t-lg flex items-center justify-between gap-4 p-4">
                     <div className="flex items-center gap-4">
                         <Image
                             src={'/mic.png'}
