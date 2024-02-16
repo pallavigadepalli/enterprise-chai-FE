@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Header from "@/components/Header";
 import Infographics from "@/components/Infographics";
+import UpcommingMeeting from "@/components/UpcommingMeeting";
+import CustomerJourney from "@/components/CustomerJourney";
 
 export default function Dashboard() {
   return (
@@ -37,6 +39,10 @@ export default function Dashboard() {
         <Header />
         <div className="flex">
           <Infographics />
+        </div>
+        <div className="flex gap-x-10">
+          <UpcommingMeeting />
+          <CustomerJourney />
         </div>
       </main>
     </div>

@@ -37,6 +37,9 @@ body {
   .btn-dashboard {
     @apply w-full h-12 text-sm text-blackMedium font-semibold flex items-center  px-2 gap-x-4
   }
+  .btn-meeting {
+    @apply w-[150px] h-10 border-solid border-2 rounded-lg border-borderGray text-blackMedium text-sm text-center align-middle py-2 px-3
+  }
   .form-input {
     @apply w-[570px] h-[59px] mt-1 block  rounded-md border border-gray-400 p-4
   }
@@ -55,7 +58,12 @@ body {
   .infographics-title {
     @apply text-sm text-grayDarkest font-montserrat font-semibold;
   }
-
+  .upcomming-date {
+    @apply bg-violetLight w-12 h-[60px] rounded-md flex flex-col items-center justify-center 
+  }
+  .customer-journey {
+    @apply bg-violetLight w-12 h-12 rounded-md flex flex-col items-center justify-center
+  }
 }
 .bg-customGradient {
   background: linear-gradient(270deg, rgba(246, 245, 255, 0.91) 0.01%, rgba(252, 252, 252, 0.79) 99.99%);
