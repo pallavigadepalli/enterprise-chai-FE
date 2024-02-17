@@ -1,9 +1,28 @@
 import Image from 'next/image'
 import React from 'react'
+import { redirect } from 'next/navigation'
 
 export default function Login() {
+  async function submitLogin(formmData: FormData) {
+    'use server'
+    await fetch(process.env.BACKEND + '/login', {
+      method: 'POST',
+      body: JSON.stringify(
+          {
+            email: formmData.get('email'),
+            password: formmData.get('password')
+          }
+      ),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+        redirect('/home/dashboard')
+    })
+  }
+
   return (
-    <div className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24'>
+    <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' method={'post'} action={submitLogin}>
 
       <div className='w-7/12 flex-col p-10'>
         <div className='w-9/12'>
@@ -35,7 +54,7 @@ export default function Login() {
                 type="text"
                 className="form-input mt-1 block w-full"
                 required
-                name={'name'}
+                name={'password'}
                 placeholder="enter your password"
               />
           </label>
@@ -46,11 +65,9 @@ export default function Login() {
         <div className="flex gap-2 pt-4 pb-4 mb-8">
           <input type="checkbox" className='checkbox-login'/> Remember me
         </div>
-          <a href={'/session/active'}>
-            <button type="submit" className="btn-primary w-full">
-              Log in
-            </button>
-          </a>
+          <button type="submit" className="btn-primary w-full">
+            Log in
+          </button>
         <div className='w-full flex justify-between  items-center mt-20'>
           <button className='btn-login'>
             <Image src={'/google.png'} alt='linkedin logo' width={30} height={30}/>
@@ -73,6 +90,6 @@ export default function Login() {
         <Image src={'/Frame Image.png'} alt='bubbles photo' layout='fill' objectFit='cover' />
         </div>
       </div>
-    </div>
+    </form>
   )
 }
