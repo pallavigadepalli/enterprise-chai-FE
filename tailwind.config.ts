@@ -43,11 +43,12 @@ const config: Config = {
         infoGraphicC: 'rgba(242, 206, 255, 0.80)',
         infoGraphicD: 'rgba(255, 206, 227, 0.80)',
         secondary: '#f2eefa',
+        summary: '#A689FA',
         tertiary: 'rgba(127, 86, 217, 0.50)',
         warning: '#DC6803',
         warningCustom: 'rgba(220, 104, 3, 0.09)',
         blackCustom:'1D2939',
-        blackMedium: '27272A',
+        blackMediumC: '27272A',
       },
       fontSize: {
         xsm:'0.625rem'
