@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Infographics from "@/components/Infographics";
 import UpcommingMeeting from "@/components/UpcommingMeeting";
 import CustomerJourney from "@/components/CustomerJourney";
-import SessionComplete from "@/components/SessionComplete";
 
 export default function Dashboard() {
   return (
@@ -40,7 +39,6 @@ export default function Dashboard() {
         <Header />
         <div className="flex justify-between">
           <Infographics />
-          <SessionComplete />
         </div>
         <div className="flex gap-x-10">
           <UpcommingMeeting />
