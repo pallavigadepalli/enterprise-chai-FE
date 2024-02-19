@@ -10,22 +10,22 @@ export default function Aside() {
         </div>
 
         <div className="flex flex-col mt-16">
-            <button className="btn-dashboard">
+            <a className="btn-dashboard" href={'/home/dashboard'}>
                 <Image src={'/Dashboard.svg'} alt='dashboard logo' width={18} height={18}/>
                 Dashboard
-            </button>
-            <button className="btn-dashboard">
+            </a>
+            <a className="btn-dashboard" href={'/home/intents'}>
                 <Image src={'/Intent.svg'} alt='intent logo' width={18} height={18}/>
                 Set intent
-            </button>
-            <button className="btn-dashboard">
+            </a>
+            <a className="btn-dashboard" href={'/home/materials'}>
                 <Image src={'/Materials.svg'} alt='materials logo' width={18} height={18}/>
                 Materials
-            </button>
-            <button className="btn-dashboard">
+            </a>
+            <a className="btn-dashboard" href={'/home/cms'}>
                 <Image src={'/Launch.svg'} alt='launch logo' width={18} height={18}/>
                 CSM Companion
-            </button>
+            </a>
         </div>
 
     </aside>

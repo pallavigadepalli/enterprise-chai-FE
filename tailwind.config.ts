@@ -28,7 +28,7 @@ const config: Config = {
         primaryBGA: 'rgba(124, 59, 237, 0.15)',
         violetLight: '#EBE7FE',
         grayCustom: '#929FB1',
-        grayLight: 'A1A1AA',
+        grayLight: '#A1A1AA',
         grayDark: 'D7D7D7',
         grayDarkest: '#231F1F',
         grayPlate: '#98A2B3',
@@ -47,6 +47,7 @@ const config: Config = {
         blackCustom:'1D2939',
         viewPlaceholder: '#667085',
         blackMedium: '27272A',
+        grayb: '#F4F4F5',
       },
       fontSize: {
         xsm:'0.625rem'

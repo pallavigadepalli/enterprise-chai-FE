@@ -1,28 +1,38 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
-import { redirect } from 'next/navigation'
+import {useForm} from "react-hook-form";
+import {useRouter} from "next/navigation";
+
 
 export default function Login() {
-  async function submitLogin(formmData: FormData) {
-    'use server'
-    await fetch(process.env.BACKEND + '/login', {
-      method: 'POST',
-      body: JSON.stringify(
-          {
-            email: formmData.get('email'),
-            password: formmData.get('password')
-          }
-      ),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => {
-        redirect('/home/dashboard')
-    })
-  }
-
+    const {register , handleSubmit} = useForm()
+    const router = useRouter()
+    const fetchLogin = async (formData) => {
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/login', {
+                method: 'POST',
+                body: JSON.stringify(
+                    {
+                        email: formData.email,
+                        password: formData.password
+                    }
+                ),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            if (response.ok) {
+                const json = await response.json()
+                localStorage.setItem('token', json.token)
+                router.push('/home/dashboard')
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
   return (
-    <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' method={'post'} action={submitLogin}>
+    <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' onSubmit={handleSubmit(fetchLogin)}>
 
       <div className='w-7/12 flex-col p-10'>
         <div className='w-9/12'>
@@ -40,8 +50,7 @@ export default function Login() {
                 <input
                   type="text"
                   className="form-input mt-1 block w-full"
-                  required
-                  name={'email'}
+                  {...register('email')}
                   placeholder="enter your email"
                 />
             </label>
@@ -53,8 +62,7 @@ export default function Login() {
               <input
                 type="text"
                 className="form-input mt-1 block w-full"
-                required
-                name={'password'}
+                {...register('password')}
                 placeholder="enter your password"
               />
           </label>
