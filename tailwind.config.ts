@@ -18,6 +18,7 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
+        whiteGray: '#F4F4F5',
         borderGray: '#E1E5EA',
         blackMedium: '#181D25',
         primary: '#7f56d9',
@@ -29,7 +30,7 @@ const config: Config = {
         primaryBG: 'rgba(127, 86, 217, 0.15)',
         primaryBGA: 'rgba(124, 59, 237, 0.15)',
         violetLight: '#EBE7FE',
-        darkViolet: '##F6F5FF',
+        darkViolet: '#F6F5FF',
         violetShadow: 'rgba(137, 90, 246, 0.25)',
         grayCustom: '#929FB1',
         grayLight: '#A1A1AA',
