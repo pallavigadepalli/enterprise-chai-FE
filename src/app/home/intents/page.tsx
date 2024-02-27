@@ -4,7 +4,7 @@ import React from "react";
 export default function Intents() {
   return (
       <main className="w-full px-9">
-        <Header title={'Set intent'}/>
+        <Header title={'Set intent'} subtitle={''}/>
           <IntentsForm />
       </main>
   )

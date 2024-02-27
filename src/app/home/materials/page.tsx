@@ -8,7 +8,7 @@ import axios from "axios";
 export default function Materials() {
   return (
       <main className="w-full px-9">
-        <Header title={'Materials'}/>
+        <Header title={'Materials'} subtitle={''}/>
           <MaterialsForm />
       </main>
   )
@@ -23,7 +23,7 @@ interface IFormInput {
 }
 
 const MaterialsForm = () => {
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm<any>()
     const [file, setFile] = React.useState<File | null>(null)
     async function submitForm(data: IFormInput) {
         const formData = new FormData();
