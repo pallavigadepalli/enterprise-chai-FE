@@ -31,6 +31,7 @@ const config: Config = {
         primaryBGA: 'rgba(124, 59, 237, 0.15)',
         violetLight: '#EBE7FE',
         darkViolet: '#F6F5FF',
+        darkViolet700: '#DED7FE',
         violetShadow: 'rgba(137, 90, 246, 0.25)',
         grayCustom: '#929FB1',
         grayLight: '#A1A1AA',
