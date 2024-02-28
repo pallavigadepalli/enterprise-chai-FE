@@ -5,10 +5,14 @@ import {useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
 
 
+type loginFields = {
+    email: string,
+    password: string
+}
 export default function Login() {
-    const {register , handleSubmit} = useForm()
+    const {register , handleSubmit} = useForm<loginFields>()
     const router = useRouter()
-    const fetchLogin = async (formData) => {
+    const fetchLogin = async (formData: loginFields) => {
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/login', {
                 method: 'POST',

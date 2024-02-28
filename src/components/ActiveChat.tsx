@@ -7,9 +7,9 @@ import Tags from '@/components/Tags'
 import Title from '@/components/Title'
 import {useEffect, useState} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
-
+import ModalComplete from "@/components/ModalComplete";
 const socketURL = process.env.NEXT_PUBLIC_WS;
-const microphoneAudioSocket = socketURL + '/listen';
+const microphoneAudioSocket = socketURL + '/listenmic';
 const tabAudioSocket = socketURL + '/listen2';
 const assistantSocket = socketURL + '/result';
 
@@ -22,17 +22,14 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
     const [assistantMessages, setAssistantMessages] = useState<string[]>([]);
     const [microphoneMessages, setMicrophoneMessages] = useState<string[]>([]);
     const [tabMessages, setTabMessages] = useState<string[]>([]);
-
+    const [completeSessionAlert, setCompleteSessionAlert] = useState(false);
     useEffect(() => {
-
-
         const handleStartCapture = async () => {
             const microphoneWS = new WebSocket(microphoneAudioSocket);
-            const tabWS = new WebSocket(tabAudioSocket);
+            //const tabWS = new WebSocket(tabAudioSocket);
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
                 const micRecorder = new MediaRecorder(stream);
-                micRecorder.start(100)
 
                 micRecorder.addEventListener('dataavailable', evt => {
                     if (evt.data.size > 0 && microphoneWS.readyState === WebSocket.OPEN) {
@@ -41,9 +38,9 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 });
 
                 tabRecorder.addEventListener('dataavailable', evt => {
-                    if (evt.data.size > 0 && tabWS.readyState === WebSocket.OPEN) {
-                        tabWS.send(evt.data);
-                    }
+                    //if (evt.data.size > 0 && tabWS.readyState === WebSocket.OPEN) {
+                        //tabWS.send(evt.data);
+                    //}
                 })
                 tabRecorder.start(100)
 
@@ -56,7 +53,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 microphoneWS.onmessage = (event) => {
                     setMicrophoneMessages(_value => [..._value, event.data]);
                 }
-                return tabWS
+                return null
             } catch (error) {
                 console.error('Error capturing audio:', error);
             }
@@ -67,9 +64,9 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 setAssistantMessages(_value => [..._value, event.data]);
             }
             if (tabWS) {
-                tabWS.onmessage = (event) => {
+        /*        tabWS.onmessage = (event) => {
                     setTabMessages(_value => [..._value, event.data]);
-                }
+                }*/
                 console.log('Microphone capture started');
                 }
 
@@ -80,24 +77,30 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
     const placeholderUser = 'Your fantastic voice is captured straight \nfrom your microphone, and will be \ndisplayed here.'
   return (
     <div className={'xl:px-32 lg:px-20'}>
+        {completeSessionAlert && <ModalComplete/>}
       <div className="w-full ">
         <Banner />
       </div>
       <div className="w-full h-12  mt-4 mx-auto flex justify-between align-center items-center">
         <Title />
         <Navigation>
-          <NavItem href="/new" isActive>
+          <button  className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Settings
-          </NavItem>
-          <NavItem href="/new" isActive>
+          </button>
+          <button className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Auto Scroll
-          </NavItem>
-          <NavItem href="/new" isActive>
+          </button>
+          <button className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Pause
-          </NavItem>
-          <NavItem href="/new" isActive>
+          </button>
+          <button
+              onClick={() => {
+                    setCompleteSessionAlert(true);
+              }
+              }
+              className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Complete
-          </NavItem>
+          </button>
         </Navigation>
       </div>
       <div className='w-full '>

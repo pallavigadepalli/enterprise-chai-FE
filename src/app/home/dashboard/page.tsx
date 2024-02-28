@@ -8,7 +8,7 @@ import Aside from "@/components/Aside";
 export default function Materials() {
   return (
       <main className="w-full px-9">
-        <Header />
+        <Header title={''} subtitle={''}/>
         <div className="flex">
           <Infographics />
         </div>
