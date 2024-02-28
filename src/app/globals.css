@@ -52,6 +52,9 @@ body {
   .btn-meeting {
     @apply w-[150px] h-10 border-solid border-2 rounded-lg border-borderGray text-blackMediumC text-sm text-center align-middle py-2 px-3
   }
+  .btn-intents {
+    @apply w-[209px] h-10 border-solid border-2 rounded-lg border-borderGray text-blackMediumC text-sm text-center align-middle py-2 px-3
+  }
   .form-input {
     @apply w-[570px] h-[59px] mt-1 block  rounded-md border border-gray-400 p-4
   }
