@@ -3,7 +3,7 @@ import React from 'react'
 
 interface HeaderProps {
     title: string
-    subtitle: string
+    subtitle?: string
 }
 export default function Header({title, subtitle}: HeaderProps) {
   return (
