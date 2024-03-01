@@ -22,7 +22,7 @@ export default function Aside() {
                 <Image src={'/Materials.svg'} alt='materials logo' width={18} height={18}/>
                 Materials
             </a>
-            <a className="btn-dashboard" href={'/home/cms'}>
+            <a className="btn-dashboard" href={'/home/csm'}>
                 <Image src={'/Launch.svg'} alt='launch logo' width={18} height={18}/>
                 CSM Companion
             </a>
