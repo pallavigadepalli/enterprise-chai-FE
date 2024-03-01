@@ -10,7 +10,7 @@ import SpeakerBox from "@/components/SpeakerBox";
 import ModalComplete from "@/components/ModalComplete";
 const socketURL = process.env.NEXT_PUBLIC_WS;
 const microphoneAudioSocket = socketURL + '/listenmic';
-const tabAudioSocket = socketURL + '/listen2';
+const tabAudioSocket = socketURL + '/listentab';
 const assistantSocket = socketURL + '/result';
 
 interface ActiveChatProps {
@@ -26,7 +26,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
     useEffect(() => {
         const handleStartCapture = async () => {
             const microphoneWS = new WebSocket(microphoneAudioSocket);
-            //const tabWS = new WebSocket(tabAudioSocket);
+            const tabWS = new WebSocket(tabAudioSocket);
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
                 const micRecorder = new MediaRecorder(stream);
@@ -38,9 +38,9 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 });
 
                 tabRecorder.addEventListener('dataavailable', evt => {
-                    //if (evt.data.size > 0 && tabWS.readyState === WebSocket.OPEN) {
-                        //tabWS.send(evt.data);
-                    //}
+                    if (evt.data.size > 0 && tabWS.readyState === WebSocket.OPEN) {
+                        tabWS.send(evt.data);
+                    }
                 })
                 tabRecorder.start(100)
 

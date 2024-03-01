@@ -1,22 +1,17 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import {authenticate} from "@/actions/account";
-import {useFormState, useFormStatus} from "react-dom";
+import {createUser} from "@/actions/account";
+import { useFormState, useFormStatus } from "react-dom";
 
 
-type loginFields = {
-    email: string,
-    password: string
-}
+
 const initialState = {
   message: "",
 };
 
-export default function Login() {
-  const [state, formAction] = useFormState(authenticate, initialState);
-
-  console.log(state);
+export default function Register() {
+  const [state, formAction] = useFormState(createUser, initialState);
 
 
   return (
@@ -30,16 +25,16 @@ export default function Login() {
             <span className={'font-medium'}>CH</span>
             <span className={'font-medium'}>AI</span>
           </a>
-          <p className='welcome-back'>Welcome back!</p>
-          <h3 className='mb-10'>Enter your credentials to access your account</h3>
+          <p className='welcome-back'>Create an account</p>
+          <h3 className='mb-10'>Already have an account? <span className={'text-primarySmall'}>Log-in</span></h3>
           <div>
             <label className="block">
               <span className="text-gray-700">email</span>
                 <input
                   type="text"
                   className="form-input mt-1 block w-full"
-                  name={'email'}
                   placeholder="enter your email"
+                  name={'email'}
                 />
             </label>
           </div>
@@ -50,18 +45,15 @@ export default function Login() {
               <input
                 type="password"
                 className="form-input mt-1 block w-full"
-                name={'password'}
                 placeholder="enter your password"
+                name={'password'}
               />
           </label>
-          <div  className='flex justify-end mt-1'>
-            <small className='mr-0 text-primarySmall'>forgot password</small>
-          </div>
         </div>
         <div className="flex gap-2 pt-4 pb-4 mb-8">
-          <input type="checkbox" className='checkbox-login'/> Remember me
+          <input type="checkbox" className='checkbox-login'/> I agree to EnterpriseCHAI’s Terms & Conditions and Privacy Policy
         </div>
-        <LoginButton />
+          <SubmitButton/>
         <div className='w-full flex justify-between  items-center mt-20'>
           <button className='btn-login'>
             <Image src={'/google.png'} alt='linkedin logo' width={30} height={30}/>
@@ -71,10 +63,6 @@ export default function Login() {
           <Image src={'/linkedin.png'} alt='linkedin logo' width={30} height={30}/>
             Sign in with Linkedin
             </button>
-        </div>
-        <div className='flex justify-center gap-2 mt-10'>
-          <p>Don’t have an account?  </p>
-          <p className='text-primarySmall '>Sign Up</p>
         </div>
         </div>
       </div>
@@ -88,12 +76,12 @@ export default function Login() {
   )
 }
 
-function LoginButton() {
+function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
     <button type="submit" className="btn-primary w-full" aria-disabled={pending}>
-      Log in
+      Create an account
     </button>
   );
 }
