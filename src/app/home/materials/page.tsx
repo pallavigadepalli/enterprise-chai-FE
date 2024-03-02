@@ -4,6 +4,7 @@ import React, {useEffect} from "react";
 import Image from "next/image";
 import {useForm} from "react-hook-form";
 import axios from "axios";
+import {saveFile} from "@/actions/materials";
 
 export default function Materials() {
   return (
@@ -23,7 +24,7 @@ interface IFormInput {
 }
 
 const MaterialsForm = () => {
-    const {register, handleSubmit} = useForm<any>()
+/*    const {register, handleSubmit} = useForm<any>()
     const [file, setFile] = React.useState<File | null>(null)
     async function submitForm(data: IFormInput) {
         const formData = new FormData();
@@ -47,22 +48,22 @@ const MaterialsForm = () => {
         } catch (e) {
             console.log(e)
         }
-    }
-    useEffect(() => {
+    }*/
+/*    useEffect(() => {
          fetch(process.env.NEXT_PUBLIC_BACKEND + '/documents', {
             headers: {
                 'Authorization': 'Token ' + localStorage.getItem('token'),
             },
         }).then(response => response.json()).then(data => console.log(data))
-    }, []  )
-    return <form className={'w-1/2 flex flex-col gap-4'} onSubmit={handleSubmit(submitForm)}>
+    }, []  )*/
+    return <form className={'w-1/2 flex flex-col gap-4'} action={saveFile}>
         <label className="block">
             <span className="text-gray-700">Customer company name*</span>
             <input
                 type="text"
                 className="form-input mt-1 block w-full"
-                {...register('company')}
                 placeholder="Customer company name*"
+                name={'company'}
             />
         </label>
         <label className="block">
@@ -70,7 +71,7 @@ const MaterialsForm = () => {
             <input
                 type="text"
                 className="form-input mt-1 block w-full"
-                {...register('product')}
+                name={'product'}
                 placeholder="Product name*"
             />
         </label>
@@ -79,7 +80,7 @@ const MaterialsForm = () => {
             <input
                 type="text"
                 className="form-input mt-1 block w-full"
-                {...register('tags')}
+                name={'tags'}
                 placeholder="Add tags here"
             />
         </label>
@@ -89,13 +90,8 @@ const MaterialsForm = () => {
                 <Image src={'/elements.svg'} width={50} height={50} alt="pdf" />
                 <input
                     type="file"
+                    name={'file'}
                     className="hidden"
-                    onChange={(e) => {
-                        if (e.target.files) {
-                            setFile(e.target.files[0])
-                        }
-                    }
-                    }
                 />
             </label>
             <span className={'text-sm text-grayLight'}>Click to upload</span>

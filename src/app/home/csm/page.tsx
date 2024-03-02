@@ -50,7 +50,9 @@ export default function List() {
       <SessionBtns />
       <div className="flex justify-end gap-x-3">
         <button className="btn-settings">Settings</button>
-        <button className="btn-feedback">Create session</button>
+        <button className="btn-feedback">
+          <a href="/session/active">Create session</a>
+        </button>
       </div>
       <Table title={"Active created sessions"} columns={columns} data={data}/>
     </div>

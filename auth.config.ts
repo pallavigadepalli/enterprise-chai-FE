@@ -1,4 +1,5 @@
 import type { NextAuthConfig } from 'next-auth';
+import { cookies } from 'next/headers'
 
 export const authConfig = {
     pages: {
@@ -23,8 +24,16 @@ export const authConfig = {
         signIn: async ({ user, account, profile, email, credentials }) => {
             console.log('sign in')
             return true;
+        },
+        jwt: async ({ token, user, account, profile, isNewUser }) => {
+            if (user) {
+                token.token = user.id;
+                cookies.set('token', token);
+                console.log('jwt', token)
+            }
+            return token;
         }
 
     },
-    providers: [], // Add providers with an empty array for now
+    providers: []
 } as NextAuthConfig;

@@ -2,12 +2,12 @@ import Image from "next/image";
 
 export default function Aside() {
     return <aside className="w-48 bg-customGradient p-1">
-        <div className="flex mt-4 p-x-1.5 justify-center">
+        <a className="flex mt-4 p-x-1.5 justify-center" href={'/home/dashboard'}>
             <span className={'text-primarySmall text-base font-medium'}>Enterprise</span>
             <Image src="/cup_logo.svg" alt="Logo" width={26} height={16} className={'mx-1'}/>
             <span className={'text-primarySmall  text-base font-bold'}>CH</span>
             <span className={'text-greenLogo text-base font-bold'}>AI</span>
-        </div>
+        </a>
 
         <div className="flex flex-col mt-16">
             <a className="btn-dashboard" href={'/home/dashboard'}>
