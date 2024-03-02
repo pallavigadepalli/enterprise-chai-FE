@@ -13,7 +13,7 @@ const initialState = {
 export default function Register() {
   const [state, formAction] = useFormState(createUser, initialState);
 
-
+  console.log(state)
   return (
     <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' action={formAction}>
 

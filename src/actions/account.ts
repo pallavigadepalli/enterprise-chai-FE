@@ -4,6 +4,7 @@ import { z } from "zod";
 //import { redirect } from 'next/navigation'
 import {signIn} from "../../auth";
 import {AuthError} from "next-auth";
+import {redirect} from "next/navigation";
 
 export async function createUser(
     prevState: {
@@ -40,11 +41,15 @@ export async function createUser(
             },
         })
             const json = await response.json()
-        //return redirect("/");
+        if (json.error) {
+            return { message: json.error }
+        }
     } catch (e) {
         console.log(e)
         return { message: 'failed to create user'}
     }
+    redirect("/home/dashboard");
+
 }
 
 export async function authenticate(
