@@ -1,10 +1,10 @@
 'use client'
 import Header from "@/components/Header";
-import React, {useEffect} from "react";
+import React from "react";
 import Image from "next/image";
-import {useForm} from "react-hook-form";
-import axios from "axios";
 import {saveFile} from "@/actions/materials";
+import {useFormState} from "react-dom";
+
 
 export default function Materials() {
   return (
@@ -15,55 +15,21 @@ export default function Materials() {
   )
 }
 
-interface IFormInput {
-    product: string;
-    company: string;
-    tags: string;
-    file: File;
-
-}
+const initialState = {
+    message: "",
+};
 
 const MaterialsForm = () => {
-/*    const {register, handleSubmit} = useForm<any>()
-    const [file, setFile] = React.useState<File | null>(null)
-    async function submitForm(data: IFormInput) {
-        const formData = new FormData();
-        formData.append('title', data.company);
-        formData.append('product', data.product);
-        formData.append('tags', data.tags);
-        if (!file) {
-            return
-        }
-        formData.append('file', file);
-        try {
-            const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/upload',formData, {
-
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Authorization': 'Token ' + localStorage.getItem('token'),
-                },
-
-            })
-            console.log(response)
-        } catch (e) {
-            console.log(e)
-        }
-    }*/
-/*    useEffect(() => {
-         fetch(process.env.NEXT_PUBLIC_BACKEND + '/documents', {
-            headers: {
-                'Authorization': 'Token ' + localStorage.getItem('token'),
-            },
-        }).then(response => response.json()).then(data => console.log(data))
-    }, []  )*/
-    return <form className={'w-1/2 flex flex-col gap-4'} action={saveFile}>
+    const [state, formAction] = useFormState(saveFile, initialState);
+    console.log(state);
+    return <form className={'w-1/2 flex flex-col gap-4'} action={formAction}>
         <label className="block">
             <span className="text-gray-700">Customer company name*</span>
             <input
                 type="text"
                 className="form-input mt-1 block w-full"
                 placeholder="Customer company name*"
-                name={'company'}
+                name={'title'}
             />
         </label>
         <label className="block">
