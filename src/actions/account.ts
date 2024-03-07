@@ -1,7 +1,6 @@
 "use server";
 
 import { z } from "zod";
-//import { redirect } from 'next/navigation'
 import {signInApp} from "../../auth";
 import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
@@ -13,8 +12,8 @@ export async function createUser(
     formData: FormData,
 ) {
     const schema = z.object({
-        email: z.string().email(),
-        password: z.string().min(8)
+        email: z.string().email({ message: "Invalid email"}),
+        password: z.string().min(8, { message: "Password must be at least 8 characters long"})
     });
     const parse = schema.safeParse({
         email: formData.get("email"),
@@ -22,7 +21,7 @@ export async function createUser(
     });
 
     if (!parse.success) {
-        return { message: "Failed to create todo" };
+        return { message: parse.error.errors[0].message };
     }
 
     const data = parse.data;
@@ -46,10 +45,9 @@ export async function createUser(
         }
     } catch (e) {
         console.log(e)
-        return { message: 'failed to create user'}
+        return { message: 'failed to create user try with another email'}
     }
-    redirect("/home/dashboard");
-
+    redirect("/login");
 }
 
 export async function authenticate(
@@ -64,14 +62,6 @@ export async function authenticate(
         }
         console.log(response)
     } catch (error) {
-/*        if (error instanceof AuthError) {
-            switch (error.type) {
-                case 'CredentialsSignin':
-                    return 'Invalid credentials.';
-                default:
-                    return 'Something went wrong.';
-            }
-        }*/
         throw error;
     }
     redirect("/home/dashboard");
