@@ -2,14 +2,11 @@ import Header from "@/components/Header";
 import React from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react";
 import {MaterialsForm} from "@/app/home/materials/MaterialsForm";
-import Table from "@/components/Table";
 import MaterialsTable from "@/app/home/materials/MaterialTable";
 import {getMaterials} from "@/services/materials";
 
 
-export default async function Materials({
-                                            searchParams
-                                        }) {
+export default async function Materials({searchParams}) {
     const data = await getMaterials();
 
     return (
@@ -22,7 +19,6 @@ export default async function Materials({
                     <ModalHeader className="flex flex-col gap-1">
                         <p className={'text-primarySmall'}>Upload a new document</p>
                         <p>List of recommended documents</p>
-
                     </ModalHeader>
                     <ModalBody>
                         <MaterialsForm/>

@@ -1,7 +1,6 @@
 'use client'
 import Banner from '@/components/Banner'
 import AssistantLayout from '@/components/AssistantLayout'
-import NavItem from '@/components/NavItem'
 import Navigation from '@/components/Navigation'
 import Tags from '@/components/Tags'
 import Title from '@/components/Title'
@@ -77,46 +76,46 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
 
     const placeholderClient = 'Your client\'s voice magic is being\n scooped up straight from your browser\n  tab, and you\'ll see it right here.';
     const placeholderUser = 'Your fantastic voice is captured straight \nfrom your microphone, and will be \ndisplayed here.'
-  return (
-    <div className={'xl:px-32 lg:px-20'}>
-        {completeSessionAlert && <ModalComplete/>}
-      <div className="w-full ">
-        <Banner />
-      </div>
-      <div className="w-full h-12  mt-4 mx-auto flex justify-between align-center items-center">
-        <Title />
-        <Navigation>
-          <button  className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
+    return (
+        <div className={'xl:px-32 lg:px-20'}>
+            {completeSessionAlert && <ModalComplete/>}
+            <div className="w-full ">
+                <Banner />
+            </div>
+            <div className="w-full h-12  mt-4 mx-auto flex justify-between align-center items-center">
+                <Title />
+                <Navigation>
+                    <button  className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Settings
-          </button>
-          <button className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
+                    </button>
+                    <button className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Auto Scroll
-          </button>
-          <button className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
+                    </button>
+                    <button className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Pause
-          </button>
-          <button
-              onClick={() => {
-                    setCompleteSessionAlert(true);
-              }
-              }
-              className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
+                    </button>
+                    <button
+                        onClick={() => {
+                            setCompleteSessionAlert(true);
+                        }
+                        }
+                        className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Complete
-          </button>
-        </Navigation>
-      </div>
-      <div className='w-full '>
-        <Tags />
-      </div>
-      <div className='w-full h-4 flex gap-10'>
-        <AssistantLayout messages={assistantMessages} />
-        <div className=' flex flex-col w-[320]'>
-          <div>
-              <SpeakerBox name={'Customer'} messages={tabMessages} placeholder={placeholderClient}/>
-              <SpeakerBox name={'You'} messages={microphoneMessages} placeholder={placeholderUser}/>
-          </div>
+                    </button>
+                </Navigation>
+            </div>
+            <div className='w-full '>
+                <Tags />
+            </div>
+            <div className='w-full h-4 flex gap-10'>
+                <AssistantLayout messages={assistantMessages} />
+                <div className=' flex flex-col w-[320]'>
+                    <div>
+                        <SpeakerBox name={'Customer'} messages={tabMessages} placeholder={placeholderClient}/>
+                        <SpeakerBox name={'You'} messages={microphoneMessages} placeholder={placeholderUser}/>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  )
+    )
 }
