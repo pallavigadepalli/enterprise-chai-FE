@@ -3,6 +3,7 @@ import {z} from "zod";
 import axios from "axios";
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
+import {patchConversation} from "@/services/csm";
 
 export const saveSession = async (
     prevState: string | undefined,
@@ -55,6 +56,11 @@ export const saveSession = async (
     } else {
         redirect('/home/csm')
     }
+}
 
-
+export const completeConversation = async (id: string) => {
+    await patchConversation(id, {is_active: false}, {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + cookies().get('token').value
+    })
 }
