@@ -1,7 +1,8 @@
-export default function Title() {
-  return (
-    <div className="w-full">
-      <h2>Onboarding with Customer</h2>
-    </div>
-  )
+
+export default function Title({clientName}) {
+    return (
+        <div className="w-full">
+            <h2>{clientName}</h2>
+        </div>
+    )
 }

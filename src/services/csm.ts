@@ -21,12 +21,12 @@ export const getConversation: Promise<Conversation> = async (id: string, headers
     return await response.json()
 }
 
-export const patchConversation = async (id: string, data: any, headers) => {
-    const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/' + id, {
+export const patchConversation = async (id: string, data: any, token: string) => {
+    const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/' + id + '/', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Token ' + headers.cookies
+            'Authorization': token
         },
         body: JSON.stringify(data)
     })

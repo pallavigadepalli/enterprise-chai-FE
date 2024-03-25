@@ -4,7 +4,8 @@ import TabAudio from "@/components/TabAudio"
 import Dropdown from "@/components/Dropdown";
 import Image from "next/image";
 import React, {useEffect, useState} from "react";
-import ActiveChat from "@/components/ActiveChat";
+import ActiveChat from "@/app/session/[id]/ActiveChat";
+
 
 export default function Config() {
     const [audioDevices, setAudioDevices] = useState<any>([]);

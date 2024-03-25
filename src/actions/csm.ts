@@ -35,7 +35,7 @@ export const saveSession = async (
         const token = cookies().get('token').value
         const data = parse.data;
 
-        const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/companion-session', data, {
+        const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/', data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + token,
@@ -58,9 +58,15 @@ export const saveSession = async (
     }
 }
 
-export const completeConversation = async (id: string) => {
-    await patchConversation(id, {is_active: false}, {
-        'Content-Type': 'application/json',
-        'Authorization': 'Token ' + cookies().get('token').value
-    })
+export const completeConversation = async (
+    prevState: string | undefined,
+    formData: FormData
+) => {
+    const token = 'Token ' + cookies().get('token').value
+    const result = await patchConversation(formData.get('conversationId'), {is_active: false}, token)
+    if (result.error) {
+        return { message: result.error }
+    } else {
+        redirect('/session/' + formData.get('conversationId') + '/finished')
+    }
 }

@@ -1,7 +1,5 @@
 const socketURL = process.env.NEXT_PUBLIC_WS;
-const microphoneAudioSocket = socketURL + '/listenmic';
-const tabAudioSocket = socketURL + '/listentab';
-const assistantSocket = socketURL + '/result';
+
 
 
 export const handleStartCapture = async ({
@@ -9,8 +7,15 @@ export const handleStartCapture = async ({
     selectedDeviceId,
     setMicrophoneMessages,
     setTabMessages,
-    setAssistantMessages
+    setAssistantMessages,
+    conversationId
 }) => {
+    // add conversationId to the socketURL
+
+    const microphoneAudioSocket = socketURL + '/listenmic?session=' + conversationId;
+    const tabAudioSocket = socketURL + '/listentab?session=' + conversationId;
+    const assistantSocket = socketURL + '/result?session=' + conversationId;
+
     const microphoneWS = new WebSocket(microphoneAudioSocket);
     const tabWS = new WebSocket(tabAudioSocket);
     const assistantWS = new WebSocket(assistantSocket);
