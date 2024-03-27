@@ -82,6 +82,9 @@ body {
   .customer-journey {
     @apply bg-violetLight w-12 h-12 rounded-md flex flex-col items-center justify-center
   }
+  .shadow-custom {
+    box-shadow: 0px 4px 8px 0px rgba(127, 86, 217, 0.25);
+  }
 }
 .bg-customGradient {
   background: linear-gradient(270deg, rgba(246, 245, 255, 0.91) 0.01%, rgba(252, 252, 252, 0.79) 99.99%);

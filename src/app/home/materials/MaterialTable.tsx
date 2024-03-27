@@ -1,18 +1,19 @@
 import Table from "@/components/Table";
-import React, {useEffect} from "react";
-import {getMaterials} from "@/services/materials";
+import  moment from 'moment';
 
-export default function MaterialsTable({data}) {
-    console.log(data)
-/*    const [data, setData] = React.useState([])
-    useEffect(() => {
-        const init = async () => {
-            const data = await getMaterials();
-            setData(data);
+interface  MaterialsTableProps {
+    data: Array<any>;
+}
+export default function MaterialsTable({data}: MaterialsTableProps) {
+    const _data = data.map((item) => {
 
+        return {
+            company: item.company,
+            product: item.product,
+            tags: item.tags,
+            uploaded_at: moment(item.uploaded_at).format('DD-MMM-YYYY hh:mm a')
         }
-        init()
-    }, [])*/
+    })
     return (<Table
         title={'Call summary'}
         columns={[
@@ -21,6 +22,6 @@ export default function MaterialsTable({data}) {
             {title: 'Tags', key: 'tags', width: '20%'},
             {title: 'Date', key: 'uploaded_at', width: '20%'},
         ]}
-        data={data || []}
+        data={_data || []}
     />)
 }

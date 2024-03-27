@@ -1,5 +1,5 @@
 'use client'
-import {useFormState, useFormStatus} from "react-dom";
+import {useFormState} from "react-dom";
 import {saveFile} from "@/actions/materials";
 import React from "react";
 import Image from "next/image";
@@ -37,7 +37,6 @@ export const MaterialsForm = () => {
         <label className="block">
             <span className="text-gray-700">Add tags</span>
             <input
-                required
                 type="text"
                 className="form-input mt-1 block w-full"
                 name={'tags'}

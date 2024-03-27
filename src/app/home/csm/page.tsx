@@ -6,6 +6,7 @@ import {TableRow, TableColumn } from "@/components/Table"
 import Image from "next/image";
 import {Modal, ModalBody, ModalContent, ModalHeader} from "@nextui-org/react";
 import React from "react";
+import moment from "moment";
 import {CSMForm} from "@/app/home/csm/CSMForm";
 import {getJourneyPhases, getSessions} from "@/services/sessions";
 
@@ -19,6 +20,7 @@ export default async function List({searchParams}) {
         { key: 'customerCompanyName', title: 'Customer company name', width: 'w-1/4' },
         { key: 'customerPoint', title: 'Customer point of contact', width: 'w-1/4' },
         { key: 'conversationIntent', title: 'Conversation Intent', width: 'w-1/4' },
+        { key: 'created', title: 'Created', width: 'w-1/4' },
         { key: 'tools', title:'',width:'w-1/4' },
     ]
     const getTools = (id: number) => (
@@ -54,6 +56,7 @@ export default async function List({searchParams}) {
             customerCompanyName: session['customer_name'],
             customerPoint: session['point_of_contact'],
             conversationIntent: session['phase'],
+            created: moment(session['created_at']).format('DD-MMM-YYYY hh:mm a'),
             tools: getTools(session.id)
         }
     })

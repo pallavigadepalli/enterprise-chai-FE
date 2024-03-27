@@ -44,7 +44,12 @@ export default function Config() {
         }
 
         fetchAudioDevices();
-    }, []);
+        return () => {
+            if (recorder) {
+                recorder.stream.getTracks().forEach(track => track.stop());
+            }
+        }
+    }, [recorder]);
     const handleDeviceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedDeviceId(event.target.value);
     };
