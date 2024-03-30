@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import {authenticate} from "@/actions/account";
 import {useFormState, useFormStatus} from "react-dom";
+import {Button} from "@nextui-org/react";
 
 const initialState = {
     message: "",
@@ -10,8 +11,8 @@ const initialState = {
 
 export default function Login() {
     const [state, formAction] = useFormState(authenticate, initialState);
-
-    console.log(state)
+    const { pending, data } = useFormStatus();
+    console.log(data);
     return (
         <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' action={formAction}>
 
@@ -29,10 +30,11 @@ export default function Login() {
                         <label className="block">
                             <span className="text-gray-700">email</span>
                             <input
-                                type="text"
+                                type="email"
                                 className="form-input mt-1 block w-full"
                                 name={'email'}
                                 placeholder="enter your email"
+                                required
                             />
                         </label>
                     </div>
@@ -45,6 +47,7 @@ export default function Login() {
                                 className="form-input mt-1 block w-full"
                                 name={'password'}
                                 placeholder="enter your password"
+                                required
                             />
                         </label>
                         <div  className='flex justify-end mt-1'>
@@ -55,7 +58,14 @@ export default function Login() {
                         <p className={'text-warning'}>{state.message}</p>
 
                     </div>
-                    <LoginButton />
+                    <Button
+                        type="submit"
+                        className="btn-primary w-full"
+                        isLoading={pending}
+                        disabled={pending}
+                        color="primary">
+                        Log in
+                    </Button>
                     <div className='w-full flex justify-between  items-center mt-20'>
                         <button className='btn-login'>
                             <Image src={'/google.png'} alt='linkedin logo' width={30} height={30}/>
@@ -80,14 +90,4 @@ export default function Login() {
             </div>
         </form>
     )
-}
-
-function LoginButton() {
-    const { pending } = useFormStatus();
-
-    return (
-        <button type="submit" className="btn-primary w-full" aria-disabled={pending}>
-      Log in
-        </button>
-    );
 }

@@ -3,12 +3,14 @@ import React from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react";
 import {MaterialsForm} from "@/app/home/materials/MaterialsForm";
 import MaterialsTable from "@/app/home/materials/MaterialTable";
-import {getMaterials} from "@/services/materials";
+import {getMaterials, getTemplates} from "@/services/materials";
+import TemplatesTable from "@/app/home/materials/TemplatesTable";
 
 
 export default async function Materials({searchParams}) {
     const data = await getMaterials();
-
+    const templates = await getTemplates();
+    console.log(templates);
     return (
         <main className="w-full px-9">
             <Modal
@@ -25,9 +27,23 @@ export default async function Materials({searchParams}) {
                     </ModalBody>
                 </ModalContent>
             </Modal>
+            <Modal
+                isOpen={searchParams.action === 'template'}
+                size={'xl'}
+                closeButton={<a href={'/home/materials'}>X</a>}
+            >
+                <ModalContent>
+                    <ModalHeader className="flex flex-col gap-1">
+                        <p className={'text-lg font-bold'}>Recommended Documents</p>
+                    </ModalHeader>
+                    <ModalBody>
+                        <TemplatesTable data={templates}/>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
             <Header title={'Materials'} subtitle={''}/>
             <div className="flex justify-end gap-x-3">
-                <a href={'/home/materials?action=new'}>
+                <a href={'/home/materials?action=template'}>
                     <button className={'bg-darkViolet700 w-36 h-12'}>
                         Template
                     </button>

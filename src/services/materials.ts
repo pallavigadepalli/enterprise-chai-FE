@@ -28,3 +28,23 @@ export const getMaterials = async () => {
         return { materials: [] }
     }
 }
+
+export const getTemplates = async () => {
+    try {
+        const token = cookies().get('token').value
+        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/template', {
+            headers: {
+                'Authorization': 'Token ' + token,
+            }
+        })
+
+        const json = await response.json()
+        if (json.error) {
+            return []
+        }
+        return { templates: json }
+    } catch (e) {
+        console.log(e)
+        return []
+    }
+}

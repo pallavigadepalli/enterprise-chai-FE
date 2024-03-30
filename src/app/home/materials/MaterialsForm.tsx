@@ -1,5 +1,5 @@
 'use client'
-import {useFormState} from "react-dom";
+import {useFormState, useFormStatus} from "react-dom";
 import {saveFile} from "@/actions/materials";
 import React from "react";
 import Image from "next/image";
@@ -11,6 +11,8 @@ const initialState = {
 
 export const MaterialsForm = () => {
     const [state, formAction] = useFormState(saveFile, initialState);
+    const { pending, data } = useFormStatus();
+    console.log(data);
     const [filename, setFilename] = React.useState('')
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
@@ -52,6 +54,7 @@ export const MaterialsForm = () => {
                     className="hidden"
                     accept={'.pdf,.docx,.txt,.ppt'}
                     onChange={(e) => setFilename(e.target.files[0].name)}
+                    required
                 />
             </label>
             {
