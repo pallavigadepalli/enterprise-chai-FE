@@ -10,7 +10,6 @@ import TemplatesTable from "@/app/home/materials/TemplatesTable";
 export default async function Materials({searchParams}) {
     const data = await getMaterials();
     const templates = await getTemplates();
-    console.log(templates);
     return (
         <main className="w-full px-9">
             <Modal

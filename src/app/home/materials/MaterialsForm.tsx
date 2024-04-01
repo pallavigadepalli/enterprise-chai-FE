@@ -3,6 +3,7 @@ import {useFormState, useFormStatus} from "react-dom";
 import {saveFile} from "@/actions/materials";
 import React from "react";
 import Image from "next/image";
+import {Button} from "@nextui-org/react";
 
 
 const initialState = {
@@ -11,9 +12,9 @@ const initialState = {
 
 export const MaterialsForm = () => {
     const [state, formAction] = useFormState(saveFile, initialState);
-    const { pending, data } = useFormStatus();
-    console.log(data);
-    const [filename, setFilename] = React.useState('')
+    const { pending } = useFormStatus();
+    console.log(pending);
+    const [filesName, setFilesName] = React.useState<string | string[]>('');
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <label className="block">
@@ -53,22 +54,36 @@ export const MaterialsForm = () => {
                     name={'documents'}
                     className="hidden"
                     accept={'.pdf,.docx,.txt,.ppt'}
-                    onChange={(e) => setFilename(e.target.files[0].name)}
+                    onChange={(e) => {
+                        setFilesName(
+                            Array.from(e.target.files).map(file => file.name)
+                        )
+                    }}
                     required
                     multiple
                 />
             </label>
             {
-                filename === '' ?
+                filesName === '' ?
                     <span className={'text-sm text-grayLight'}>Click to upload</span> :
-                    <span className={'text-sm text-grayLight'}>{filename}</span>
+                    <ul className={'text-sm text-grayLight'}>{filesName.map(
+                        (name, index) => {
+                            return <li key={index}>{name}</li>
+                        }
+                    )}</ul>
             }
 
 
         </div>
         <legend className={'text-grayLight'}>Upload File (PDF, DOCX, TXT, PPT files up to 10MB)</legend>
-        <button type="submit" className="btn-primary w-full">
+        <Button
+            type="submit"
+            className="btn-primary w-full"
+            color={'primary'}
+            isLoading={pending}
+            disabled={pending}
+        >
             Upload
-        </button>
+        </Button>
     </form>
 }
