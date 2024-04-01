@@ -56,6 +56,7 @@ const config: Config = {
                 blackCustom:'#1D2939',
                 blackMediumC: '#27272A',
                 greenLight600: '#16A249',
+                grayDark1: '#9B9B9B'
             },
             fontSize: {
                 xsm:'0.625rem'
