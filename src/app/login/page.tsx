@@ -12,7 +12,6 @@ const initialState = {
 export default function Login() {
     const [state, formAction] = useFormState(authenticate, initialState);
     const { pending, data } = useFormStatus();
-    console.log(data);
     return (
         <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' action={formAction}>
 

@@ -1,7 +1,8 @@
 'use client'
-import {useFormState} from "react-dom";
+import {useFormState, useFormStatus} from "react-dom";
 import React from "react";
 import {saveSession} from "@/actions/csm";
+import {Button} from "@nextui-org/react";
 
 
 const initialState = {
@@ -14,29 +15,20 @@ type phase = {
 interface CSMFormProps {
     phases: phase[]
 }
-export const CSMForm = ({phases}) => {
+export const CSMForm = ({phases, products}) => {
     const [state, formAction] = useFormState(saveSession, initialState);
+    const { pending } = useFormStatus();
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <div className="block">
             <span className="text-gray-700">Customer journey phase name*</span>
-            <select className="p-2 h-12 border rounded flex items-center w-full" name={'journey_phase'}>
+            <select required className="p-2 h-12 border rounded flex items-center w-full" name={'journey_phase'}>
                 {
                     phases.map((phase) => {
                         return <option key={phase.id} value={phase.phase}>{phase.phase}</option>
                     })
                 }
             </select>
-        </div>
-        <div className="block">
-            <span className="text-gray-700">Customer company name*</span>
-            <input
-                required
-                type="text"
-                className="form-input mt-1 block w-full"
-                name={'customer_name'}
-                placeholder="customer company name"
-            />
         </div>
         <div className="block">
             <span className="text-gray-700">Customer point of contact name*</span>
@@ -48,22 +40,41 @@ export const CSMForm = ({phases}) => {
                 placeholder="customer point of contact name"
             />
         </div>
+        <div className="block">
+            <span className="text-gray-700">Product*</span>
+            <select required className="p-2 h-12 border rounded flex items-center w-full" name={'product'}>
+                {
+                    products.map((product) => {
+                        return <option key={product.id} value={product.name}>{product.name}</option>
+                    })
+                }
+            </select>
+        </div>
         <div>
             <span className="text-gray-700">Description</span>
             <textarea
-                required
                 className="form-input  block w-full h-28"
                 name={'description'}
                 placeholder="description">
             </textarea>
         </div>
         <div className={'flex justify-around'}>
-            <button type="submit" className="bg-grayLight text-white btn-goback w-[130px]" name={'launch'}>
+            <Button
+                type="submit"
+                isLoading={pending}
+                disabled={pending}
+                className=" text-white btn-goback w-[130px] bg-primarySmall"
+                name={'launch'}>
                 Launch
-            </button>
-            <button type="submit" className="bg-grayLight text-white btn-goback w-[130px]" name={'save'}>
+            </Button>
+            <Button
+                type="submit"
+                isLoading={pending}
+                disabled={pending}
+                className="btn-goback w-[130px] bg-darkViolet700"
+                name={'save'}>
                 Save for later
-            </button>
+            </Button>
         </div>
 
     </form>

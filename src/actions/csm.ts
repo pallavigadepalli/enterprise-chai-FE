@@ -9,20 +9,16 @@ export const saveSession = async (
     prevState: string | undefined,
     formData: FormData
 ) => {
-    //journey_phase
-    // customer_name
-    // point_of_contact
-    // description
     const schema = z.object({
         journey_phase: z.string(),
-        customer_name: z.string(),
+        product: z.string(),
         point_of_contact: z.string(),
         description: z.string(),
     });
 
     const parse = schema.safeParse({
         journey_phase: formData.get("journey_phase"),
-        customer_name: formData.get("customer_name"),
+        product: formData.get("product"),
         point_of_contact: formData.get("point_of_contact"),
         description: formData.get("description"),
     });
@@ -41,7 +37,7 @@ export const saveSession = async (
                 'Authorization': 'Token ' + token,
             }
         })
-        console.log(response)
+        console.log(response.error)
         if (response.data.error) {
             return { message: response.data.error }
         }

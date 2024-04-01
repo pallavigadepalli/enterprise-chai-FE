@@ -9,19 +9,39 @@ export default function MaterialsTable({data}: MaterialsTableProps) {
 
         return {
             company: item.company,
-            product: item.product,
+            name: item.name,
             tags: item.tags,
-            uploaded_at: moment(item.uploaded_at).format('DD-MMM-YYYY hh:mm a')
+            created_at: moment(item.created_at).format('DD-MMM-YYYY hh:mm a'),
+            documents: item.documents
         }
     })
+    let transformedProductsArray = [];
+
+    _data.forEach(function(product) {
+        console.log(product);
+        product.documents.forEach(function(document) {
+            var documentWithName = {
+                "id": product.id,
+                "name": product.name,
+                "created_at": product.created_at,
+                "company": product.company,
+                "tags": product.tags,
+                "document": document.file.split('/').pop() // Obtener el nombre del documento desde la URL
+            };
+            transformedProductsArray.push(documentWithName);
+        });
+    });
+    console.log(transformedProductsArray);
+
     return (<Table
-        title={'Call summary'}
+        title={'Recent Documents'}
         columns={[
-            {title: 'Company', key: 'company', width: '20%'},
-            {title: 'Product', key: 'product', width: '20%'},
-            {title: 'Tags', key: 'tags', width: '20%'},
-            {title: 'Date', key: 'uploaded_at', width: '20%'},
+            {title: 'Company', key: 'company', width: 'w-5'},
+            {title: 'Name', key: 'name', width: 'w-5'},
+            {title: 'Tags', key: 'tags', width: 'w-5'},
+            {title: 'Document', key: 'document', width: 'w-5'},
+            {title: 'Date', key: 'created_at', width: 'w-5'},
         ]}
-        data={_data || []}
+        data={transformedProductsArray || []}
     />)
 }

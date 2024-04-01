@@ -67,7 +67,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 <Banner />
             </div>
             <div className="w-full h-12  mt-4 mx-auto flex justify-between align-center items-center">
-                <Title clientName={conversation?.customer_name}/>
+                <Title clientName={conversation?.point_of_contact}/>
                 <Navigation>
                     <button  className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Settings

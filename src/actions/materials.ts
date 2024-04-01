@@ -8,10 +8,6 @@ export const  saveFile = async (
     prevState: string | undefined,
     formData: FormData
 ) => {
-    const MAX_FILE_SIZE = 5000 * 1024 * 1024;
-    const ACCEPTED_IMAGE_TYPES = [
-        "pdf",
-    ];
 
     const schema = z.object({
         file: z
@@ -19,10 +15,10 @@ export const  saveFile = async (
     });
 
     const parse = schema.safeParse({
-        file: formData.get("file"),
+        documents: formData.get("documents"),
         company: formData.get("company"),
         tags: formData.get("tags"),
-        product: formData.get("product"),
+        name: formData.get("name"),
     });
 
     if (!parse.success) {
@@ -32,7 +28,7 @@ export const  saveFile = async (
         const token = cookies().get('token').value
         const data = parse.data;
 
-        const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/upload', formData, {
+        const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/product/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Token ' + token,

@@ -9,12 +9,15 @@ import React from "react";
 import moment from "moment";
 import {CSMForm} from "@/app/home/csm/CSMForm";
 import {getJourneyPhases, getSessions} from "@/services/sessions";
+import {getMaterials} from "@/services/materials";
 
 
 
 export default async function List({searchParams}) {
     const phases = await getJourneyPhases()
     const sessions = await getSessions()
+    const products = await getMaterials();
+
 
     const columns: TableColumn[] = [
         { key: 'customerCompanyName', title: 'Customer company name', width: 'w-1/4' },
@@ -25,22 +28,17 @@ export default async function List({searchParams}) {
     ]
     const getTools = (id: number) => (
         <div className="flex items-center justify-end gap-6">
-            <a href={`/session/${id}/active`}>
-                <Image
-                    src={'/Tags.png'}
-                    alt='launch'
-                    width={55}
-                    height={55}
-                />
+            <a href={`/session/${id}/active`} className={'bg-violetLight rounded px-2 py-1 shadow-md'}>
+                Launch
             </a>
-            <a href={`/home/csm?action=edit&id=${id}`}>
+            {/*            <a href={`/home/csm?action=edit&id=${id}`}>
                 <Image
                     src={'/edit.png'}
                     alt='edit'
                     width={24}
                     height={24}
                 />
-            </a>
+            </a>*/}
             <a href={`/home/csm?action=delete&id=${id}`}>
                 <Image
                     src={'/Cross Circle.png'}
@@ -53,9 +51,9 @@ export default async function List({searchParams}) {
     )
     const data: TableRow[] = sessions.sessions.map((session) => {
         return {
-            customerCompanyName: session['customer_name'],
+            customerCompanyName: session['product_company'],
             customerPoint: session['point_of_contact'],
-            conversationIntent: session['phase'],
+            conversationIntent: session['journey_phase'],
             created: moment(session['created_at']).format('DD-MMM-YYYY hh:mm a'),
             tools: getTools(session.id)
         }
@@ -80,7 +78,7 @@ export default async function List({searchParams}) {
                         <p className={'text-primarySmall'}>Create new session</p>
                     </ModalHeader>
                     <ModalBody>
-                        <CSMForm phases={phases.phases}/>
+                        <CSMForm phases={phases.phases} products={products.materials}/>
                     </ModalBody>
                 </ModalContent>
             </Modal>

@@ -32,7 +32,7 @@ export const MaterialsForm = () => {
                 required
                 type="text"
                 className="form-input mt-1 block w-full"
-                name={'product'}
+                name={'name'}
                 placeholder="Product name*"
             />
         </label>
@@ -50,11 +50,12 @@ export const MaterialsForm = () => {
                 <Image src={'/elements.svg'} width={50} height={50} alt="pdf"/>
                 <input
                     type="file"
-                    name={'file'}
+                    name={'documents'}
                     className="hidden"
                     accept={'.pdf,.docx,.txt,.ppt'}
                     onChange={(e) => setFilename(e.target.files[0].name)}
                     required
+                    multiple
                 />
             </label>
             {

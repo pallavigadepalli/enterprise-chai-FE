@@ -11,7 +11,7 @@ const material =  {
 export const getMaterials = async () => {
     try {
         const token = cookies().get('token').value
-        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/documents', {
+        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/product', {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Token ' + token,
