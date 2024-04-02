@@ -12,8 +12,6 @@ const initialState = {
 
 export const MaterialsForm = () => {
     const [state, formAction] = useFormState(saveFile, initialState);
-    const { pending } = useFormStatus();
-    console.log(pending);
     const [filesName, setFilesName] = React.useState<string | string[]>('');
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
@@ -76,14 +74,19 @@ export const MaterialsForm = () => {
 
         </div>
         <legend className={'text-grayLight'}>Upload File (PDF, DOCX, TXT, PPT files up to 10MB)</legend>
-        <Button
-            type="submit"
-            className="btn-primary w-full"
-            color={'primary'}
-            isLoading={pending}
-            disabled={pending}
-        >
-            Upload
-        </Button>
+        <SaveButton/>
     </form>
+}
+
+const SaveButton = () => {
+    const { pending } = useFormStatus();
+    return <Button
+        type="submit"
+        className="btn-primary w-full"
+        color={'primary'}
+        isLoading={pending}
+        disabled={pending}
+    >
+        Upload
+    </Button>
 }

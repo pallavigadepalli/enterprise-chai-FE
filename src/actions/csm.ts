@@ -37,12 +37,10 @@ export const saveSession = async (
                 'Authorization': 'Token ' + token,
             }
         })
-        console.log(response.error)
         if (response.data.error) {
             return { message: response.data.error }
         }
         apiResponse = response.data
-        console.log(apiResponse)
     } catch (e) {
         console.log(e)
         return { message: 'failed to create the session'}

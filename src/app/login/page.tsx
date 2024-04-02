@@ -11,7 +11,6 @@ const initialState = {
 
 export default function Login() {
     const [state, formAction] = useFormState(authenticate, initialState);
-    const { pending, data } = useFormStatus();
     return (
         <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' action={formAction}>
 
@@ -57,14 +56,7 @@ export default function Login() {
                         <p className={'text-warning'}>{state.message}</p>
 
                     </div>
-                    <Button
-                        type="submit"
-                        className="btn-primary w-full"
-                        isLoading={pending}
-                        disabled={pending}
-                        color="primary">
-                        Log in
-                    </Button>
+                    <LoginButton/>
                     <div className='w-full flex justify-between  items-center mt-20'>
                         <button className='btn-login'>
                             <Image src={'/google.png'} alt='linkedin logo' width={30} height={30}/>
@@ -89,4 +81,15 @@ export default function Login() {
             </div>
         </form>
     )
+}
+const LoginButton = () => {
+    const { pending } = useFormStatus();
+    return <Button
+        type="submit"
+        className="btn-primary w-full"
+        isLoading={pending}
+        disabled={pending}
+        color="primary">
+        Log in
+    </Button>
 }

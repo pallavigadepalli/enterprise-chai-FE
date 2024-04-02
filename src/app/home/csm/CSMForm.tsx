@@ -12,12 +12,8 @@ type phase = {
     phase: string
     id: number
 }
-interface CSMFormProps {
-    phases: phase[]
-}
 export const CSMForm = ({phases, products}) => {
     const [state, formAction] = useFormState(saveSession, initialState);
-    const { pending } = useFormStatus();
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <div className="block">
@@ -59,23 +55,32 @@ export const CSMForm = ({phases, products}) => {
             </textarea>
         </div>
         <div className={'flex justify-around'}>
-            <Button
-                type="submit"
-                isLoading={pending}
-                disabled={pending}
-                className=" text-white btn-goback w-[130px] bg-primarySmall"
-                name={'launch'}>
-                Launch
-            </Button>
-            <Button
-                type="submit"
-                isLoading={pending}
-                disabled={pending}
-                className="btn-goback w-[130px] bg-darkViolet700"
-                name={'save'}>
-                Save for later
-            </Button>
+            <SaveButtons/>
         </div>
 
     </form>
+}
+
+const SaveButtons = () => {
+    const {pending} = useFormStatus();
+    if (pending) return <Button
+        isLoading={true}
+        className=" text-white btn-goback w-[130px] bg-primarySmall">
+        Saving...
+    </Button>
+    return <>
+
+        <Button
+            type="submit"
+            className=" text-white btn-goback w-[130px] bg-primarySmall"
+            name={'launch'}>
+            Launch
+        </Button>
+        <Button
+            type="submit"
+            className="btn-goback w-[130px] bg-darkViolet700"
+            name={'save'}>
+            Save for later
+        </Button>
+    </>
 }
