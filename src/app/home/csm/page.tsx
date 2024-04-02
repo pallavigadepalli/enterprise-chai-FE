@@ -76,9 +76,13 @@ export default async function List({searchParams}) {
             </div>
             <div className="flex justify-end gap-x-3">
                 <button className="btn-settings">Settings</button>
-                <button className="btn-feedback">
-                    <a href="/home/csm?action=new">Create session</a>
-                </button>
+
+                <a href="/home/csm?action=new">
+                    <button className="btn-feedback">
+                        Create session
+                    </button>
+                </a>
+
             </div>
             <Table
                 title={tableTitle}
@@ -87,6 +91,7 @@ export default async function List({searchParams}) {
             />
             <Modal
                 isOpen={searchParams.action === 'new'}
+                size={'xl'}
                 closeButton={<a href={'/home/csm'}>X</a>}
             >
                 <ModalContent>
