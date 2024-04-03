@@ -58,7 +58,6 @@ export const MaterialsForm = () => {
                         )
                     }}
                     required
-                    multiple
                 />
             </label>
             {
@@ -70,8 +69,6 @@ export const MaterialsForm = () => {
                         }
                     )}</ul>
             }
-
-
         </div>
         <legend className={'text-grayLight'}>Upload File (PDF, DOCX, TXT, PPT files up to 10MB)</legend>
         <SaveButton/>
