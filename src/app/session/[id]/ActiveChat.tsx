@@ -3,15 +3,13 @@ import Banner from '@/components/Banner'
 import AssistantLayout from '@/components/AssistantLayout'
 import Navigation from '@/components/Navigation'
 import Tags from '@/components/Tags'
-import Title from '@/components/Title'
 import React, {useEffect, useState} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
 import ModalComplete from "@/components/ModalComplete";
 import {handleStartCapture} from "@/app/session/[id]/sockets";
 import {Conversation, getConversation} from "@/services/csm";
 import {useParams} from "next/navigation";
-import {Modal, ModalBody, ModalContent, ModalHeader} from "@nextui-org/react";
-import {MaterialsForm} from "@/app/home/materials/MaterialsForm";
+import {Modal, ModalBody, ModalContent} from "@nextui-org/react";
 
 interface ActiveChatProps {
     tabRecorder: MediaRecorder;
@@ -43,7 +41,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
         init().then((conversation: Conversation) => {
             setConversation(conversation)
         }).catch(e => e);
-    }, []);
+    }, [conversationId, selectedDeviceId, tabRecorder]);
 
     const placeholderClient = 'Your client\'s voice magic is being\n scooped up straight from your browser\n  tab, and you\'ll see it right here.';
     const placeholderUser = 'Your fantastic voice is captured straight \nfrom your microphone, and will be \ndisplayed here.'
@@ -67,7 +65,9 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 <Banner />
             </div>
             <div className="w-full h-12  mt-4 mx-auto flex justify-between align-center items-center">
-                <Title clientName={conversation?.point_of_contact}/>
+                <div className="w-full">
+                    <h2>{`${conversation?.journey_phase} with ${conversation?.point_of_contact}`}</h2>
+                </div>
                 <Navigation>
                     <button  className={`block py-4 text-base rounded hover:bg-tertiary hover-text-shadow bg-primary text-white nav-item`}>
             Settings
@@ -88,7 +88,7 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
                 </Navigation>
             </div>
             <div className='w-full '>
-                <Tags />
+                <Tags productName={conversation?.product}/>
             </div>
             <div className='w-full h-4 flex gap-10'>
                 <AssistantLayout messages={assistantMessages} />
