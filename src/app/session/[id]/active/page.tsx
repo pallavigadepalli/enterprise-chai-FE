@@ -10,6 +10,7 @@ import ActiveChat from "@/app/session/[id]/ActiveChat";
 export default function Config() {
     const [audioDevices, setAudioDevices] = useState<any>([]);
     const [recorder, setRecorder] = useState<MediaRecorder| null>(null);
+    const [micRecorder, setMicRecorder] = useState<MediaRecorder| null>(null);
     const [activeSession, setActiveSession] = useState<boolean>(false);
     const [selectedDeviceId, setSelectedDeviceId] = useState<string>('');
 
@@ -18,6 +19,9 @@ export default function Config() {
             const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true })
             const recorder = new MediaRecorder(stream);
             setRecorder(recorder);
+            const stream2 = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
+            const micRecorder = new MediaRecorder(stream2);
+            setMicRecorder(micRecorder);
         } catch (error) {
             console.error('Error capturing audio:', error);
         }
@@ -56,7 +60,7 @@ export default function Config() {
 
     if (activeSession && selectedDeviceId && recorder) {
         return (
-            <ActiveChat tabRecorder={recorder} selectedDeviceId={selectedDeviceId}/>
+            <ActiveChat tabRecorder={recorder} selectedDeviceId={selectedDeviceId} micRecorder={micRecorder}/>
         )
     }
 

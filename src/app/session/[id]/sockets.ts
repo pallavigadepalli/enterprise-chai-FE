@@ -4,7 +4,7 @@ const socketURL = process.env.NEXT_PUBLIC_WS;
 
 export const handleStartCapture = async ({
     tabRecorder,
-    selectedDeviceId,
+    micRecorder,
     setMicrophoneMessages,
     setTabMessages,
     setAssistantMessages,
@@ -21,8 +21,7 @@ export const handleStartCapture = async ({
     const assistantWS = new WebSocket(assistantSocket);
 
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
-        const micRecorder = new MediaRecorder(stream);
+
 
         micRecorder.addEventListener('dataavailable', evt => {
             if (evt.data.size > 0 && microphoneWS.readyState === WebSocket.OPEN) {

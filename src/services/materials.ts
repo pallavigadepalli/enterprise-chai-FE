@@ -1,17 +1,11 @@
 'use server'
 import {cookies} from "next/headers";
-const material =  {
-    "id": 1,
-    "file": "/documents/elements.svg",
-    "uploaded_at": "2024-03-05T15:58:45.350226Z",
-    "company": "name of the file",
-    "product": "j",
-    "tags": "dddd"
-}
+import {revalidatePath} from "next/cache";
+
 export const getMaterials = async () => {
     try {
         const token = cookies().get('token').value
-        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/product', {
+        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/materials', {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Token ' + token,
@@ -47,4 +41,18 @@ export const getTemplates = async () => {
         console.log(e)
         return []
     }
+}
+
+export const deleteMaterial = async (formData) => {
+    const id = formData.get('id')
+    const token = cookies().get('token').value
+    await fetch(process.env.NEXT_PUBLIC_BACKEND + '/materials/' + id + '/', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + token,
+        }
+    })
+
+    revalidatePath('/')
 }

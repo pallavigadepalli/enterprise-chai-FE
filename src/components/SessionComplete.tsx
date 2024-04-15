@@ -18,7 +18,13 @@ export default function SessionComplete({summaryInfo}) {
                 <div>
                     <h5 className="text-lg text-primarySmall font-bold">Session Summary:</h5>
                     <p>
-                        {summaryInfo.description}
+                        {
+                            summaryInfo.description && summaryInfo.description.split('\n').map((line, index) => (
+                                <div key={index} className={line.startsWith('**') ? 'font-bold' : ''}>
+                                    {line}
+                                </div>
+                            ))
+                        }
                     </p>
                 </div>
                 <div>

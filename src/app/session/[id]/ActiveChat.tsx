@@ -13,9 +13,9 @@ import {Modal, ModalBody, ModalContent} from "@nextui-org/react";
 
 interface ActiveChatProps {
     tabRecorder: MediaRecorder;
-    selectedDeviceId: string;
+    micRecorder: MediaRecorder;
 }
-export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatProps) {
+export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) {
 
     const searchParams = useParams()
     const conversationId = searchParams.id
@@ -25,10 +25,11 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
     const [completeSessionAlert, setCompleteSessionAlert] = useState(false);
     const [conversation, setConversation] = useState<Conversation>();
     useEffect(() => {
+
         const init = async () => {
             await handleStartCapture({
+                micRecorder,
                 tabRecorder,
-                selectedDeviceId,
                 setMicrophoneMessages,
                 setTabMessages,
                 setAssistantMessages,
@@ -41,7 +42,15 @@ export default function ActiveChat({tabRecorder, selectedDeviceId}: ActiveChatPr
         init().then((conversation: Conversation) => {
             setConversation(conversation)
         }).catch(e => e);
-    }, [conversationId, selectedDeviceId, tabRecorder]);
+        return () => {
+            if (tabRecorder.state === 'recording') {
+                tabRecorder.stop();
+            }
+            if (micRecorder.state === 'recording') {
+                micRecorder.stop();
+            }
+        }
+    }, [conversationId, micRecorder, tabRecorder]);
 
     const placeholderClient = 'Your client\'s voice magic is being\n scooped up straight from your browser\n  tab, and you\'ll see it right here.';
     const placeholderUser = 'Your fantastic voice is captured straight \nfrom your microphone, and will be \ndisplayed here.'

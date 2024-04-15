@@ -8,16 +8,15 @@ import {Button} from "@nextui-org/react";
 const initialState = {
     message: "",
 };
-type phase = {
-    phase: string
-    id: number
-}
+
+
 export const CSMForm = ({phases, products}) => {
     const [state, formAction] = useFormState(saveSession, initialState);
+    console.log(products)
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <div className="block">
-            <span className="text-gray-700">Customer journey phase name*</span>
+            <span className="text-gray-700">Customer journey phase *</span>
             <select required className="p-2 h-12 border rounded flex items-center w-full" name={'journey_phase'}>
                 {
                     phases.map((phase) => {
@@ -27,7 +26,7 @@ export const CSMForm = ({phases, products}) => {
             </select>
         </div>
         <div className="block">
-            <span className="text-gray-700">Customer point of contact name*</span>
+            <span className="text-gray-700">Customer point of contact *</span>
             <input
                 required
                 type="text"
@@ -40,7 +39,7 @@ export const CSMForm = ({phases, products}) => {
             <span className="text-gray-700">Product*</span>
             <select required className="p-2 h-12 border rounded flex items-center w-full" name={'product'}>
                 {
-                    products.map((product) => {
+                    products.map(({product}) => {
                         return <option key={product.id} value={product.name}>{product.name}</option>
                     })
                 }

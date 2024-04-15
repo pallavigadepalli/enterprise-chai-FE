@@ -44,7 +44,7 @@ export default function Table({title, columns, data}: TableProps) {
                 </div>
             </div>
             <div className="w-full">
-                <table className="w-full table-fixed px-4">
+                <table className="w-full px-4">
                     <thead>
                         <tr className=" bg-darkViolet h-8">
                             {columns.map((column,index) => (

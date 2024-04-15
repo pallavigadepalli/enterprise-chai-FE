@@ -16,7 +16,7 @@ export const MaterialsForm = () => {
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <label className="block">
-            <span className="text-gray-700">Customer company name*</span>
+            <span className="text-gray-700">Customer company *</span>
             <input
                 required
                 type="text"
