@@ -12,6 +12,7 @@ const initialState = {
 
 export const CSMForm = ({phases, products}) => {
     const [state, formAction] = useFormState(saveSession, initialState);
+    const [customerName, setCustomerName] = React.useState<string | string[]>('');
     console.log(products)
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
@@ -33,6 +34,13 @@ export const CSMForm = ({phases, products}) => {
                 className="form-input mt-1 block w-full"
                 name={'point_of_contact'}
                 placeholder="customer point of contact name"
+                onChange={
+                    (e) => {
+                        setTimeout(() => {
+                            setCustomerName(e.target.value)
+                        }, 4000)
+                    }
+                }
             />
         </div>
         <div className="block">
@@ -50,7 +58,8 @@ export const CSMForm = ({phases, products}) => {
             <textarea
                 className="form-input  block w-full h-28"
                 name={'description'}
-                placeholder="description">
+                placeholder={
+                    customerName ? `You are about to start an onboarding call with ${customerName}. In the previous call, we covered what the company does for this customer and roles and responsibility intake for the client side. In this call try to continue the conversation about the goals and objectives for purchasing your product. Ask if they have prior experience with similar products.` : ''}>
             </textarea>
         </div>
         <div className={'flex justify-around'}>

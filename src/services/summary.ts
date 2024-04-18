@@ -8,5 +8,12 @@ export const getSummary: Promise<any> = async (id: string) => {
             'Authorization': 'Token ' + token
         }
     })
-    return await response.json()
+
+    const summary: any[] = await response.json()
+    //retry request if summary is an empty array
+    if (summary.length === 0) {
+        return await getSummary(id)
+    }
+    return summary
 }
+
