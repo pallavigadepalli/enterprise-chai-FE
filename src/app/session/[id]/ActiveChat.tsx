@@ -15,6 +15,17 @@ interface ActiveChatProps {
     tabRecorder: MediaRecorder;
     micRecorder: MediaRecorder;
 }
+function extractToken(cookieString) {
+    const cookies = cookieString.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.indexOf('token=') === 0) {
+            return cookie.substring(6);
+        }
+    }
+    return null;
+}
+
 export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) {
 
     const searchParams = useParams()
@@ -36,11 +47,19 @@ export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) 
                 conversationId
             });
             //get token cookie
-            const cookies = document.cookie.split(';')[1].slice(7)
+            const cookies = extractToken(document.cookie)
             return await getConversation(conversationId, {cookies})
         }
         init().then((conversation: Conversation) => {
             setConversation(conversation)
+            setAssistantMessages(messages => [
+                ...messages,
+                'Welcome CSM to your second onboarding call',
+                `Hello ${conversation?.point_of_contact}`,
+                "AT&T had a great first quarter congratulations." +
+                "Last week we covered product license and entitlement.\n" +
+                "Let's talk about what your goals and objectives are this week. \n"
+            ])
         }).catch(e => e);
         return () => {
             if (tabRecorder.state === 'recording') {
