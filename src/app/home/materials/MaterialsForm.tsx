@@ -6,14 +6,14 @@ import Image from "next/image";
 import {Button} from "@nextui-org/react";
 
 
-const initialState = {
+const initialState: any = {
     message: "",
 };
 
 export const MaterialsForm = () => {
     // eslint-disable-next-line no-unused-vars
     const [state, formAction] = useFormState(saveFile, initialState);
-    const [filesName, setFilesName] = React.useState<string | string[]>('');
+    const [filesName, setFilesName] = React.useState<any>('');
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <label className="block">
@@ -53,9 +53,9 @@ export const MaterialsForm = () => {
                     name={'documents'}
                     className="hidden"
                     accept={'.pdf,.docx,.txt,.ppt'}
-                    onChange={(e) => {
+                    onChange={(e:any ) => {
                         setFilesName(
-                            Array.from(e.target.files).map(file => file.name)
+                            Array.from(e.target.files).map((file: any) => file.name)
                         )
                     }}
                     required
@@ -65,7 +65,7 @@ export const MaterialsForm = () => {
                 filesName === '' ?
                     <span className={'text-sm text-grayLight'}>Click to upload</span> :
                     <ul className={'text-sm text-grayLight'}>{filesName.map(
-                        (name, index) => {
+                        (name: string, index: number) => {
                             return <li key={index}>{name}</li>
                         }
                     )}</ul>

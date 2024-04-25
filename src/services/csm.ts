@@ -11,7 +11,7 @@ export interface Conversation {
     description: string
     journey_phase: string
 }
-export const getConversation: Promise<Conversation> = async (id: string, headers) => {
+export const getConversation: Promise<any> = async (id: string, headers) => {
     const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/' + id, {
         headers: {
             'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ import {authenticate} from "@/actions/account";
 import {useFormState, useFormStatus} from "react-dom";
 import {Button} from "@nextui-org/react";
 
-const initialState = {
+const initialState : any = {
     message: "",
 };
 

@@ -4,8 +4,6 @@ import React from 'react'
 import {createUser} from "@/actions/account";
 import { useFormState, useFormStatus } from "react-dom";
 
-
-
 const initialState = {
     message: "",
 };

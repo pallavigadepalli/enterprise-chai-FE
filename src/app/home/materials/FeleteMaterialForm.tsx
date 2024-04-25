@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image"
 import {deleteMaterial} from "@/services/materials";
 
-export const DeleteMaterialForm = ({id }) => {
+export const DeleteMaterialForm = ({id }: any) => {
 
     return <form action={deleteMaterial}
         onSubmit={

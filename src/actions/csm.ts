@@ -28,7 +28,7 @@ export const saveSession = async (
     }
     let apiResponse;
     try {
-        const token = cookies().get('token').value
+        const token = cookies()?.get('token')?.value
         const data = parse.data;
 
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/', data, {
@@ -56,8 +56,8 @@ export const completeConversation = async (
     prevState: string | undefined,
     formData: FormData
 ) => {
-    const token = 'Token ' + cookies().get('token').value
-    const result = await patchConversation(formData.get('conversationId'), {is_active: false}, token)
+    const token = 'Token ' + cookies()?.get('token')?.value
+    const result = await patchConversation(formData?.get('conversationId') as string, {is_active: false}, token)
     if (result.error) {
         return { message: result.error }
     } else {

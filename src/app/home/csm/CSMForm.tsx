@@ -5,12 +5,19 @@ import {saveSession} from "@/actions/csm";
 import {Button} from "@nextui-org/react";
 
 
-const initialState = {
+const initialState: any = {
     message: "",
 };
 
-
-export const CSMForm = ({phases, products}) => {
+interface Phase {
+    id: number;
+    phase: string;
+}
+interface CSMFormProps {
+    phases: Phase[];
+    products: any[];
+}
+export const CSMForm = ({phases, products}: CSMFormProps) => {
     // eslint-disable-next-line no-unused-vars
     const [state, formAction] = useFormState(saveSession, initialState);
     const [customerName, setCustomerName] = React.useState<string | string[]>('');

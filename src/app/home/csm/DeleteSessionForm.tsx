@@ -4,10 +4,10 @@ import Image from "next/image";
 import {deleteSession} from "@/services/sessions";
 import {useFormState} from "react-dom";
 
-const initialState = {
+const initialState: any  = {
     message: "",
 };
-export const DeleteForm = ({id }) => {
+export const DeleteForm = ({id }: any) => {
     // eslint-disable-next-line no-unused-vars
     const [state, formAction] = useFormState(deleteSession, initialState);
 

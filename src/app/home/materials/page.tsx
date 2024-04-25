@@ -7,7 +7,7 @@ import {getMaterials, getTemplates} from "@/services/materials";
 import TemplatesTable from "@/app/home/materials/TemplatesTable";
 
 
-export default async function Materials({searchParams}) {
+export default async function Materials({searchParams}: any ) {
     const data = await getMaterials();
     const templates = await getTemplates();
     return (

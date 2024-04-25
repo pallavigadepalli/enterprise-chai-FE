@@ -58,9 +58,9 @@ export default function Config() {
         setSelectedDeviceId(event.target.value);
     };
 
-    if (activeSession && selectedDeviceId && recorder) {
+    if (activeSession && recorder !== null) {
         return (
-            <ActiveChat tabRecorder={recorder} selectedDeviceId={selectedDeviceId} micRecorder={micRecorder}/>
+            <ActiveChat tabRecorder={recorder} micRecorder={micRecorder}/>
         )
     }
 

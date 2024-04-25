@@ -1,7 +1,7 @@
-export  default function TemplatesTable({data}) {
+export  default function TemplatesTable({data}: any) {
     // render the templates grouped by category
     // and display the templates in a list
-    const grouped = data.templates.reduce((acc, item) => {
+    const grouped = data.templates.reduce((acc: any, item: any) => {
         if (!acc[item.category]) {
             acc[item.category] = []
         }
@@ -18,7 +18,7 @@ export  default function TemplatesTable({data}) {
                             <p className={'text-base font-bold mb-3'}>{category}</p>
                             <div className={'p-1 px-2'}>
                                 {
-                                    grouped[category].map((item) => {
+                                    grouped[category].map((item:any) => {
                                         return (
                                             <li key={item.id} className={`text-sm ${item['is_required'] ? 'text-greenLight600' : ''}`}>
                                                 <a

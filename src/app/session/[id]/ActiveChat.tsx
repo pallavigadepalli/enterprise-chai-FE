@@ -13,9 +13,9 @@ import {Modal, ModalBody, ModalContent} from "@nextui-org/react";
 
 interface ActiveChatProps {
     tabRecorder: MediaRecorder;
-    micRecorder: MediaRecorder;
+    micRecorder: MediaRecorder | null;
 }
-function extractToken(cookieString) {
+function extractToken(cookieString: string) {
     const cookies = cookieString.split(';');
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim();

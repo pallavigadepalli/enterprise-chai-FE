@@ -10,7 +10,7 @@ import {getJourneyPhases, getSessions} from "@/services/sessions";
 import {getMaterials} from "@/services/materials";
 import {DeleteForm} from "@/app/home/csm/DeleteSessionForm";
 
-export default async function List({searchParams}) {
+export default async function List({searchParams}: any ) {
     const isPending = searchParams.status === 'pending' || !searchParams.status;
     const phases = await getJourneyPhases()
     const sessions = await getSessions(isPending)
@@ -50,7 +50,7 @@ export default async function List({searchParams}) {
             <DeleteForm id={id}/>
         </div>
     )
-    const data: TableRow[] = sessions.sessions.map((session) => {
+    const data: TableRow[] = sessions.sessions.map((session:any) => {
         return {
             ...session,
             customerCompanyName: session['product_company'],

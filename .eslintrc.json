@@ -26,6 +26,7 @@
     "no-unsafe-argument": "off",
     "no-unsafe-indexed": "off",
     "no-unsafe-iteration": "off",
-    "indent": "error"
+    "indent": "error",
+    "no-floating-promises": "off"
   }
 }
