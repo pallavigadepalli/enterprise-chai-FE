@@ -8,6 +8,7 @@ const initialState = {
     message: "",
 };
 export const DeleteForm = ({id }) => {
+    // eslint-disable-next-line no-unused-vars
     const [state, formAction] = useFormState(deleteSession, initialState);
 
     return <form action={deleteSession}

@@ -1,13 +1,19 @@
 import {useFormState} from "react-dom";
 import {completeConversation} from "@/actions/csm";
 
-export default function ModalComplete(
-    {conversationId}: { conversationId: string },
-    setCompleteSessionAlert: (value: boolean) => void
+interface ModalCompleteProps {
+    conversationId: string;
+    setCompleteSessionAlert: void;
+}
+export default function ModalComplete({
+    conversationId,
+    setCompleteSessionAlert
+} : ModalCompleteProps
 ) {
     const initialState = {
         message: "",
     }
+    // eslint-disable-next-line no-unused-vars
     const [state, formAction] = useFormState(completeConversation, initialState);
 
     return (

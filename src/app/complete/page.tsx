@@ -2,7 +2,7 @@ import Congratulations from "@/components/Congratulations"
 import FeedbackButtons from "@/components/FeedbackButtons"
 import SessionComplete from "@/components/SessionComplete"
 
-export default function SessionWarning({summaryInfo}) {
+export default function SessionWarning({summaryInfo}: any) {
     console.log(summaryInfo)
     return (
         <div className="w-full ">

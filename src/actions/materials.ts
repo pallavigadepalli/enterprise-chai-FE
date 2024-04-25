@@ -26,7 +26,6 @@ export const  saveFile = async (
     }
     try {
         const token = cookies().get('token').value
-        const data = parse.data;
 
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/product/', formData, {
             headers: {

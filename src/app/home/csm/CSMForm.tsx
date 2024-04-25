@@ -11,6 +11,7 @@ const initialState = {
 
 
 export const CSMForm = ({phases, products}) => {
+    // eslint-disable-next-line no-unused-vars
     const [state, formAction] = useFormState(saveSession, initialState);
     const [customerName, setCustomerName] = React.useState<string | string[]>('');
     console.log(products)

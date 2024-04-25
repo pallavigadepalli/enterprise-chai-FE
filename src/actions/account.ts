@@ -39,7 +39,7 @@ export async function createUser(
                 'Content-Type': 'application/json'
             },
         })
-            const json = await response.json()
+        const json = await response.json()
         if (json.error) {
             return { message: json.error }
         }

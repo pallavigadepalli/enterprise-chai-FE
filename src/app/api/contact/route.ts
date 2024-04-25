@@ -1,13 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { NextResponse } from 'next/server'
 import {sendMail} from "@/mail";
 
-type ResponseData = {
-    message: string,
-    name: string,
-    email: string,
-    title: string,
-}
 
 export async function POST(
     req: Request,
