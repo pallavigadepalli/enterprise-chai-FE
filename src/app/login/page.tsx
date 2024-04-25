@@ -16,7 +16,7 @@ export default function Login() {
 
             <div className='w-7/12 flex-col p-10'>
                 <div className='w-9/12'>
-                    <a className="flex text-2xl place-items-center text-primarySmall font-medium" href={'/'}>
+                    <a className="flex text-2xl place-items-center text-primarySmall font-medium" href={'https://www.enterprisechai.com'}>
                         <span>Enterprise</span>
                         <Image src="/cup_logo.svg" alt="Logo" width={43} height={45} className={'mx-1 mb-3'}/>
                         <span className={'font-medium text-primarySmall font-bold'}>CH</span>
