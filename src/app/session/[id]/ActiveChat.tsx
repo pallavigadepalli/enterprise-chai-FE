@@ -53,12 +53,7 @@ export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) 
         init().then((conversation: Conversation) => {
             setConversation(conversation)
             setAssistantMessages(messages => [
-                ...messages,
-                'Welcome CSM to your second onboarding call',
-                `Hello ${conversation?.point_of_contact}`,
-                "AT&T had a great first quarter congratulations." +
-                "Last week we covered product license and entitlement.\n" +
-                "Let's talk about what your goals and objectives are this week. \n"
+                ...messages
             ])
         }).catch(e => e);
         return () => {
