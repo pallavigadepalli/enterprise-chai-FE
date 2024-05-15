@@ -59,6 +59,7 @@ export const MaterialsForm = () => {
                         )
                     }}
                     required
+                    multiple
                 />
             </label>
             {

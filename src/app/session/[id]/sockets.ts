@@ -42,7 +42,7 @@ export const handleStartCapture = async ({
             throw new Error('WebSocket error:', error);
         };
         microphoneWS.onmessage = (event) => {
-            setMicrophoneMessages(_value => [..._value, event.data]);
+            setMicrophoneMessages(_value => [..._value, JSON.parse(event.data)]);
         }
         tabWS.onopen = () => {
             tabRecorder.start(100)
@@ -51,10 +51,10 @@ export const handleStartCapture = async ({
             throw new Error('WebSocket error:', error);
         };
         tabWS.onmessage = (event) => {
-            setTabMessages(_value => [..._value, event.data]);
+            setTabMessages(_value => [..._value, JSON.parse(event.data)]);
         }
         assistantWS.onmessage = (event) => {
-            setAssistantMessages(_value => [..._value, event.data]);
+            setAssistantMessages(_value => [..._value, JSON.parse(event.data)]);
         }
         assistantWS.onerror = (error) => {
             throw new Error('WebSocket error:', error);

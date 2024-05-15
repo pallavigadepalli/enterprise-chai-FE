@@ -1,6 +1,7 @@
 import Avatar from "./Avatar";
 import Speaker from "./Speaker";
 import ChatMessage from "./ChatMessage";
+import {useEffect, useRef} from "react";
 
 interface SpeakerBoxProps {
     name: string;
@@ -9,6 +10,13 @@ interface SpeakerBoxProps {
     placeholder: string;
 }
 export default function SpeakerBox({name, avatar, messages, placeholder}: SpeakerBoxProps) {
+    const messageContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (messageContainerRef.current) {
+            messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+        }
+    }, [messages]);
     return (
         <div className=" bg-grayBg bg-opacity-10  rounded-lg flex-col  h-[338px] min-w-96 mb-6 max-w-sm">
             <div className="bg-grayPlate flex rounded-t-lg ">
@@ -20,8 +28,8 @@ export default function SpeakerBox({name, avatar, messages, placeholder}: Speake
                     <Speaker />
                 </div>
             </div>
-            <div className="p-4">
-                <div className="max-h-52 overflow-auto">
+            <div className="p-4" >
+                <div className="max-h-52 overflow-auto" ref={messageContainerRef}>
                     {
                         messages.map((message, index) => (
                             <div className="mb-4" key={index + "chat-"}>
