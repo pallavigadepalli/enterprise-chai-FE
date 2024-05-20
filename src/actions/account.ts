@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import {signInApp} from "../../auth";
+import axiosInterceptorInstance from "../../axiosInterceptorInstance";
 import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
 
@@ -26,22 +27,14 @@ export async function createUser(
 
     const data = parse.data;
     try {
-        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/register', {
-            method: 'POST',
-            body: JSON.stringify(
-                {
-                    email: data.email,
-                    username: data.email,
-                    password: data.password
-                }
-            ),
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        const response = await axiosInterceptorInstance.post( '/register', {
+            email: data.email,
+            username: data.email,
+            password: data.password
+
         })
-        const json = await response.json()
-        if (json.error) {
-            return { message: json.error }
+        if (response.status !== 201) {
+            return { message: response.error }
         }
     } catch (e) {
         console.log(e)

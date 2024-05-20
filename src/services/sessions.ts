@@ -1,18 +1,19 @@
 'use server'
 import {cookies} from "next/headers";
 import {revalidatePath} from "next/cache";
+import axiosInterceptorInstance from "../../axiosInterceptorInstance";
 
 export const getJourneyPhases = async () => {
     try {
         const token = cookies().get('token').value
-        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/journey-phase', {
+        const response = await axiosInterceptorInstance.get( '/journey-phase', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + token,
             }
         })
 
-        const json = await response.json()
+        const json = await response.data
         if (json.error) {
             return { phases: [] }
         }
@@ -27,15 +28,15 @@ export const getJourneyPhases = async () => {
 export const getSessions = async (isPending = true) => {
     try {
         const token = cookies().get('token').value
-        const response = await fetch(
-            process.env.NEXT_PUBLIC_BACKEND + `/companion-session?is_active=${isPending ? 'True' : 'False' }`,
+        const response = await axiosInterceptorInstance.get(
+            `/companion-session?is_active=${isPending ? 'True' : 'False' }`,
             {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Token ' + token,
                 }
             })
-        const json = await response.json()
+        const json = await response.data
         if (json.error) {
             return { sessions: [] }
         }
@@ -49,8 +50,7 @@ export const getSessions = async (isPending = true) => {
 export const deleteSession = async (formData: FormData) => {
     const id = formData.get('id')
     const token = cookies().get('token').value
-    await fetch(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/' + id + '/', {
-        method: 'DELETE',
+    await axiosInterceptorInstance.delete( '/companion-session/' + id + '/', {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + token,
