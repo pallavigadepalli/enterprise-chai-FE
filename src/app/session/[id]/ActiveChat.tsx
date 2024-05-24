@@ -117,8 +117,8 @@ export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) 
                 <AssistantLayout messages={assistantMessages} />
                 <div className=' flex flex-col w-[320]'>
                     <div>
-                        <SpeakerBox name={'Customer'} messages={tabMessages} placeholder={placeholderClient}/>
-                        <SpeakerBox name={'You'} messages={microphoneMessages} placeholder={placeholderUser}/>
+                        <SpeakerBox name={'Customer'} messages={tabMessages} placeholder={placeholderClient} avatar={'/avatar1.png'}/>
+                        <SpeakerBox name={'You'} messages={microphoneMessages} placeholder={placeholderUser} avatar={'/avatar2.png'}/>
                     </div>
                 </div>
             </div>
