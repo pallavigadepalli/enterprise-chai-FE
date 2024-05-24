@@ -26,9 +26,9 @@ export default function AssistantLayout({messages}: AssistantLayoutProps) {
                 <AnswerGenerator />
             </div>
 
-            { messages.length > 0 && <div className="p-4 overflow-y-auto h-[600px]" ref={messagesEndRef}>
+            { messages.length > 0 && <div className="p-4 overflow-y-auto h-[600px]"  ref={messagesEndRef}>
                 {messages.map((message, index) => (
-                    <div className="mb-4" key={index + "chat-"}>
+                    <div className="mb-4" key={index + "chat-"} ref={messagesEndRef}>
                         <ChatBox message={message}/>
                     </div>))
                 }

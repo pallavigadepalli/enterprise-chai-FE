@@ -19,9 +19,10 @@ export default function Dashboard() {
         }]
     return (
         <main className="w-full px-9">
-            <Header title={''} subtitle={''}/>
-            <div className="flex">
+            <Header title={'Hello David'} subtitle={'“You will succeed if you have delighted customers. Don’t settle for satisfied!”'}/>
+            <div className="flex gap-5">
                 <Infographics />
+                <Image width={800} height={400} src="/chart.png" alt="dashboard" />
             </div>
             <div className="mt-20">
                 <p className={'text-lg font-bold'}>How to get started</p>
