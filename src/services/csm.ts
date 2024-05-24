@@ -1,3 +1,4 @@
+import axiosInterceptorInstance from "../../axiosInterceptorInstance";
 
 export interface Conversation {
     id: string
@@ -12,23 +13,21 @@ export interface Conversation {
     journey_phase: string
 }
 export const getConversation: Promise<any> = async (id: string, headers) => {
-    const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/' + id, {
+    const response = await axiosInterceptorInstance.get( '/companion-session/' + id, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + headers.cookies
         }
     })
-    return await response.json()
+    return await response.data
 }
 
 export const patchConversation = async (id: string, data: any, token: string) => {
-    const response = await fetch(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/' + id + '/', {
-        method: 'PATCH',
+    const response = await axiosInterceptorInstance.patch( '/companion-session/' + id + '/', data, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': token
         },
-        body: JSON.stringify(data)
     })
-    return  await response.json()
+    return  await response.data
 }
