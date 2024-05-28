@@ -1,8 +1,8 @@
 'use server'
 import {cookies} from "next/headers";
-import axios from "axios";
 import {z} from "zod";
 import {redirect} from "next/navigation";
+import axiosInterceptorInstance from "../../axiosInterceptorInstance";
 
 export const  saveFile = async (
     prevState: string | undefined,
@@ -27,7 +27,7 @@ export const  saveFile = async (
     try {
         const token = cookies()?.get('token')?.value
 
-        const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/product/', formData, {
+        const response = await axiosInterceptorInstance.post('/product/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Token ' + token,

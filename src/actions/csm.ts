@@ -1,9 +1,9 @@
 'use server'
 import {z} from "zod";
-import axios from "axios";
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
 import {patchConversation} from "@/services/csm";
+import axiosInterceptorInstance from "../../axiosInterceptorInstance";
 
 export const saveSession = async (
     prevState: string | undefined,
@@ -31,7 +31,7 @@ export const saveSession = async (
         const token = cookies()?.get('token')?.value
         const data = parse.data;
 
-        const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/companion-session/', data, {
+        const response = await axiosInterceptorInstance.post( '/companion-session/', data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + token,
