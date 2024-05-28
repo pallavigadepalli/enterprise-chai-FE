@@ -13,7 +13,7 @@ export default function SessionComplete({summaryInfo}) {
                         {summaryInfo.session.product_company}</span>
                     <span>
                         <span className="text-primarySmall mr-2">Customer point of contact:</span>
-                        {summaryInfo.session.point_of_contact}</span>
+                        {summaryInfo.session.point_of_contact.name}</span>
                 </div>
                 <div>
                     <h5 className="text-lg text-primarySmall font-bold">Session Summary:</h5>

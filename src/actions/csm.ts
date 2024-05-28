@@ -12,14 +12,16 @@ export const saveSession = async (
     const schema = z.object({
         journey_phase: z.string(),
         product: z.string(),
-        point_of_contact: z.string(),
+        point_of_contact_name: z.string(),
+        point_of_contact_email: z.string(),
         description: z.string(),
     });
 
     const parse = schema.safeParse({
         journey_phase: formData.get("journey_phase"),
         product: formData.get("product"),
-        point_of_contact: formData.get("point_of_contact"),
+        point_of_contact_name: formData.get("point_of_contact_name"),
+        point_of_contact_email: formData.get("point_of_contact_email"),
         description: formData.get("description"),
     });
 
