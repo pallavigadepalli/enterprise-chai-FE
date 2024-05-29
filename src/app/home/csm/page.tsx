@@ -54,7 +54,7 @@ export default async function List({searchParams}: any ) {
         return {
             ...session,
             customerCompanyName: session['product_company'],
-            customerPoint: session['point_of_contact']['name'],
+            customerPoint: session['point_of_contact'],
             conversationIntent: session['journey_phase'],
             created: moment(session['created_at']).format('DD-MMM-YYYY hh:mm a'),
             tools: getTools(session.id),

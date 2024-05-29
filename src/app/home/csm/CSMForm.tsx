@@ -40,7 +40,7 @@ export const CSMForm = ({phases, products}: CSMFormProps) => {
                 required
                 type="text"
                 className="form-input mt-1 block w-full"
-                name={'point_of_contact_name'}
+                name={'point_of_contact'}
                 placeholder="customer point of contact name"
                 onChange={
                     (e) => {
