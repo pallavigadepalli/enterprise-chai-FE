@@ -18,10 +18,10 @@ interface CSMFormProps {
     products: any[];
 }
 export const CSMForm = ({phases, products}: CSMFormProps) => {
+
     // eslint-disable-next-line no-unused-vars
     const [state, formAction] = useFormState(saveSession, initialState);
     const [customerName, setCustomerName] = React.useState<string | string[]>('');
-    console.log(products)
 
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <div className="block">
@@ -55,8 +55,8 @@ export const CSMForm = ({phases, products}: CSMFormProps) => {
             <span className="text-gray-700">Product*</span>
             <select required className="p-2 h-12 border rounded flex items-center w-full" name={'product'}>
                 {
-                    products.map(({product}) => {
-                        return <option key={product.id} value={product.name}>{product.name}</option>
+                    products.map((product) => {
+                        return <option key={product.id} value={product.id}>{product.name}</option>
                     })
                 }
             </select>

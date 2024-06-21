@@ -33,6 +33,7 @@ axiosInterceptorInstance.interceptors.response.use(
             {
                 url: error.config.url,
                 status: error.response.status,
+                data: error.response.data,
             }
         )
         return Promise.reject(error);
