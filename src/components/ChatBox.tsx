@@ -5,7 +5,7 @@ interface ChatBoxProps {
     message: {
         answer: string;
         timestamp: string;
-        generated_by: string;
+        source_type: string;
     }
 }
 export default function ChatBox({message}: ChatBoxProps) {
@@ -26,8 +26,8 @@ export default function ChatBox({message}: ChatBoxProps) {
                     </div>
                 </div>
             </div>
-            {message.generated_by && <div className="text-sm italic relative -bottom-1 text-right flex justify-end gap-4 text-grayLight2 font-normal text-xs pr-3">
-                {message.generated_by}
+            {message.source_type && <div className="text-sm italic relative -bottom-1 text-right flex justify-end gap-4 text-grayLight2 font-normal text-xs pr-3">
+                {message.source_type}
                 <Image src="/thumbs-down.svg" alt="arrow" width={20} height={20} className={'h-5 self-center'}/>
             </div>}
         </div>
