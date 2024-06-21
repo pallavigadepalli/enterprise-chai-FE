@@ -56,8 +56,14 @@ export const handleStartCapture = async ({
         assistantWS.onmessage = (event) => {
             const newMessage = JSON.parse(event.data);
             //add the previous messages to the array. replace the last message in the array if it does not contain the field source_type
+
             setAssistantMessages(_value => {
-                if (_value.length > 0 && !_value[_value.length - 1].source_type) {
+                if (_value.length > 0 &&
+                    (!_value[_value.length - 1].source_type || _value[_value.length - 1].source_type === '' )){
+
+                    if(_value[_value.length - 1].answer === newMessage.answer){
+                        return [..._value];
+                    }
                     _value[_value.length - 1] = newMessage;
                     return [..._value];
                 }
