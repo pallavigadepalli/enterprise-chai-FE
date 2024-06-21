@@ -61,9 +61,10 @@ export const handleStartCapture = async ({
                 if (_value.length > 0 &&
                     (!_value[_value.length - 1].source_type || _value[_value.length - 1].source_type === '' )){
 
-                    if(_value[_value.length - 1].answer === newMessage.answer){
-                        return [..._value];
-                    }
+                    _value[_value.length - 1] = newMessage;
+                    return [..._value];
+                }
+                if(_value.length > 0 && _value[_value.length - 1].answer === newMessage.answer){
                     _value[_value.length - 1] = newMessage;
                     return [..._value];
                 }
