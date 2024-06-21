@@ -31,7 +31,7 @@ export default function Register() {
                                 type="text"
                                 className="form-input mt-1 block w-full"
                                 placeholder="enter your name"
-                                name={'name'}
+                                name={'username'}
                             />
                         </div>
                         <div>

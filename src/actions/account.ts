@@ -15,12 +15,12 @@ export async function createUser(
     const schema = z.object({
         email: z.string().email({ message: "Invalid email"}),
         password: z.string().min(8, { message: "Password must be at least 8 characters long"}),
-        name: z.string().min(3, { message: "Name must be at least 3 characters long"}),
+        username: z.string().min(3, { message: "Name must be at least 3 characters long"}),
     });
     const parse = schema.safeParse({
         email: formData.get("email"),
         password: formData.get("password"),
-        name: formData.get("name"),
+        username: formData.get("username"),
     });
 
     if (!parse.success) {
@@ -31,9 +31,8 @@ export async function createUser(
     try {
         const response = await axiosInterceptorInstance.post( '/register', {
             email: data.email,
-            username: data.email,
-            password: data.password,
-            name: data.name,
+            username: data.username,
+            password: data.password
         })
         if (response.status !== 201) {
             return { message: response.error }
