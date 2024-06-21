@@ -5,8 +5,12 @@ type LoginResponse = {
     token: string;
 }
 const login = async (email: string, password: string) => {
-    const response = await axiosInterceptorInstance.post( '/login', {email,password})
-    return response
+    try {
+        const response = await axiosInterceptorInstance.post( '/login', {email,password})
+        return response
+    } catch (e) {
+        return { status: 500 }
+    }
 }
 
 export const  signInApp = async (email: string, password: string) => {
