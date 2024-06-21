@@ -24,29 +24,35 @@ export default function Register() {
                     </a>
                     <p className='welcome-back'>Create an account</p>
                     <h3 className='mb-10'>Already have an account? <span className={'text-primarySmall'}>Log-in</span></h3>
-                    <div>
-                        <label className="block">
-                            <span className="text-gray-700">email</span>
+                    <section className={'flex gap-3 flex-col'}>
+                        <div>
+                            <label className="text-gray-700">name</label>
+                            <input
+                                type="text"
+                                className="form-input mt-1 block w-full"
+                                placeholder="enter your name"
+                                name={'username'}
+                            />
+                        </div>
+                        <div>
+                            <label className="text-gray-700">email</label>
                             <input
                                 type="text"
                                 className="form-input mt-1 block w-full"
                                 placeholder="enter your email"
                                 name={'email'}
                             />
-                        </label>
-                    </div>
-                    <br />
-                    <div>
-                        <label className="block">
-                            <span className="text-gray-700">password</span>
+                        </div>
+                        <div>
+                            <label className="text-gray-700">password</label>
                             <input
                                 type="password"
                                 className="form-input mt-1 block w-full"
                                 placeholder="enter your password"
                                 name={'password'}
                             />
-                        </label>
-                    </div>
+                        </div>
+                    </section>
                     <div className="flex gap-2 pt-4 pb-4 mb-8">
                         <input type="checkbox" className='checkbox-login'/> I agree to EnterpriseCHAI’s Terms & Conditions and Privacy Policy
                     </div>

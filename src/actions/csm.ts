@@ -42,7 +42,6 @@ export const saveSession = async (
         }
         apiResponse = response.data
     } catch (e) {
-        console.log(e)
         return { message: 'failed to create the session'}
     }
     if(formData.has('launch')) {

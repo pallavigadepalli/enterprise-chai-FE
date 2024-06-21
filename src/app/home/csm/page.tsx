@@ -7,14 +7,14 @@ import React from "react";
 import moment from "moment";
 import {CSMForm} from "@/app/home/csm/CSMForm";
 import {getJourneyPhases, getSessions} from "@/services/sessions";
-import {getMaterials} from "@/services/materials";
 import {DeleteForm} from "@/app/home/csm/DeleteSessionForm";
+import {getProducts} from "@/services/products";
 
 export default async function List({searchParams}: any ) {
     const isPending = searchParams.status === 'pending' || !searchParams.status;
     const phases = await getJourneyPhases()
     const sessions = await getSessions(isPending)
-    const products = await getMaterials();
+    const products = await getProducts();
     const tableTitle = isPending ? "Active created sessions" : "Call Summary";
 
 
@@ -99,7 +99,7 @@ export default async function List({searchParams}: any ) {
                         <p className={'text-primarySmall'}>Create new session</p>
                     </ModalHeader>
                     <ModalBody>
-                        <CSMForm phases={phases.phases} products={products.materials}/>
+                        <CSMForm phases={phases.phases} products={products.products}/>
                     </ModalBody>
                 </ModalContent>
             </Modal>

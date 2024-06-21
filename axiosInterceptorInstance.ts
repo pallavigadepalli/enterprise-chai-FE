@@ -8,7 +8,9 @@ const axiosInterceptorInstance = axios.create({
 axiosInterceptorInstance.interceptors.request.use(
     (config) => {
         // Handle request headers here
-        console.log(config)
+        console.table(
+            config.data
+        )
         return config;
     },
     (error) => {
@@ -17,6 +19,26 @@ axiosInterceptorInstance.interceptors.request.use(
     }
 );
 
+axiosInterceptorInstance.interceptors.response.use(
+    (response) => {
+        console.table({
+            data: response.data,
+            url: response.config.url,
+            status: response.status,
+        });
+        return response;
+    },
+    (error) => {
+        console.table(
+            {
+                url: error.config.url,
+                status: error.response.status,
+                data: error.response.data,
+            }
+        )
+        return Promise.reject(error);
+    }
+);
 
 
 export default axiosInterceptorInstance;

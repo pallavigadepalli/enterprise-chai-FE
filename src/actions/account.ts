@@ -14,11 +14,13 @@ export async function createUser(
 ) {
     const schema = z.object({
         email: z.string().email({ message: "Invalid email"}),
-        password: z.string().min(8, { message: "Password must be at least 8 characters long"})
+        password: z.string().min(8, { message: "Password must be at least 8 characters long"}),
+        username: z.string().min(3, { message: "Name must be at least 3 characters long"}),
     });
     const parse = schema.safeParse({
         email: formData.get("email"),
-        password: formData.get("password")
+        password: formData.get("password"),
+        username: formData.get("username"),
     });
 
     if (!parse.success) {
@@ -29,15 +31,13 @@ export async function createUser(
     try {
         const response = await axiosInterceptorInstance.post( '/register', {
             email: data.email,
-            username: data.email,
+            username: data.username,
             password: data.password
-
         })
         if (response.status !== 201) {
             return { message: response.error }
         }
     } catch (e) {
-        console.log(e)
         return { message: 'failed to create user try with another email'}
     }
     redirect("/login");
