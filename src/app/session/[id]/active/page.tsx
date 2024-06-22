@@ -16,7 +16,12 @@ export default function Config() {
 
     const handleTabAudio = async () => {
         try {
-            const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true })
+            let stream = await navigator.mediaDevices.getDisplayMedia({ audio: true });
+            if (!('CaptureController' in window)) {
+                const controller = new CaptureController();
+                stream = await navigator.mediaDevices.getDisplayMedia({ controller, audio: true });
+                controller.setFocusBehavior("no-focus-change");
+            }
             const recorder = new MediaRecorder(stream);
             setRecorder(recorder);
             const stream2 = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: selectedDeviceId } });
