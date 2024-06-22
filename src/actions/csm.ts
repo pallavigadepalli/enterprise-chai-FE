@@ -45,7 +45,7 @@ export const saveSession = async (
         return { message: 'failed to create the session'}
     }
     if(formData.has('launch')) {
-        redirect('/session/' + apiResponse.id + '/active')
+        return { message: 'Session created successfully', session: apiResponse.id }
     } else {
         redirect('/home/csm')
     }

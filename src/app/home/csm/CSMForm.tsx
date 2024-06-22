@@ -23,6 +23,9 @@ export const CSMForm = ({phases, products}: CSMFormProps) => {
     const [state, formAction] = useFormState(saveSession, initialState);
     const [customerName, setCustomerName] = React.useState<string | string[]>('');
 
+    if (state.session) {
+        window.open(`/session/${state.session}/active`, "CSMWindow", "popup")
+    }
     return <form className={'flex flex-col gap-4'} action={formAction}>
         <div className="block">
             <span className="text-gray-700">Customer journey phase *</span>

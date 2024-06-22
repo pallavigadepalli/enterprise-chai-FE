@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Table from "@/components/Table";
 import {TableRow, TableColumn } from "@/components/Table"
@@ -9,6 +8,7 @@ import {CSMForm} from "@/app/home/csm/CSMForm";
 import {getJourneyPhases, getSessions} from "@/services/sessions";
 import {DeleteForm} from "@/app/home/csm/DeleteSessionForm";
 import {getProducts} from "@/services/products";
+import Anchor from "@/app/home/csm/anchor";
 
 export default async function List({searchParams}: any ) {
     const isPending = searchParams.status === 'pending' || !searchParams.status;
@@ -36,9 +36,9 @@ export default async function List({searchParams}: any ) {
     ];
     const getTools = (id: number) => (
         <div className="flex items-center justify-end gap-6">
-            <a href={`/session/${id}/active`} className={'bg-violetLight rounded px-2 py-1 shadow-md'}>
-                Launch
-            </a>
+            <Anchor url={`/session/${id}/active`} text={'Launch'}/>
+
+
             {/*            <a href={`/home/csm?action=edit&id=${id}`}>
                 <Image
                     src={'/edit.png'}
