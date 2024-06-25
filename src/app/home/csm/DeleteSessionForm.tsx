@@ -1,23 +1,12 @@
 'use client'
 import React from "react";
-import Image from "next/image";
 import {deleteSession} from "@/services/sessions";
-import {useFormState} from "react-dom";
+import Image from "next/image";
 
-const initialState: any  = {
-    message: "",
-};
 export const DeleteForm = ({id }: any) => {
-    // eslint-disable-next-line no-unused-vars
-    const [state, formAction] = useFormState(deleteSession, initialState);
 
     return <form action={deleteSession}
-        onSubmit={
-            async (e) => {
-                e.stopPropagation();
 
-            }
-        }
     >
         <input type="hidden" name={'id'} value={id}/>
         <button type={"submit"}>

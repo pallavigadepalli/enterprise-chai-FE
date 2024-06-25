@@ -21,32 +21,22 @@ export default async function List({searchParams}: any ) {
 
 
     const pendingCallsColumns: TableColumn[] = [
-        { key: 'customerCompanyName', title: 'Customer company name', width: 'w-1/4' },
-        { key: 'customerPoint', title: 'Customer point of contact', width: 'w-1/4' },
-        { key: 'conversationIntent', title: 'Conversation Intent', width: 'w-1/4' },
+        { key: 'customerCompanyName', title: 'Customer company name' },
+        { key: 'customerPoint', title: 'Customer point of contact' },
+        { key: 'conversationIntent', title: 'Conversation Intent' },
         { key: 'created', title: 'Created', width: 'w-1/4' },
         { key: 'tools', title:'',width:'w-1/4' },
     ];
 
     const finishedCallsColumns: TableColumn[] = [
-        { key: 'session_number', title: 'Sesssion no', width: 'w-1/4' },
-        { key: 'conversationIntent', title: 'Conversation Intent', width: 'w-1/4' },
-        { key: 'customerCompanyName', title: 'Customer company name', width: 'w-1/4' },
-        { key: 'created', title: 'Date', width: 'w-1/4' },
+        { key: 'session_number', title: 'Sesssion no' },
+        { key: 'conversationIntent', title: 'Conversation Intent' },
+        { key: 'customerCompanyName', title: 'Customer company name' },
+        { key: 'created', title: 'Date' },
     ];
     const getTools = (id: number) => (
         <div className="flex items-center justify-end gap-6">
             <Anchor url={`/session/${id}/active`} text={'Launch'}/>
-
-
-            {/*            <a href={`/home/csm?action=edit&id=${id}`}>
-                <Image
-                    src={'/edit.png'}
-                    alt='edit'
-                    width={24}
-                    height={24}
-                />
-            </a>*/}
             <DeleteForm id={id}/>
         </div>
     )
