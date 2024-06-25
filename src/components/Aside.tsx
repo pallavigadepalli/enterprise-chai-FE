@@ -7,7 +7,6 @@ export default function Aside() {
     //get the current route
     const currentRoute = usePathname()
     const routes = [
-        {route: '/home/dashboard', icon: 'Dashboard.svg', name: 'Dashboard'},
         {route: '/home/materials', icon: 'Materials.svg', name: 'Materials'},
         {route: '/home/csm', icon: 'Launch.svg', name: 'CSM Companion'}
     ]
