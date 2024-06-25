@@ -23,7 +23,9 @@ export default function Register() {
                         <span className={'font-medium text-greenLogo font-bold'}>AI</span>
                     </a>
                     <p className='welcome-back'>Create an account</p>
-                    <h3 className='mb-10'>Already have an account? <span className={'text-primarySmall'}>Log-in</span></h3>
+                    <h3 className='mb-10'>Already have an account? <a
+                        href={'/login'}
+                        className={'text-primarySmall'}>Log-in</a></h3>
                     <section className={'flex gap-3 flex-col'}>
                         <div>
                             <label className="text-gray-700">name</label>
