@@ -12,6 +12,7 @@ export default function MaterialsTable({data}: MaterialsTableProps) {
             <DeleteMaterialForm id={id}/>
         </div>
     )
+    console.log(data)
     const _data = data.map((item) => {
 
         return {
@@ -21,7 +22,7 @@ export default function MaterialsTable({data}: MaterialsTableProps) {
             created_at: moment(item.created_at).format('DD-MMM-YYYY hh:mm a'),
             document: item.file.split('/').pop(),
             tools: getTools(item.id),
-            rowUrl: `${item.file}`.replace('backend', '/localhost')
+            rowUrl: `${item.file}`.replace('http://backend', process.env.NEXT_PUBLIC_BACKEND)
         }
     })
 

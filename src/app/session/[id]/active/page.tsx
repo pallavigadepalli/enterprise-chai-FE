@@ -5,14 +5,30 @@ import Dropdown from "@/components/Dropdown";
 import Image from "next/image";
 import React, {useEffect, useState} from "react";
 import ActiveChat from "@/app/session/[id]/ActiveChat";
+import {Conversation, getConversation} from "@/services/csm";
+import {useParams} from "next/navigation";
 
 
+function extractToken(cookieString: string) {
+    const cookies = cookieString.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.indexOf('token=') === 0) {
+            return cookie.substring(6);
+        }
+    }
+    return null;
+}
 export default function Config() {
+    const searchParams = useParams()
     const [audioDevices, setAudioDevices] = useState<any>([]);
     const [recorder, setRecorder] = useState<MediaRecorder| null>(null);
     const [micRecorder, setMicRecorder] = useState<MediaRecorder| null>(null);
     const [activeSession, setActiveSession] = useState<boolean>(false);
     const [selectedDeviceId, setSelectedDeviceId] = useState<string>('');
+    const [conversation, setConversation] = useState<Conversation>();
+    const conversationId = searchParams.id
+
 
     const handleTabAudio = async () => {
         try {
@@ -56,13 +72,23 @@ export default function Config() {
             }
         }
     }, [recorder]);
+
+    useEffect(() => {
+        const token = extractToken(document.cookie);
+        console.log('token', token);
+        if (token) {
+            getConversation(conversationId, {token}).then((conversation) => {
+                setConversation(conversation);
+            });
+        }
+    }, []);
     const handleDeviceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedDeviceId(event.target.value);
     };
 
-    if (activeSession && recorder !== null) {
+    if (activeSession && recorder !== null && conversation !== undefined) {
         return (
-            <ActiveChat tabRecorder={recorder} micRecorder={micRecorder}/>
+            <ActiveChat tabRecorder={recorder} micRecorder={micRecorder} conversation={conversation}/>
         )
     }
 

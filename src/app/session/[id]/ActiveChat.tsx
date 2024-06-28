@@ -7,26 +7,17 @@ import React, {useEffect, useState} from "react";
 import SpeakerBox from "@/components/SpeakerBox";
 import ModalComplete from "@/components/ModalComplete";
 import {handleStartCapture} from "@/app/session/[id]/sockets";
-import {Conversation, getConversation} from "@/services/csm";
+import {Conversation} from "@/services/csm";
 import {useParams} from "next/navigation";
 import {Modal, ModalBody, ModalContent} from "@nextui-org/react";
 
 interface ActiveChatProps {
     tabRecorder: MediaRecorder;
     micRecorder: MediaRecorder | null;
-}
-function extractToken(cookieString: string) {
-    const cookies = cookieString.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.indexOf('token=') === 0) {
-            return cookie.substring(6);
-        }
-    }
-    return null;
+    conversation: Conversation;
 }
 
-export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) {
+export default function ActiveChat({tabRecorder, micRecorder, conversation}: ActiveChatProps) {
 
     const searchParams = useParams()
     const conversationId = searchParams.id
@@ -34,7 +25,6 @@ export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) 
     const [microphoneMessages, setMicrophoneMessages] = useState<string[]>([]);
     const [tabMessages, setTabMessages] = useState<string[]>([]);
     const [completeSessionAlert, setCompleteSessionAlert] = useState(false);
-    const [conversation, setConversation] = useState<Conversation>();
     useEffect(() => {
 
         const init = async () => {
@@ -46,12 +36,9 @@ export default function ActiveChat({tabRecorder, micRecorder}: ActiveChatProps) 
                 setAssistantMessages,
                 conversationId
             });
-            //get token cookie
-            const cookies = extractToken(document.cookie)
-            return await getConversation(conversationId, {cookies})
+
         }
-        init().then((conversation: Conversation) => {
-            setConversation(conversation)
+        init().then(() => {
             setAssistantMessages(messages => [
                 ...messages
             ])
