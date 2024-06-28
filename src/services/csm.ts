@@ -1,4 +1,5 @@
 import axiosInterceptorInstance from "../../axiosInterceptorInstance";
+import {cookies} from "next/headers";
 
 export interface Conversation {
     id: string
@@ -12,11 +13,12 @@ export interface Conversation {
     description: string
     journey_phase: string
 }
-export const getConversation: Promise<any> = async (id: string, headers) => {
+export const getConversation: Promise<any> = async (id: string) => {
+    const token = cookies().get('token').value
     const response = await axiosInterceptorInstance.get( '/companion-session/' + id, {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Token ' + headers.cookies
+            'Authorization': 'Token ' + token
         }
     })
     return await response.data
