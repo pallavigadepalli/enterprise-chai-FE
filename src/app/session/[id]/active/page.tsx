@@ -32,6 +32,7 @@ export default function Config() {
 
     const handleTabAudio = async () => {
         try {
+            // eslint-disable-next-line no-undef
             const controller = new CaptureController();
             const stream = await navigator.mediaDevices.getDisplayMedia({ controller, audio: true });
             controller.setFocusBehavior("no-focus-change");
