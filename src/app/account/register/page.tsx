@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import {createUser} from "@/actions/account";
 import { useFormState, useFormStatus } from "react-dom";
+import {Button} from "@nextui-org/react";
 
 const initialState = {
     message: "",
@@ -10,7 +11,7 @@ const initialState = {
 
 export default function Register() {
     const [state, formAction] = useFormState(createUser, initialState);
-
+    const [checked, setChecked] = React.useState(true);
     return (
         <form className='bg-white rounded-lg h-screen flex xl:pl-36 lg:pl-24' action={formAction}>
 
@@ -56,10 +57,17 @@ export default function Register() {
                         </div>
                     </section>
                     <div className="flex gap-2 pt-4 pb-4 mb-8">
-                        <input type="checkbox" className='checkbox-login'/> I agree to EnterpriseCHAI’s Terms & Conditions and Privacy Policy
+                        <input
+                            type="checkbox"
+                            className='checkbox-login'
+                            checked={checked}
+                            onChange={(event) => {
+                                setChecked(event.target.checked)
+                            }}
+                        /> I agree to EnterpriseCHAI’s Terms & Conditions and Privacy Policy
                     </div>
                     <p className={'text-warning'}>{state.message}</p>
-                    <SubmitButton/>
+                    <SubmitButton checked={checked}/>
                     <div className='w-full flex justify-between  items-center mt-20'>
                         <button className='btn-login'>
                             <Image src={'/google.png'} alt='linkedin logo' width={30} height={30}/>
@@ -82,12 +90,18 @@ export default function Register() {
     )
 }
 
-function SubmitButton() {
+function SubmitButton({
+    checked,
+}) {
     const { pending } = useFormStatus();
-
     return (
-        <button type="submit" className="btn-primary w-full" aria-disabled={pending}>
+        <Button
+            type="submit"
+            className={'w-full'}
+            aria-disabled={pending}
+            isDisabled={!checked}
+            color="primary">
       Create an account
-        </button>
+        </Button>
     );
 }
