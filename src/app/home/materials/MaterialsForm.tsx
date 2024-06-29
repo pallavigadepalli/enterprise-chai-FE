@@ -45,29 +45,35 @@ export const MaterialsForm = () => {
                 placeholder="Add tags here"
             />
         </label>
-        <div className="flex gap-2  pb-4 mb-8 bg-grayb items-center justify-center h-32 flex-col border-dashed border-2 border-primary">
-            <label className={'cursor-pointer'}>
-                <Image src={'/elements.svg'} width={50} height={50} alt="pdf"/>
-                <input
-                    type="file"
-                    name={'documents'}
-                    className="hidden"
-                    accept={'.pdf,.docx,.txt,.ppt'}
-                    onChange={(e:any ) => {
-                        setFilesName(
-                            Array.from(e.target.files).map((file: any) => file.name)
-                        )
-                    }}
-                    required
-                    multiple
-                />
-            </label>
+        <div className="flex gap-2  min-h-48 mb-8 bg-grayb items-center justify-center  flex-col border-dashed border-2 border-primary">
+
             {
                 filesName === '' ?
-                    <span className={'text-sm text-grayLight'}>Click to upload</span> :
-                    <ul className={'text-sm text-grayLight'}>{filesName.map(
+                    <div className={'flex flex-col '}>
+                        <label className={'cursor-pointer self-center'}>
+                            <Image src={'/elements.svg'} width={50} height={50} alt="pdf"/>
+                            <input
+                                type="file"
+                                name={'documents'}
+                                className="hidden"
+                                accept={'.pdf,.docx,.txt,.ppt'}
+                                onChange={(e:any ) => {
+                                    setFilesName(
+                                        Array.from(e.target.files).map((file: any) => file.name)
+                                    )
+                                }}
+                                required
+                                multiple
+                            />
+                        </label>
+                        <span className={'text-sm text-grayLight'}>Click to upload</span>
+                    </div>
+                    :
+                    <ul className={'list-none max-h-44 p-3 overflow-y-auto my-1'}>{filesName.map(
                         (name: string, index: number) => {
-                            return <li key={index}>{name}</li>
+                            return <li
+                                className={'text-sm bg-darkViolet my-1 p-3'}
+                                key={index}>{name}</li>
                         }
                     )}</ul>
             }
